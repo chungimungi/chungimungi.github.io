@@ -17,44 +17,49 @@
                 <li><a href="./papers">PIER</a></li>  
             </ul>
         </nav>
-            <div class="theme-switch-wrapper">
-                <label class="theme-switch" for="checkbox">
-                    <input type="checkbox" id="checkbox" />
-                    <img src="assets/sun.svg" alt="Sun Icon" class="icon">
-                </label>
-            </div>
-        </header>
-        
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <img src="assets/sun.svg" alt="Sun Icon" class="icon">
+            </label>
+        </div>
     </header>
+    
     <main id="projects-main">
-        <section class="project" id="learning-to-forget">
-            <h2>Learning to Forget</h2>
-            <p>This repository attempts to implement in code a model that learns to forget. By implementing a simple text classifier model on a wine-review dataset, randomizing the weights of a trained model can be used as a method to make a trained model forget what it has learnt. </p>
-            <p><a href="https://github.com/chungimungi/Learning-to-Forget" class="btn">GitHub</a></p>
-        </section>
-        <section class="project" id="docqa">
-            <h2>DocQA</h2>
-            <p>A custom cross encoder QA model that gives a diagnosis based on the input of symptoms a user describes in natural language.</p>
-            <p><a href="https://github.com/chungimungi/DocQA" class="btn">GitHub</a></p>
-        </section>
-        <section class="project" id="bigator">
-            <h2>BiGATOR</h2>
-            <p>A custom Gated BiEncoder trained and evaluated on multiple QA tasks. </p>
-            <p><a href="https://github.com/chungimungi/BiGATOR" class="btn">GitHub</a></p>
-        </section>
-        <section class="project" id="stress-prognosis">
-            <h2>Time Series Analysis for Stress Prognosis in Mobile Video Games</h2>
-            <p>A project that involved a team I lead to collect heart rate of players with the MAX30102 sensor and then perform a time series analysis and prediction</p>
-            <p><a href="https://github.com/chungimungi/Time-Series-Analysis-for-Stress-Prognosis-in-Mobile-Video-Games" class="btn">GitHub</a></p>
-        </section>
+        <div class="projects-grid">
+            <article class="project-card">
+                <h2>Learning to Forget</h2>
+                <p>This repository implements a model that learns to forget using a simple text classifier on a wine-review dataset. Randomizing the weights of a trained model is used as a method to make it forget what it has learned.</p>
+                <a href="https://github.com/chungimungi/Learning-to-Forget" class="btn">View on GitHub</a>
+            </article>
+            
+            <article class="project-card">
+                <h2>DocQA</h2>
+                <p>A custom cross encoder QA model that provides a diagnosis based on user-described symptoms in natural language.</p>
+                <a href="https://github.com/chungimungi/DocQA" class="btn">View on GitHub</a>
+            </article>
+            
+            <article class="project-card">
+                <h2>BiGATOR</h2>
+                <p>A custom Gated BiEncoder trained and evaluated on multiple QA tasks.</p>
+                <a href="https://github.com/chungimungi/BiGATOR" class="btn">View on GitHub</a>
+            </article>
+            
+            <article class="project-card">
+                <h2>Time Series Analysis for Stress Prognosis in Mobile Video Games</h2>
+                <p>A project involving heart rate collection using the MAX30102 sensor, followed by time series analysis and prediction for stress prognosis in mobile video game players.</p>
+                <a href="https://github.com/chungimungi/Time-Series-Analysis-for-Stress-Prognosis-in-Mobile-Video-Games" class="btn">View on GitHub</a>
+            </article>
+        </div>
     </main>
+
     <footer>
         <div class="social-links">
             <a href="https://github.com/chungimungi"><img src="assets/git.png" alt="GitHub"></a>
             <a href="https://www.linkedin.com/in/asj10/"><img src="assets/linkedin.png" alt="LinkedIn"></a>
             <a href="mailto:aarush.sinha@gmail.com"><img src="assets/gmail.png" alt="Gmail"></a>
         </div>
-        <p> <a href = "https://drive.google.com/file/d/1NGCEcuZ0ppCeN1GdDtPMMjUWqRGfiJQ-/view?usp=sharing" > &copy; 2024 Aarush Sinha </p>
+        <p><a href="https://drive.google.com/file/d/1NGCEcuZ0ppCeN1GdDtPMMjUWqRGfiJQ-/view?usp=sharing">&copy; 2024 Aarush Sinha</a></p>
     </footer>
     <script src="script.js"></script>
 </body>
