@@ -1,6 +1,6 @@
 ---
 layout: posts
-title: Blog Posts
+title: Semantic Soup
 permalink: /posts/
 order: 5
 ---
