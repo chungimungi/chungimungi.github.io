@@ -15,7 +15,7 @@ Hello and welcome to my website!
 </div> -->
 
 <div style="text-align: center;">
-    <img style="max-width:300px; height:auto;"  src="prof.png"/>
+    <img style="max-width:300px; height:auto;"  src="profile.png"/>
 </div>
 
 <br>
