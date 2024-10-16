@@ -1,0 +1,16 @@
+# Demo site
+_site/
+
+# LAtex generations
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.snm
+*.nav
+
+# Ad-hoc
+adhoc/*
