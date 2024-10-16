@@ -28,7 +28,7 @@ I am currently working under Prof. Nirav Bhatt at [IIT Madras](https://www.iitm.
 ## Recent News
 
 
-- **Octover 2024**: Website Launched !
+- **October 2024**: Website Launched !
 
 
 
