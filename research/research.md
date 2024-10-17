@@ -29,15 +29,15 @@ An interpretation of the quantum mechanics thought experiment where a cat is bot
 
 ---
 
-### [ReCoT: Recursive Chain of Thought](https://github.com/chungimungi/ReCoT)
-A recursive chain of thought mechanism that continues reasoning until a threshold score is met or exceeded. Trained and evaluated the folowing models on the GPQA dataset.
+### [DR-CoT: Dynamic Recursive Chain of Thought with Meta Reasoning](https://github.com/chungimungi/DR-CoT)
+Dynamic Recursive Chain of Thought with Meta Reasoning for parameter efficient models.Trained and evaluated the folowing models on the GPQA dataset.
 - **RoBERTa-base**
-- **debertaV3-xsmall**
+- **debertaV3-base**
 - **BERT-base**
 - **ELECTRA-base**
 
 Achieved competitive performance with LLMs like:
-- **Llama2-70b** (zero and few shot)
-- **GPT-4** (with search)
-- **CoT+GPT-3.5** (zero and few shot)
-- **GPT-3.5** (zero and few shot)
+- **Llama2-70b** 
+- **GPT-4**
+- **CoT+GPT-3.5** 
+- **GPT-3.5** 
