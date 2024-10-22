@@ -27,17 +27,3 @@ An interpretation of the quantum mechanics thought experiment where a cat is bot
 - Cat is alive in 50% of runs
 - Model learned in 30% of runs
 
----
-
-### [DR-CoT: Dynamic Recursive Chain of Thought with Meta Reasoning](https://github.com/chungimungi/DR-CoT)
-Dynamic Recursive Chain of Thought with Meta Reasoning for parameter efficient models.Trained and evaluated the folowing models on the GPQA dataset.
-- **RoBERTa-base**
-- **debertaV3-base**
-- **BERT-base**
-- **ELECTRA-base**
-
-Achieved competitive performance with LLMs like:
-- **Llama2-70b** 
-- **GPT-4**
-- **CoT+GPT-3.5** 
-- **GPT-3.5** 
