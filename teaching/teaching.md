@@ -23,3 +23,5 @@ order: 3
 
 
 #### [Efficiently Teaching an Effective Dense Retriever with Balanced Topic Aware Sampling](https://arxiv.org/abs/2104.06967)
+
+#### [Can a large language model be a gaslighter?](https://arxiv.org/abs/2410.09181)
