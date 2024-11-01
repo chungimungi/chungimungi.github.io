@@ -27,3 +27,7 @@ An interpretation of the quantum mechanics thought experiment where a cat is bot
 - Cat is alive in 50% of runs
 - Model learned in 30% of runs
 
+---
+
+### [PoincareEmbeddings](https://github.com/chungimungi/PoincareEmbeddings)
+My implementation of the paper [Poincaré Embeddings for Learning Hierarchical Representations](https://arxiv.org/pdf/1705.08039) on the dataset [HyperLex: A Large Scale Evaluation of Graded Lexical Entailment](https://aclanthology.org/J17-4004.pdf) for learning hierarchical representations in hyperbolic space.
