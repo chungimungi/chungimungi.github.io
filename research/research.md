@@ -7,8 +7,7 @@ order: 2
 
 ### Publications
 
-#### 2024
--  [**ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models**](https://arxiv.org/abs/2411.10867) Vipula Rawte, Sarthak Jain\*, **Aarush Sinha\***, Garv Kaushik\*, Aman Bansal\*, Prathiksha Rumale Vishwanath\*, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P. Sheth, Amitava Das  (\* Denotes requal contribution)
+-  [**ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models**](https://arxiv.org/abs/2411.10867) (2024) Vipula Rawte, Sarthak Jain\*, **Aarush Sinha\***, Garv Kaushik\*, Aman Bansal\*, Prathiksha Rumale Vishwanath\*, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P. Sheth, Amitava Das  (\* Denotes requal contribution)
 
 - **Efficient Biomedical Information Retrieval via Bio-Informed Generative Pseudo Labelling**  *Paper Under Review*
 
