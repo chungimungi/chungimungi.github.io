@@ -27,6 +27,7 @@ I am currently working under Prof. Nirav Bhatt at [IIT Madras](https://www.iitm.
 
 ## Recent News
 
+- **November 2024**: [ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models](https://arxiv.org/abs/2411.10867) released on arxiv.
 
 - **October 2024**: Website Launched !
 
