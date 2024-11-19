@@ -5,14 +5,13 @@ permalink: /research/
 order: 2
 ---
 
-## Publications
+### Publications
 
 #### ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models [Preprint](https://arxiv.org/abs/2411.10867)
-Vipula Rawte, *Sarthak Jain\*, **Aarush Sinha\***, Garv Kaushik\*, Aman Bansal\*, Prathiksha Rumale Vishwanath\*, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P. Sheth, Amitava Das  
-\* Denotes requal contribution
+Vipula Rawte, *Sarthak Jain\*, **Aarush Sinha\***, Garv Kaushik\*, Aman Bansal\*, Prathiksha Rumale Vishwanath\*, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P. Sheth, Amitava Das  (\* Denotes requal contribution)
 
 
-## Projects
+### Projects
 
 #### [DocQA](https://github.com/chungimungi/DocQA)
 A custom 13.2M parameter cross encoder QA model that gives a diagnosis based on the input of symptoms a user describes in natural language, trained on 24 disease symptoms. An accuracy of 94.5% was achieved in predicting the disease from the symptoms.
