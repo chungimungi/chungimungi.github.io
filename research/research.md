@@ -23,13 +23,5 @@ This project aims to create a model that learns to forget by randomizing the wei
 
 ---
 
-#### [Schrodinger’s Cat Neural Network](https://github.com/chungimungi/Schrodingers-Cat-Neural-Network)
-An interpretation of the quantum mechanics thought experiment where a cat is both alive and dead until observed, using two models to represent these states and incorporating probabilistic behaviors in training. Over 10 individual runs, the findings were:
-- Model has successfully learned (Collapse: Learned state) with probability 0.46
-- Cat is alive in 50% of runs
-- Model learned in 30% of runs
-
----
-
 #### [PoincareEmbeddings](https://github.com/chungimungi/PoincareEmbeddings)
 My implementation of the paper [Poincaré Embeddings for Learning Hierarchical Representations](https://arxiv.org/pdf/1705.08039) on the dataset [HyperLex: A Large Scale Evaluation of Graded Lexical Entailment](https://aclanthology.org/J17-4004.pdf) for learning hierarchical representations in hyperbolic space.
