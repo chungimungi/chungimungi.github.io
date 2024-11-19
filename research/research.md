@@ -8,7 +8,7 @@ order: 2
 ## Publications
 
 #### ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models [Preprint](https://arxiv.org/abs/2411.10867)
-Vipula Rawte, *Sarthak Jain\*, **Aarush Sinha\***, Garv Kaushik\*, Aman Bansal\*, Prathiksha Rumale Vishwanath, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P. Sheth, Amitava Das  
+Vipula Rawte, *Sarthak Jain\*, **Aarush Sinha\***, Garv Kaushik\*, Aman Bansal\*, Prathiksha Rumale Vishwanath\*, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P. Sheth, Amitava Das  
 \* Denotes requal contribution
 
 
