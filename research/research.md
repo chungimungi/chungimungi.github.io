@@ -11,6 +11,10 @@ order: 2
 
 - **Efficient Biomedical Information Retrieval via Bio-Informed Generative Pseudo Labelling**(2024)  *Paper Under Review*
 
+- **Do Language Models Have Their Own Arxiv ?**(2024)  *Paper Under Review*
+
+- **The Secret to Forever Learning- A Jellyfish's Tale**(2024)  *Paper Under Review*
+
 ### Projects
 
 - [DocQA](https://github.com/chungimungi/DocQA):
