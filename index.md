@@ -27,6 +27,8 @@ I am currently working under Prof. Nirav Bhatt at [IIT Madras](https://www.iitm.
 
 ## Recent News
 
+- **January 2025**: [**ArxEval: Evaluating Retrieval and Generation in Language Models for Scientific Literature**](https://arxiv.org/abs/2501.10483) released on arxiv.
+
 - **November 2024**: [ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models](https://arxiv.org/abs/2411.10867) released on arxiv.
 
 - **October 2024**: Website Launched !
