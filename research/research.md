@@ -13,8 +13,6 @@ order: 2
 
 - **Efficient Biomedical Information Retrieval via Bio-Informed Generative Pseudo Labelling**(2024)  *Paper Under Review*
 
-- **The Secret to Forever Learning- A Jellyfish's Tale**(2025)  *Paper Under Review*
-
 - **DR-CoT: Dynamic Recursive Chain of Thought with Meta Reasoning for Parameter Efficient Models**(2025) *Paper Under Review*
 
 ### Projects
