@@ -7,13 +7,16 @@ order: 2
 
 ### Publications
 
+- **Graph Masked Language Models** (2025) *Paper under review JAIR* **Aarush Sinha**, OM Kumar CU
+
+- **DR-CoT: Dynamic Recursive Chain of Thought with Meta Reasoning for Parameter Efficient Models**(2025) *Paper Under Review*
+
 -  [**ArxEval: Evaluating Retrieval and Generation in Language Models for Scientific Literature**](https://arxiv.org/abs/2501.10483) (2025) **Aarush Sinha**, Viraj Virk, Dipshikha Chakraborty, P.S. Sreeja
  
 -  [**ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models**](https://arxiv.org/abs/2411.10867) (2024) Vipula Rawte, Sarthak Jain\*, **Aarush Sinha\***, Garv Kaushik\*, Aman Bansal\*, Prathiksha Rumale Vishwanath\*, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P. Sheth, Amitava Das  (\* Denotes requal contribution)
 
 - **Efficient Biomedical Information Retrieval via Bio-Informed Generative Pseudo Labelling**(2024)  *Paper Under Review*
 
-- **DR-CoT: Dynamic Recursive Chain of Thought with Meta Reasoning for Parameter Efficient Models**(2025) *Paper Under Review*
 
 ### Projects
 
