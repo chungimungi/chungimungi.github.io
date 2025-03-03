@@ -4,12 +4,12 @@ layout: homepage
 
 ## About Me
 
-I am a Ph.D. student at ...
+I am an undergraduate at Vellore Institute of Technology Chennai studying Computer Science and Engineering
 
 ## Research Interests
 
-- **Computer Vision:** image recognition, image generation, video captioning
-- **Machine Learning:** meta-learning, incremental learning, transfer learning
+- **Natural Language Processing:**information Retrieval, reasoning, qa-systems
+- **Machine Learning:** alignment, hallucinations, multimodality
 
 ## News
 
