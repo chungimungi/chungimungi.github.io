@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Researcher Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for smooth tab transitions */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 3px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Pulse animation for news items */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased text-gray-800">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-white shadow-sm py-6">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-user-graduate text-indigo-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-800">Aarush Sinha</h1>
+                            <p class="text-indigo-600">Computer Science Student</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-1 bg-gray-100 p-1 rounded-lg">
+                        <button id="about-tab" class="px-4 py-2 rounded-md font-medium transition-all duration-200 tab-button active bg-white shadow-sm text-indigo-600">
+                            <i class="fas fa-user mr-2"></i>About
+                        </button>
+                        <button id="publications-tab" class="px-4 py-2 rounded-md font-medium transition-all duration-200 tab-button text-gray-600 hover:text-indigo-600">
+                            <i class="fas fa-book mr-2"></i>Publications
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-4 py-8">
+            <!-- About Tab Content -->
+            <div id="about-content" class="tab-content active">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Left Column - About Me -->
+                    <div class="lg:col-span-2 bg-white rounded-xl shadow-sm p-6">
+                        <h2 class="text-xl font-semibold mb-4 text-gray-800 border-b pb-2">About Me</h2>
+                        <div class="flex items-start mb-6">
+                            <div class="flex-shrink-0 mr-4">
+                                <img src="avatar.png" alt="Profile" class="w-24 h-24 rounded-full object-cover border-2 border-indigo-100">
+                            </div>
+                            <div>
+                                <p class="text-gray-700 mb-4">
+                                    I'm a undergraduate student at Vellore Institute of Technology-Chennai, specializing in Information Retrieval and Natural Language Processing. 
+                                    I am primarily interested in improving the reasoning abilities and overall performance of smaller models. <br>
+                                    I live by the motto <i>Chota SOTA Models</i> which translates small state of the art models.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-sm">Information Retrieval</span>
+                                    <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-sm">NLP</span>
+                                    <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-sm">AI Safety</span>
+                                    <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-sm">Reasoning in Language Models</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-lg font-medium mt-6 mb-3 text-gray-800">Education</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3 mt-1">
+                                    <i class="fas fa-university text-indigo-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Vellore Institute of Technology-Chennai</h4>
+                                    <p class="text-sm text-gray-600">BTech in Computer Science, 2021 - Present</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column - Recent News -->
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <h2 class="text-xl font-semibold mb-4 text-gray-800 border-b pb-2">Recent News</h2>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-indigo-50 rounded-lg pulse">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-code-branch text-gray-600 text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-indigo-700">New Collaboration</h4>
+                                        <p class="text-sm text-gray-600">I have started working on Agentic Systems and Evaluation with Prof. Anand Rao at CMU.</p>
+                                        <p class="text-xs text-gray-500 mt-1">April, 2025</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-paper-plane text-gray-600 text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium">Paper Accepted</h4>
+                                        <p class="text-sm text-gray-600">Our paper on <i>Text2Video Hallucinations</i> has been accepted to TrustNLP@NAACL</p>
+                                        <p class="text-xs text-gray-500 mt-1">February, 2025</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Publications Tab Content -->
+            <div id="publications-content" class="tab-content">
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <h2 class="text-xl font-semibold mb-6 text-gray-800 border-b pb-2">Publications</h2>
+                    
+                    <!-- Year 2023 -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-medium mb-4 text-gray-700 flex items-center">
+                            <span class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center mr-2">
+                                <span class="text-indigo-600">25</span>
+                            </span>
+                            2025
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="p-4 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="flex justify-between items-start">
+                                    <div>
+
+                                        <h4 class="font-medium text-indigo-600">
+                                            <a href="https://arxiv.org/abs/2411.10867" class="hover:underline">ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models</a>
+                                        </h4>
+                                        <p class="text-sm text-gray-600 mb-2">Vipula Rawte, Sarthak Jain, <strong>Aarush Sinha</strong>, Garv Kaushik, Aman Bansal, Prathiksha Rumale Vishwanath, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P Sheth, Amitava Das</p>
+                                        <p class="text-sm text-gray-700">The 5th Workshop on Trustworthy NLP @ NAACL2025</p>
+                                    </div>
+                                    <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs whitespace-nowrap">Conference</span>
+                                </div>
+                            </div>
+                        
+                            <div class="p-4 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="flex justify-between items-start">
+                                    <div>
+ 
+                                        <h4 class="font-medium text-indigo-600">
+                                            <a href="https://arxiv.org/abs/2503.05763" class="hover:underline">Graph Masked Language Models</a>
+                                        </h4>
+                                        <p class="text-sm text-gray-600 mb-2"><strong>Aarush Sinha</strong>, OM Kumar CU</p>
+                                        <p class="text-sm text-gray-700">Arxiv</p>
+                                    </div>
+                                    <span class="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs whitespace-nowrap">Preprint</span>
+                                </div>
+                            </div>
+                        
+                            <div class="p-4 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="flex justify-between items-start">
+                                    <div>
+ 
+                                        <h4 class="font-medium text-indigo-600">
+                                            <a href="https://arxiv.org/abs/2501.10483" class="hover:underline">ArxEval: Evaluating Retrieval and Generation in Language Models for Scientific Literature</a>
+                                        </h4>
+                                        <p class="text-sm text-gray-600 mb-2"><strong>Aarush Sinha</strong>, Viraj Virk, Dipshikha Chakraborty, PS Sreeja</p>
+                                        <p class="text-sm text-gray-700">Arxiv</p>
+                                    </div>
+                                    <span class="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs whitespace-nowrap">Preprint</span>
+                                </div>
+                            </div>
+                        
+                            <div class="p-4 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="flex justify-between items-start">
+                                    <div>
+ 
+                                        <h4 class="font-medium text-indigo-600">
+                                            <a href="https://arxiv.org/abs/2502.17011" class="hover:underline">Predicting Liquidity-Aware Bond Yields using Causal GANs and Deep Reinforcement Learning with LLM Evaluation</a>
+                                        </h4>
+                                        <p class="text-sm text-gray-600 mb-2">Jaskaran Singh Walia, <strong>Aarush Sinha</strong>, Srinitish Srinivasan, Srihari Unnikrishnan</p>
+                                        <p class="text-sm text-gray-700">Arxiv</p>
+                                    </div>
+                                    <span class="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs whitespace-nowrap">Preprint</span>
+                                </div>
+                            </div>
+                        
+                        </div>
+            </main>
+        
+        <!-- Footer -->
+        <footer class="bg-white py-6 border-t">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <p class="text-gray-600">© 2025 Aarush Sinha. All rights reserved.</p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://x.com/Aarush1003" class="text-gray-500 hover:text-indigo-600 transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="http://github.com/chungimungi" class="text-gray-500 hover:text-indigo-600 transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/asj10/" class="text-gray-500 hover:text-indigo-600 transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="aarush.sinha@gmail.com" class="text-gray-500 hover:text-indigo-600 transition-colors">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const aboutTab = document.getElementById('about-tab');
+            const publicationsTab = document.getElementById('publications-tab');
+            const aboutContent = document.getElementById('about-content');
+            const publicationsContent = document.getElementById('publications-content');
+            
+            // Function to switch tabs
+            function switchTab(tabName) {
+                // Update active tab button
+                document.querySelectorAll('.tab-button').forEach(button => {
+                    button.classList.remove('active', 'bg-white', 'shadow-sm', 'text-indigo-600');
+                    button.classList.add('text-gray-600', 'hover:text-indigo-600');
+                });
+                
+                // Update active tab content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                if (tabName === 'about') {
+                    aboutTab.classList.add('active', 'bg-white', 'shadow-sm', 'text-indigo-600');
+                    aboutTab.classList.remove('text-gray-600', 'hover:text-indigo-600');
+                    aboutContent.classList.add('active');
+                } else {
+                    publicationsTab.classList.add('active', 'bg-white', 'shadow-sm', 'text-indigo-600');
+                    publicationsTab.classList.remove('text-gray-600', 'hover:text-indigo-600');
+                    publicationsContent.classList.add('active');
+                }
+            }
+            
+            // Event listeners for tabs
+            aboutTab.addEventListener('click', () => switchTab('about'));
+            publicationsTab.addEventListener('click', () => switchTab('publications'));
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
