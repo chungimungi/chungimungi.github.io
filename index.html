@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aarush Sinha | Computer Science Researcher</title>
+    <title>Aarush Sinha </title> <!-- Updated Title -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -39,106 +39,253 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
+            background-color: #f8fafc; /* Slightly off-white background */
         }
 
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+        .tab-content { display: none; animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-        .tab-content.active {
-            display: block;
-        }
+        .glow { box-shadow: 0 0 25px rgba(10, 125, 232, 0.2); }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .highlight-badge { position: relative; overflow: hidden; }
+        .highlight-badge::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3)); transform: translateX(-100%); transition: transform 0.6s ease; }
+        .highlight-badge:hover::after { transform: translateX(100%); }
 
-        .glow {
-            box-shadow: 0 0 25px rgba(10, 125, 232, 0.2);
-        }
+        .publication-item { border-left: 3px solid transparent; transition: all 0.3s ease; }
+        .publication-item:hover { border-left-color: #0ea5e9; background-color: #f0f9ff; }
 
-        .highlight-badge {
-            position: relative;
-            overflow: hidden;
-        }
+        .avatar-ring { box-shadow: 0 0 0 3px #fff, 0 0 0 6px #0ea5e9; }
 
-        .highlight-badge::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-        }
-
-        .highlight-badge:hover::after {
-            transform: translateX(100%);
-        }
-
-        .publication-item {
-            border-left: 3px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .publication-item:hover {
-            border-left-color: #0ea5e9;
-            background-color: #f0f9ff;
-        }
-
-        .avatar-ring {
-            box-shadow: 0 0 0 3px #fff, 0 0 0 6px #0ea5e9;
-        }
-
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-        /* Style for Academicons */
-        .ai {
-            font-size: 1.25em; /* Adjust size as needed */
-        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .ai { font-size: 1.25em; /* Academicons size */ }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
-    <div class="min-h-screen flex flex-col">
+    <style>
+        #ml-background {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1; /* Place it behind everything */
+          opacity: 0.5; /* Control visibility */
+          pointer-events: none; /* Allow clicking through */
+        }
+
+        .node {
+          fill: #0ea5e9; /* Tailwind primary-500 */
+          transition: r 0.3s ease;
+        }
+
+        .link {
+          stroke: #0ea5e9; /* Tailwind primary-500 */
+          stroke-opacity: 0.4;
+        }
+
+        .data-point {
+          fill: #0284c7; /* Tailwind primary-600 */
+          opacity: 0.4;
+        }
+      </style>
+
+      <svg id="ml-background"></svg>
+
+      <script>
+        // Background animation script remains the same...
+        document.addEventListener('DOMContentLoaded', function() {
+          const svg = document.getElementById('ml-background');
+          const width = window.innerWidth;
+          const height = window.innerHeight;
+
+          svg.setAttribute('width', width);
+          svg.setAttribute('height', height);
+
+          // Create nodes (neurons)
+          const nodeCount = 30;
+          const nodes = [];
+
+          for (let i = 0; i < nodeCount; i++) {
+            const node = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            const r = 2 + Math.random() * 3;
+
+            node.setAttribute('class', 'node');
+            node.setAttribute('cx', x);
+            node.setAttribute('cy', y);
+            node.setAttribute('r', r);
+
+            nodes.push({
+              element: node,
+              x,
+              y,
+              vx: (Math.random() - 0.5) * 0.3,
+              vy: (Math.random() - 0.5) * 0.3
+            });
+
+            svg.appendChild(node);
+          }
+
+          // Create connections (links)
+          const links = [];
+          const maxDistance = width * 0.2; // Maximum distance for connections
+
+          for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+              const dx = nodes[i].x - nodes[j].x;
+              const dy = nodes[i].y - nodes[j].y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+
+              if (distance < maxDistance) {
+                const link = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+
+                link.setAttribute('class', 'link');
+                link.setAttribute('x1', nodes[i].x);
+                link.setAttribute('y1', nodes[i].y);
+                link.setAttribute('x2', nodes[j].x);
+                link.setAttribute('y2', nodes[j].y);
+                link.setAttribute('stroke-width', Math.max(0.1, (1 - distance / maxDistance) * 1));
+
+                links.push({
+                  element: link,
+                  source: i,
+                  target: j
+                });
+
+                svg.appendChild(link);
+              }
+            }
+          }
+
+          // Create data points
+          const dataPointCount = 60;
+          const dataPoints = [];
+
+          for (let i = 0; i < dataPointCount; i++) {
+            const dataPoint = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            const r = 1 + Math.random() * 1.5;
+
+            dataPoint.setAttribute('class', 'data-point');
+            dataPoint.setAttribute('cx', x);
+            dataPoint.setAttribute('cy', y);
+            dataPoint.setAttribute('r', r);
+
+            dataPoints.push({
+              element: dataPoint,
+              x,
+              y,
+              vx: (Math.random() - 0.5) * 0.5,
+              vy: (Math.random() - 0.5) * 0.5,
+              pulse: 0
+            });
+
+            svg.appendChild(dataPoint);
+          }
+
+          // Animation loop
+          function animate() {
+            // Update nodes
+            nodes.forEach(node => {
+              node.x += node.vx;
+              node.y += node.vy;
+
+              // Bounce off edges
+              if (node.x < 0 || node.x > width) node.vx *= -1;
+              if (node.y < 0 || node.y > height) node.vy *= -1;
+
+              node.element.setAttribute('cx', node.x);
+              node.element.setAttribute('cy', node.y);
+            });
+
+            // Update links
+            links.forEach(link => {
+              const sourceNode = nodes[link.source];
+              const targetNode = nodes[link.target];
+
+              link.element.setAttribute('x1', sourceNode.x);
+              link.element.setAttribute('y1', sourceNode.y);
+              link.element.setAttribute('x2', targetNode.x);
+              link.element.setAttribute('y2', targetNode.y);
+
+              const dx = sourceNode.x - targetNode.x;
+              const dy = sourceNode.y - targetNode.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+
+              if (distance < maxDistance) {
+                const opacity = Math.max(0.05, (1 - distance / maxDistance) * 0.3);
+                link.element.setAttribute('stroke-opacity', opacity);
+                link.element.setAttribute('stroke-width', Math.max(0.1, (1 - distance / maxDistance) * 1));
+              } else {
+                link.element.setAttribute('stroke-opacity', 0);
+              }
+            });
+
+            // Update data points
+            dataPoints.forEach(point => {
+              point.x += point.vx;
+              point.y += point.vy;
+
+              // Bounce off edges
+              if (point.x < 0 || point.x > width) point.vx *= -1;
+              if (point.y < 0 || point.y > height) point.vy *= -1;
+
+              point.element.setAttribute('cx', point.x);
+              point.element.setAttribute('cy', point.y);
+
+              // Pulse effect
+              point.pulse += 0.02;
+              const pulseFactor = Math.sin(point.pulse) * 0.5 + 0.5;
+              point.element.setAttribute('opacity', 0.2 + pulseFactor * 0.3);
+            });
+
+            requestAnimationFrame(animate);
+          }
+
+          // Handle window resize
+          window.addEventListener('resize', function() {
+            const newWidth = window.innerWidth;
+            const newHeight = window.innerHeight;
+
+            svg.setAttribute('width', newWidth);
+            svg.setAttribute('height', newHeight);
+            // Reinitialize or adjust elements based on new size if needed
+          });
+
+          // Start animation
+          animate();
+        });
+      </script>
+
+    <div class="min-h-screen flex flex-col relative z-0"> <!-- Ensure content is above SVG -->
         <!-- Header -->
         <header class="bg-white/80 backdrop-blur-sm border-b border-slate-100 py-6 sticky top-0 z-10">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <div class="flex items-center mb-4 md:mb-0">
                         <div class="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center mr-4 avatar-ring">
+                            <!-- NLP Themed Icon -->
                             <i class="fas fa-language text-primary-600 text-xl"></i>
                         </div>
                         <div>
                             <h1 class="text-2xl font-bold text-slate-800">Aarush Sinha</h1>
-                            <p class="text-primary-600 font-medium">Computer Science Researcher</p>
+                            <!-- Updated Subtitle -->
+                            <p class="text-primary-600 font-medium">NLP Researcher</p>
                         </div>
                     </div>
                     <div class="flex space-x-1 bg-slate-100 p-1 rounded-lg">
                         <button id="about-tab" class="px-4 py-2 rounded-md font-medium transition-all duration-200 tab-button active bg-white shadow-sm text-primary-600 flex items-center">
-                            <i class="fas fa-user mr-2"></i>About
+                            <!-- Updated Icon -->
+                            <i class="fas fa-comment-dots mr-2"></i>About
                         </button>
                         <button id="publications-tab" class="px-4 py-2 rounded-md font-medium transition-all duration-200 tab-button text-slate-600 hover:text-primary-600 flex items-center">
-                            <i class="fas fa-book mr-2"></i>Publications
+                            <i class="fas fa-book-open mr-2"></i>Publications <!-- Changed Icon -->
                         </button>
                     </div>
                 </div>
@@ -152,10 +299,12 @@
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <!-- Left Column - About Me -->
                     <div class="lg:col-span-2">
-                        <div class="bg-white rounded-xl shadow-sm p-6 card-hover">
+                        <!-- MODIFIED: Added bg-opacity-90 -->
+                        <div class="bg-white bg-opacity-80 rounded-xl shadow-sm p-6 card-hover">
                             <h2 class="text-xl font-semibold mb-4 text-slate-800 flex items-center">
                                 <span class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-primary-600 text-xs"></i>
+                                    <!-- Updated Icon -->
+                                    <i class="fas fa-comment-dots text-primary-600 text-xs"></i>
                                 </span>
                                 About Me
                             </h2>
@@ -167,10 +316,11 @@
                                 </div>
                                 <div>
                                     <p class="text-slate-700 mb-4 leading-relaxed">
-                                        I am an undergraduate student at Vellore Institute of Technology - Chennai. 
-                                        My research is centered on enhancing the reasoning capabilities and overall performance of compact language models while ensuring efficiency. 
+                                        I am an undergraduate student at Vellore Institute of Technology - Chennai.
+                                        My research is centered on enhancing the reasoning capabilities and overall performance of compact language models while ensuring efficiency.
                                         Additionally, I work on addressing hallucination issues in models across various modalities.<br>
-                                        My guiding principle is "Chota SOTA Models" - creating small state-of-the-art models.
+                                        My guiding principle is <strong class="text-primary-700 font-semibold">"Chota SOTA Models"</strong> - creating small state-of-the-art models.
+                                    </p>
                                     <div class="flex flex-wrap gap-2">
                                         <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium highlight-badge">Information Retrieval</span>
                                         <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium highlight-badge">NLP</span>
@@ -182,14 +332,16 @@
 
                             <h3 class="text-lg font-medium mt-6 mb-4 text-slate-800 flex items-center">
                                 <span class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fas fa-graduation-cap text-primary-600 text-xs"></i>
+                                    <!-- Updated Icon -->
+                                    <i class="fas fa-book-reader text-primary-600 text-xs"></i>
                                 </span>
                                 Education
                             </h3>
                             <div class="space-y-4">
                                 <div class="flex items-start">
                                     <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center mr-3 mt-1">
-                                        <i class="fas fa-university text-primary-600"></i>
+                                        <!-- Updated Icon -->
+                                        <i class="fas fa-building-columns text-primary-600"></i>
                                     </div>
                                     <div>
                                         <h4 class="font-medium text-slate-800">Vellore Institute of Technology-Chennai</h4>
@@ -200,14 +352,16 @@
 
                             <h3 class="text-lg font-medium mt-8 mb-4 text-slate-800 flex items-center">
                                 <span class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fas fa-briefcase text-primary-600 text-xs"></i>
+                                    <!-- Updated Icon -->
+                                    <i class="fas fa-flask text-primary-600 text-xs"></i>
                                 </span>
                                 Research Experience
                             </h3>
                             <div class="space-y-6">
                                 <div class="flex items-start">
                                     <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center mr-3 mt-1">
-                                        <i class="fas fa-table text-primary-600"></i>
+                                        <!-- Icon for Evaluation -->
+                                        <i class="fas fa-clipboard-check text-primary-600"></i>
                                     </div>
                                     <div>
                                         <h4 class="font-medium text-slate-800">Carnegie Mellon University</h4>
@@ -218,7 +372,8 @@
 
                                 <div class="flex items-start">
                                     <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center mr-3 mt-1">
-                                        <i class="fas fa-video text-primary-600"></i>
+                                        <!-- Icon for Hallucination Mitigation -->
+                                        <i class="fas fa-eye-slash text-primary-600"></i>
                                     </div>
                                     <div>
                                         <h4 class="font-medium text-slate-800">AI Institute, University of South Carolina</h4>
@@ -229,6 +384,7 @@
 
                                 <div class="flex items-start">
                                     <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center mr-3 mt-1">
+                                        <!-- Icon for Retrieval -->
                                         <i class="fas fa-magnifying-glass text-primary-600"></i>
                                     </div>
                                     <div>
@@ -243,15 +399,17 @@
 
                     <!-- Right Column - Recent News -->
                     <div>
-                        <div class="bg-white rounded-xl shadow-sm p-6 sticky top-24 card-hover">
+                        <!-- MODIFIED: Added bg-opacity-90 -->
+                        <div class="bg-white bg-opacity-80 rounded-xl shadow-sm p-6 sticky top-24 card-hover">
                             <h2 class="text-xl font-semibold mb-4 text-slate-800 flex items-center">
                                 <span class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fas fa-bell text-primary-600 text-xs"></i>
+                                    <!-- Updated Icon -->
+                                    <i class="fas fa-newspaper text-primary-600 text-xs"></i>
                                 </span>
                                 Recent Updates
                             </h2>
                             <div class="space-y-4">
-                                <div class="p-4 bg-primary-50 rounded-lg glow">
+                                <div class="p-4 bg-primary-50/70 rounded-lg glow"> <!-- Made this slightly transparent too for consistency -->
                                     <div class="flex items-start">
                                         <div class="flex-shrink-0 h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center mr-3 mt-1">
                                             <i class="fas fa-handshake text-primary-600 text-sm"></i>
@@ -263,10 +421,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="p-4 bg-slate-50 rounded-lg">
+                                <div class="p-4 bg-slate-50/70 rounded-lg"> <!-- Made this slightly transparent too -->
                                     <div class="flex items-start">
                                         <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center mr-3 mt-1">
-                                            <i class="fas fa-code-branch text-slate-600 text-sm"></i>
+                                            <!-- Updated Icon -->
+                                            <i class="ai ai-arxiv text-slate-600 text-sm"></i>
                                         </div>
                                         <div>
                                             <h4 class="font-medium text-slate-800">New Preprint</h4>
@@ -275,10 +434,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="p-4 bg-slate-50 rounded-lg">
+                                <div class="p-4 bg-slate-50/70 rounded-lg"> <!-- Made this slightly transparent too -->
                                     <div class="flex items-start">
                                         <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center mr-3 mt-1">
-                                            <i class="fas fa-scroll text-slate-600 text-sm"></i>
+                                            <!-- Updated Icon -->
+                                            <i class="fas fa-trophy text-slate-600 text-sm"></i>
                                         </div>
                                         <div>
                                             <h4 class="font-medium text-slate-800">Paper Accepted</h4>
@@ -296,7 +456,8 @@
 
             <!-- Publications Tab Content -->
             <div id="publications-content" class="tab-content">
-                <div class="bg-white rounded-xl shadow-sm p-6 card-hover">
+                <!-- MODIFIED: Added bg-opacity-90 -->
+                <div class="bg-white bg-opacity-80 rounded-xl shadow-sm p-6 card-hover">
                     <h2 class="text-xl font-semibold mb-6 text-slate-800 flex items-center">
                         <span class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-3">
                             <i class="fas fa-book-open text-primary-600 text-xs"></i>
@@ -312,7 +473,7 @@
                         <div class="space-y-4">
                             <div class="publication-item p-4 border border-slate-100 rounded-lg">
                                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-                                    <div class="mb-2 sm:mb-0">
+                                    <div class="mb-2 sm:mb-0 sm:pr-4">
                                         <h4 class="font-medium text-primary-600 hover:text-primary-800 transition-colors">
                                             <a href="https://arxiv.org/abs/2411.10867" target="_blank" rel="noopener noreferrer" class="flex items-start">
                                                 <i class="fas fa-external-link-alt text-xs mt-1 mr-2 opacity-70"></i>
@@ -322,13 +483,16 @@
                                         <p class="text-sm text-slate-600 mb-2">Vipula Rawte, Sarthak Jain, <span class="font-medium text-slate-800">Aarush Sinha</span>, Garv Kaushik, Aman Bansal, Prathiksha Rumale Vishwanath, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P Sheth, Amitava Das</p>
                                         <p class="text-sm text-slate-700 font-medium">The 5th Workshop on Trustworthy NLP @ NAACL2025</p>
                                     </div>
-                                    <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-xs font-medium whitespace-nowrap">Conference</span>
+
+                                    <span class="flex items-center px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-xs font-medium whitespace-nowrap">
+                                        <i class="fas fa-users mr-1.5"></i>Conference
+                                    </span>
                                 </div>
                             </div>
 
                             <div class="publication-item p-4 border border-slate-100 rounded-lg">
                                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-                                    <div class="mb-2 sm:mb-0">
+                                    <div class="mb-2 sm:mb-0 sm:pr-4">
                                         <h4 class="font-medium text-primary-600 hover:text-primary-800 transition-colors">
                                             <a href="https://arxiv.org/abs/2503.05763" target="_blank" rel="noopener noreferrer" class="flex items-start">
                                                 <i class="fas fa-external-link-alt text-xs mt-1 mr-2 opacity-70"></i>
@@ -338,13 +502,16 @@
                                         <p class="text-sm text-slate-600 mb-2"><span class="font-medium text-slate-800">Aarush Sinha</span>, OM Kumar CU</p>
                                         <p class="text-sm text-slate-700 font-medium">arXiv preprint</p>
                                     </div>
-                                    <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium whitespace-nowrap">Preprint</span>
+
+                                    <span class="flex items-center px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium whitespace-nowrap">
+                                        <i class="ai ai-arxiv mr-1.5"></i>Preprint
+                                    </span>
                                 </div>
                             </div>
 
                             <div class="publication-item p-4 border border-slate-100 rounded-lg">
                                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-                                    <div class="mb-2 sm:mb-0">
+                                    <div class="mb-2 sm:mb-0 sm:pr-4">
                                         <h4 class="font-medium text-primary-600 hover:text-primary-800 transition-colors">
                                             <a href="https://arxiv.org/abs/2501.10483" target="_blank" rel="noopener noreferrer" class="flex items-start">
                                                 <i class="fas fa-external-link-alt text-xs mt-1 mr-2 opacity-70"></i>
@@ -354,13 +521,16 @@
                                         <p class="text-sm text-slate-600 mb-2"><span class="font-medium text-slate-800">Aarush Sinha</span>, Viraj Virk, Dipshikha Chakraborty, PS Sreeja</p>
                                         <p class="text-sm text-slate-700 font-medium">arXiv preprint</p>
                                     </div>
-                                    <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium whitespace-nowrap">Preprint</span>
+
+                                    <span class="flex items-center px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium whitespace-nowrap">
+                                        <i class="ai ai-arxiv mr-1.5"></i>Preprint
+                                    </span>
                                 </div>
                             </div>
 
                             <div class="publication-item p-4 border border-slate-100 rounded-lg">
                                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-                                    <div class="mb-2 sm:mb-0">
+                                    <div class="mb-2 sm:mb-0 sm:pr-4">
                                         <h4 class="font-medium text-primary-600 hover:text-primary-800 transition-colors">
                                             <a href="https://arxiv.org/abs/2502.17011" target="_blank" rel="noopener noreferrer" class="flex items-start">
                                                 <i class="fas fa-external-link-alt text-xs mt-1 mr-2 opacity-70"></i>
@@ -370,7 +540,10 @@
                                         <p class="text-sm text-slate-600 mb-2">Jaskaran Singh Walia, <span class="font-medium text-slate-800">Aarush Sinha</span>, Srinitish Srinivasan, Srihari Unnikrishnan</p>
                                         <p class="text-sm text-slate-700 font-medium">arXiv preprint</p>
                                     </div>
-                                    <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium whitespace-nowrap">Preprint</span>
+
+                                    <span class="flex items-center px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium whitespace-nowrap">
+                                        <i class="ai ai-arxiv mr-1.5"></i>Preprint
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -387,6 +560,7 @@
                         <p class="text-slate-600 text-sm">© <span id="current-year">2025</span> Aarush Sinha. All rights reserved.</p>
                     </div>
                     <div class="flex space-x-4 items-center">
+
                         <a href="https://x.com/Aarush1003" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-primary-600 transition-colors" aria-label="Twitter Profile">
                             <i class="fab fa-twitter"></i>
                         </a>
@@ -421,13 +595,10 @@
 
             // Function to switch tabs
             function switchTab(tabName) {
-                // Update active tab button
                 document.querySelectorAll('.tab-button').forEach(button => {
                     button.classList.remove('active', 'bg-white', 'shadow-sm', 'text-primary-600');
                     button.classList.add('text-slate-600', 'hover:text-primary-600');
                 });
-
-                // Update active tab content
                 document.querySelectorAll('.tab-content').forEach(content => {
                     content.classList.remove('active');
                 });
@@ -443,22 +614,18 @@
                 }
             }
 
-            // Event listeners for tabs
             aboutTab.addEventListener('click', () => switchTab('about'));
             publicationsTab.addEventListener('click', () => switchTab('publications'));
 
-            // Smooth scroll for anchor links (if any are added)
+            // Smooth scroll for anchor links (if any added later)
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
-                    // Prevent default if it's not just "#"
                     if (href !== '#') {
                         const targetElement = document.querySelector(href);
                         if (targetElement) {
                              e.preventDefault();
-                            targetElement.scrollIntoView({
-                                behavior: 'smooth'
-                            });
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
                         }
                     }
                 });
