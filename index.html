@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aarush Sinha </title> <!-- Updated Title -->
+    <title>Aarush Sinha</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Academicons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <script>
         tailwind.config = {
@@ -25,11 +23,29 @@
                             700: '#0369a1',
                             800: '#075985',
                             900: '#0c4a6e',
+                        },
+                        red: {
+                            100: '#fee2e2', // Light red for background
+                            600: '#dc2626', // Darker red for icon
+                        },
+                        slate: { // Ensure slate colors are available if needed
+                             50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
                         }
                     },
                     fontFamily: {
                         sans: ['Inter', 'ui-sans-serif', 'system-ui'],
                     },
+                    // Define max-height for list items (adjust as needed)
+                    // Removed max-h-28 definition as we'll use a default Tailwind value
+                    // maxHeight: {
+                    //     '28': '7rem', // Approx height for one item + padding
+                    // }
                 }
             }
         }
@@ -37,9 +53,12 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+        /* Prevent body scrolling */
+        /* Removed empty ruleset for html, body */
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Slightly off-white background */
+            background-color: #f8fafc;
         }
 
         .tab-content { display: none; animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -57,46 +76,48 @@
 
         .avatar-ring { box-shadow: 0 0 0 3px #fff, 0 0 0 6px #0ea5e9; }
 
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        .ai { font-size: 1.25em; /* Academicons size */ }
-    </style>
-</head>
-<body class="bg-slate-50 text-slate-800 antialiased">
-    <style>
+        /* Custom Scrollbar for specific elements */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 3px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+
+        .ai { font-size: 1.25em; }
+
         #ml-background {
           position: fixed;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          z-index: -1; /* Place it behind everything */
-          opacity: 0.5; /* Control visibility */
-          pointer-events: none; /* Allow clicking through */
+          z-index: -1;
+          opacity: 0.5;
+          pointer-events: none;
         }
 
         .node {
-          fill: #0ea5e9; /* Tailwind primary-500 */
+          fill: #0ea5e9;
           transition: r 0.3s ease;
         }
 
         .link {
-          stroke: #0ea5e9; /* Tailwind primary-500 */
+          stroke: #0ea5e9;
           stroke-opacity: 0.4;
         }
 
         .data-point {
-          fill: #0284c7; /* Tailwind primary-600 */
+          fill: #0284c7;
           opacity: 0.4;
         }
-      </style>
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
 
-      <svg id="ml-background"></svg>
+    <svg id="ml-background"></svg>
 
-      <script>
-        // Background animation script remains the same...
+    <script>
+        // Background animation script remains the same
         document.addEventListener('DOMContentLoaded', function() {
           const svg = document.getElementById('ml-background');
           const width = window.innerWidth;
@@ -105,7 +126,6 @@
           svg.setAttribute('width', width);
           svg.setAttribute('height', height);
 
-          // Create nodes (neurons)
           const nodeCount = 30;
           const nodes = [];
 
@@ -131,9 +151,8 @@
             svg.appendChild(node);
           }
 
-          // Create connections (links)
           const links = [];
-          const maxDistance = width * 0.2; // Maximum distance for connections
+          const maxDistance = width * 0.2;
 
           for (let i = 0; i < nodes.length; i++) {
             for (let j = i + 1; j < nodes.length; j++) {
@@ -162,7 +181,6 @@
             }
           }
 
-          // Create data points
           const dataPointCount = 60;
           const dataPoints = [];
 
@@ -189,14 +207,11 @@
             svg.appendChild(dataPoint);
           }
 
-          // Animation loop
           function animate() {
-            // Update nodes
             nodes.forEach(node => {
               node.x += node.vx;
               node.y += node.vy;
 
-              // Bounce off edges
               if (node.x < 0 || node.x > width) node.vx *= -1;
               if (node.y < 0 || node.y > height) node.vy *= -1;
 
@@ -204,7 +219,6 @@
               node.element.setAttribute('cy', node.y);
             });
 
-            // Update links
             links.forEach(link => {
               const sourceNode = nodes[link.source];
               const targetNode = nodes[link.target];
@@ -227,19 +241,16 @@
               }
             });
 
-            // Update data points
             dataPoints.forEach(point => {
               point.x += point.vx;
               point.y += point.vy;
 
-              // Bounce off edges
               if (point.x < 0 || point.x > width) point.vx *= -1;
               if (point.y < 0 || point.y > height) point.vy *= -1;
 
               point.element.setAttribute('cx', point.x);
               point.element.setAttribute('cy', point.y);
 
-              // Pulse effect
               point.pulse += 0.02;
               const pulseFactor = Math.sin(point.pulse) * 0.5 + 0.5;
               point.element.setAttribute('opacity', 0.2 + pulseFactor * 0.3);
@@ -248,62 +259,52 @@
             requestAnimationFrame(animate);
           }
 
-          // Handle window resize
           window.addEventListener('resize', function() {
             const newWidth = window.innerWidth;
             const newHeight = window.innerHeight;
 
             svg.setAttribute('width', newWidth);
             svg.setAttribute('height', newHeight);
-            // Reinitialize or adjust elements based on new size if needed
           });
 
-          // Start animation
           animate();
         });
-      </script>
+    </script>
 
-    <div class="min-h-screen flex flex-col relative z-0"> <!-- Ensure content is above SVG -->
-        <!-- Header -->
-        <header class="bg-white/80 backdrop-blur-sm border-b border-slate-100 py-6 sticky top-0 z-10">
+    <!-- MODIFIED: Use min-h-screen instead of h-screen -->
+    <div class="min-h-screen flex flex-col relative z-0">
+        <header class="bg-white/80 backdrop-blur-sm border-b border-slate-100 py-6 sticky top-0 z-10 flex-shrink-0">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <div class="flex items-center mb-4 md:mb-0">
                         <div class="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center mr-4 avatar-ring">
-                            <!-- NLP Themed Icon -->
                             <i class="fas fa-language text-primary-600 text-xl"></i>
                         </div>
                         <div>
                             <h1 class="text-2xl font-bold text-slate-800">Aarush Sinha</h1>
-                            <!-- Updated Subtitle -->
                             <p class="text-primary-600 font-medium">NLP Researcher</p>
                         </div>
                     </div>
                     <div class="flex space-x-1 bg-slate-100 p-1 rounded-lg">
                         <button id="about-tab" class="px-4 py-2 rounded-md font-medium transition-all duration-200 tab-button active bg-white shadow-sm text-primary-600 flex items-center">
-                            <!-- Updated Icon -->
                             <i class="fas fa-comment-dots mr-2"></i>About
                         </button>
                         <button id="publications-tab" class="px-4 py-2 rounded-md font-medium transition-all duration-200 tab-button text-slate-600 hover:text-primary-600 flex items-center">
-                            <i class="fas fa-book-open mr-2"></i>Publications <!-- Changed Icon -->
+                            <i class="fas fa-book-open mr-2"></i>Publications
                         </button>
                     </div>
                 </div>
             </div>
         </header>
 
-        <!-- Main Content -->
+        <!-- MODIFIED: Removed overflow-y-auto -->
         <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <!-- About Tab Content -->
             <div id="about-content" class="tab-content active">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <!-- Left Column - About Me -->
                     <div class="lg:col-span-2">
-                        <!-- MODIFIED: Added bg-opacity-90 -->
-                        <div class="bg-white bg-opacity-80 rounded-xl shadow-sm p-6 card-hover">
+                        <div class="bg-white bg-opacity-80 rounded-xl shadow-sm p-6">
                             <h2 class="text-xl font-semibold mb-4 text-slate-800 flex items-center">
                                 <span class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-3">
-                                    <!-- Updated Icon -->
                                     <i class="fas fa-comment-dots text-primary-600 text-xs"></i>
                                 </span>
                                 About Me
@@ -331,7 +332,6 @@
 
                             <h3 class="text-lg font-medium mt-6 mb-4 text-slate-800 flex items-center">
                                 <span class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-3">
-                                    <!-- Updated Icon -->
                                     <i class="fas fa-book-reader text-primary-600 text-xs"></i>
                                 </span>
                                 Education
@@ -339,7 +339,6 @@
                             <div class="space-y-4">
                                 <div class="flex items-start">
                                     <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center mr-3 mt-1">
-                                        <!-- Updated Icon -->
                                         <i class="fas fa-building-columns text-primary-600"></i>
                                     </div>
                                     <div>
@@ -351,7 +350,6 @@
 
                             <h3 class="text-lg font-medium mt-8 mb-4 text-slate-800 flex items-center">
                                 <span class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-3">
-                                    <!-- Updated Icon -->
                                     <i class="fas fa-flask text-primary-600 text-xs"></i>
                                 </span>
                                 Research Experience
@@ -359,7 +357,6 @@
                             <div class="space-y-6">
                                 <div class="flex items-start">
                                     <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center mr-3 mt-1">
-                                        <!-- Icon for Evaluation -->
                                         <i class="fas fa-clipboard-check text-primary-600"></i>
                                     </div>
                                     <div>
@@ -371,7 +368,6 @@
 
                                 <div class="flex items-start">
                                     <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center mr-3 mt-1">
-                                        <!-- Icon for Hallucination Mitigation -->
                                         <i class="fas fa-eye-slash text-primary-600"></i>
                                     </div>
                                     <div>
@@ -383,7 +379,6 @@
 
                                 <div class="flex items-start">
                                     <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center mr-3 mt-1">
-                                        <!-- Icon for Retrieval -->
                                         <i class="fas fa-magnifying-glass text-primary-600"></i>
                                     </div>
                                     <div>
@@ -396,79 +391,129 @@
                         </div>
                     </div>
 
-                    <!-- Right Column - Recent News -->
                     <div>
-                        <!-- MODIFIED: Added bg-opacity-90 -->
-                        <div class="bg-white bg-opacity-80 rounded-xl shadow-sm p-6 sticky top-24 card-hover">
+                        <div class="bg-white bg-opacity-80 rounded-xl shadow-sm p-6">
                             <h2 class="text-xl font-semibold mb-4 text-slate-800 flex items-center">
                                 <span class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-3">
-                                    <!-- Updated Icon -->
                                     <i class="fas fa-newspaper text-primary-600 text-xs"></i>
                                 </span>
                                 Recent Updates
                             </h2>
-                            <div class="space-y-4">
-                                <div class="p-4 bg-primary-50/70 rounded-lg glow"> <!-- Made this slightly transparent too for consistency -->
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center mr-3 mt-1">
-                                            <i class="ai ai-arxiv text-slate-600 text-sm"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-medium text-primary-700">New Preprint</h4>
-                                            <p class="text-sm text-slate-600">New pre-print on synthetic dataset generation for dense retrieval on ArXiv.</p>
-                                            <p class="text-xs text-slate-500 mt-1">May, 2025</p>
+                            <!-- MODIFIED: Changed max-h-28 to max-h-96 -->
+                            <div class="max-h-56 overflow-y-auto custom-scrollbar pr-2">
+                                <div class="space-y-4 -mr-2">
+                                    <div class="p-4 bg-primary-50/70 rounded-lg glow">
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center mr-3 mt-1">
+                                                <i class="ai ai-arxiv text-slate-600 text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-medium text-primary-700">New Preprint</h4>
+                                                <p class="text-sm text-slate-600">New pre-print on synthetic dataset generation for dense retrieval on ArXiv.</p>
+                                                <p class="text-xs text-slate-500 mt-1">May, 2025</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="p-4 bg-slate-50/70 rounded-lg"> <!-- Made this slightly transparent too -->
-                                    <div class="flex items-start">
+                                    <div class="p-4 bg-slate-50/70 rounded-lg">
+                                        <div class="flex items-start">
                                             <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center mr-3 mt-1">
-                                                <i class="fas fa-handshake text-primary-600 text-sm"></i>
+                                                <i class="fas fa-handshake text-slate-600 text-sm"></i>
                                             </div>
                                             <div>
                                                 <h4 class="font-medium text-primary-800">New Collaboration</h4>
                                                 <p class="text-sm text-slate-600">Started working on Agentic Systems and Evaluation with Prof. Anand Rao at CMU.</p>
                                                 <p class="text-xs text-slate-500 mt-1">April, 2025</p>
                                             </div>
-                                    </div>
-                                </div>
-                                <div class="p-4 bg-slate-50/70 rounded-lg"> <!-- Made this slightly transparent too -->
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center mr-3 mt-1">
-                                            <!-- Updated Icon -->
-                                            <i class="ai ai-arxiv text-slate-600 text-sm"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-medium text-slate-800">New Preprint</h4>
-                                            <p class="text-sm text-slate-600">Released <span class="font-medium">Graph Masked Language Models</span> on arXiv.</p>
-                                            <p class="text-xs text-slate-500 mt-1">March, 2025</p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="p-4 bg-slate-50/70 rounded-lg"> <!-- Made this slightly transparent too -->
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center mr-3 mt-1">
-                                            <!-- Updated Icon -->
-                                            <i class="fas fa-trophy text-slate-600 text-sm"></i>
+                                    <div class="p-4 bg-slate-50/70 rounded-lg">
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center mr-3 mt-1">
+                                                <i class="ai ai-arxiv text-slate-600 text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-medium text-slate-800">New Preprint</h4>
+                                                <p class="text-sm text-slate-600">Released <span class="font-medium">Graph Masked Language Models</span> on arXiv.</p>
+                                                <p class="text-xs text-slate-500 mt-1">March, 2025</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <h4 class="font-medium text-slate-800">Paper Accepted</h4>
-                                            <p class="text-sm text-slate-600">Our dataset paper on <span class="font-medium">Text2Video Hallucinations</span> accepted to TrustNLP@NAACL.</p>
-                                            <p class="text-xs text-slate-500 mt-1">February, 2025</p>
+                                    </div>
+                                    <div class="p-4 bg-slate-50/70 rounded-lg">
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center mr-3 mt-1">
+                                                <i class="fas fa-trophy text-slate-600 text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-medium text-slate-800">Paper Accepted</h4>
+                                                <p class="text-sm text-slate-600">Our dataset paper on <span class="font-medium">Text2Video Hallucinations</span> accepted to TrustNLP@NAACL.</p>
+                                                <p class="text-xs text-slate-500 mt-1">February, 2025</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
+                        <div class="bg-white bg-opacity-80 rounded-xl shadow-sm p-6 mt-8">
+                             <h2 class="text-xl font-semibold mb-4 text-slate-800 flex items-center">
+                                <span class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center mr-3">
+                                    <!-- MODIFIED: Changed icon -->
+                                    <i class="fas fa-thumbs-down text-red-600 text-xs"></i>
+                                </span>
+                                Recent Flops
+                            </h2>
+                            <!-- MODIFIED: Changed max-h-28 to max-h-96 -->
+                            <div class="max-h-56 overflow-y-auto custom-scrollbar pr-2">
+                                <div class="space-y-4 -mr-2">
+                                    <div class="p-4 bg-slate-50/70 rounded-lg">
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center mr-3 mt-1">
+                                                <!-- MODIFIED: Changed icon -->
+                                                <i class="fas fa-thumbs-down text-slate-600 text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-medium text-slate-800">Rejected Fellowship</h4>
+                                                <p class="text-sm text-slate-600">Did not get selected for a research fellowship, after making it to the second round.</p>
+                                                <p class="text-xs text-slate-500 mt-1">April, 2025</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="p-4 bg-slate-50/70 rounded-lg">
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center mr-3 mt-1">
+                                                 <!-- MODIFIED: Changed icon -->
+                                                <i class="fas fa-thumbs-down text-slate-600 text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-medium text-slate-800">Paper Rejected</h4>
+                                                <p class="text-sm text-slate-600">Semester long research work got rejected from TMLR.</p>
+                                                <p class="text-xs text-slate-500 mt-1">March, 2025</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="p-4 bg-slate-50/70 rounded-lg">
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center mr-3 mt-1">
+                                                 <!-- MODIFIED: Changed icon -->
+                                                <i class="fas fa-thumbs-down text-slate-600 text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-medium text-slate-800">Paper Withdrawn</h4>
+                                                <p class="text-sm text-slate-600">Dataset paper on Text2Video hallucinations withdrawn from CVPR.</p>
+                                                <p class="text-xs text-slate-500 mt-1">January, 2025</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-            <!-- Publications Tab Content -->
             <div id="publications-content" class="tab-content">
-                <!-- MODIFIED: Added bg-opacity-90 -->
-                <div class="bg-white bg-opacity-80 rounded-xl shadow-sm p-6 card-hover">
+                <div class="bg-white bg-opacity-80 rounded-xl shadow-sm p-6">
                     <h2 class="text-xl font-semibold mb-6 text-slate-800 flex items-center">
                         <span class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-3">
                             <i class="fas fa-book-open text-primary-600 text-xs"></i>
@@ -476,7 +521,6 @@
                         Publications
                     </h2>
 
-                    <!-- Year 2025 -->
                     <div class="mb-8">
                         <h3 class="text-lg font-medium mb-4 text-slate-700 flex items-center">
                             2025
@@ -563,8 +607,7 @@
             </div>
         </main>
 
-        <!-- Footer -->
-        <footer class="bg-white/80 backdrop-blur-sm border-t border-slate-100 py-6">
+        <footer class="bg-white/80 backdrop-blur-sm border-t border-slate-100 py-6 flex-shrink-0">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <div class="mb-4 md:mb-0">
@@ -594,17 +637,15 @@
     </div>
 
     <script>
-        // Tab switching functionality
+        // Tab switching script remains the same
         document.addEventListener('DOMContentLoaded', function() {
             const aboutTab = document.getElementById('about-tab');
             const publicationsTab = document.getElementById('publications-tab');
             const aboutContent = document.getElementById('about-content');
             const publicationsContent = document.getElementById('publications-content');
 
-             // Set current year in footer
             document.getElementById('current-year').textContent = new Date().getFullYear();
 
-            // Function to switch tabs
             function switchTab(tabName) {
                 document.querySelectorAll('.tab-button').forEach(button => {
                     button.classList.remove('active', 'bg-white', 'shadow-sm', 'text-primary-600');
@@ -628,15 +669,18 @@
             aboutTab.addEventListener('click', () => switchTab('about'));
             publicationsTab.addEventListener('click', () => switchTab('publications'));
 
-            // Smooth scroll for anchor links (if any added later)
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
-                    if (href !== '#') {
-                        const targetElement = document.querySelector(href);
-                        if (targetElement) {
-                             e.preventDefault();
-                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                    if (href && href.startsWith('#') && href.length > 1) {
+                        try {
+                            const targetElement = document.querySelector(href);
+                            if (targetElement) {
+                                 e.preventDefault();
+                                targetElement.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        } catch (error) {
+                            console.warn(`Smooth scroll target not found or invalid selector: ${href}`);
                         }
                     }
                 });
