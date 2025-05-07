@@ -273,24 +273,19 @@
 
     <!-- MODIFIED: Use min-h-screen instead of h-screen -->
     <div class="min-h-screen flex flex-col relative z-0">
-        <header class="bg-white/80 backdrop-blur-sm border-b border-slate-100 py-6 sticky top-0 z-10 flex-shrink-0">
+        <header class="bg-white/80 backdrop-blur-sm border-b border-slate-100 py-4 sticky top-0 z-10 flex-shrink-0">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
-                    <div class="flex items-center mb-4 md:mb-0">
-                        <div class="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center mr-4 avatar-ring">
-                            <i class="fas fa-language text-primary-600 text-xl"></i>
-                        </div>
-                        <div>
-                            <h1 class="text-2xl font-bold text-slate-800">Aarush Sinha</h1>
-                            <p class="text-primary-600 font-medium">NLP Researcher</p>
-                        </div>
+                    <div class="mb-4 md:mb-0">
+                        <h1 class="text-2xl font-bold text-slate-800">Aarush Sinha</h1>
+                        <p class="text-primary-600 font-medium text-sm">NLP Researcher</p>
                     </div>
-                    <div class="flex space-x-1 bg-slate-100 p-1 rounded-lg">
-                        <button id="about-tab" class="px-4 py-2 rounded-md font-medium transition-all duration-200 tab-button active bg-white shadow-sm text-primary-600 flex items-center">
-                            <i class="fas fa-comment-dots mr-2"></i>About
+                    <div class="flex space-x-1">
+                        <button id="about-tab" class="px-3 py-1.5 rounded-md font-medium transition-all duration-200 tab-button active text-primary-600 border-b-2 border-primary-600">
+                            About
                         </button>
-                        <button id="publications-tab" class="px-4 py-2 rounded-md font-medium transition-all duration-200 tab-button text-slate-600 hover:text-primary-600 flex items-center">
-                            <i class="fas fa-book-open mr-2"></i>Publications
+                        <button id="publications-tab" class="px-3 py-1.5 rounded-md font-medium transition-all duration-200 tab-button text-slate-500 hover:text-primary-600 hover:border-b-2 hover:border-primary-500">
+                            Publications
                         </button>
                     </div>
                 </div>
@@ -302,89 +297,80 @@
             <div id="about-content" class="tab-content active">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <div class="lg:col-span-2">
-                        <div class="bg-white bg-opacity-80 rounded-xl shadow-sm p-6">
-                            <h2 class="text-xl font-semibold mb-4 text-slate-800 flex items-center">
-                                <span class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fas fa-comment-dots text-primary-600 text-xs"></i>
-                                </span>
+                        <div class="bg-white bg-opacity-60 rounded-lg shadow-sm p-6">
+                            <h2 class="text-xl font-semibold mb-4 text-slate-700">
                                 About Me
                             </h2>
                             <div class="flex flex-col sm:flex-row items-start mb-6">
                                 <div class="flex-shrink-0 mb-4 sm:mb-0 sm:mr-6">
-                                    <div class="w-24 h-24 rounded-full bg-gradient-to-br from-primary-100 to-primary-200 overflow-hidden border-4 border-white shadow-md">
+                                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary-100 to-primary-200 overflow-hidden border-2 border-white shadow-sm">
                                         <img src="avatar.png" alt="Profile" class="w-full h-full object-cover">
                                     </div>
                                 </div>
                                 <div>
-                                    <p class="text-slate-700 mb-4 leading-relaxed">
+                                    <p class="text-slate-600 mb-4 leading-relaxed">
                                         I am an undergraduate student at Vellore Institute of Technology - Chennai.
                                         My research is centered on enhancing the reasoning capabilities and overall performance of compact language models while ensuring efficiency.
                                         Additionally, I work on addressing hallucination issues in models across various modalities.<br>
                                     </p>
                                     <div class="flex flex-wrap gap-2">
-                                        <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium highlight-badge">Information Retrieval</span>
-                                        <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium highlight-badge">NLP</span>
-                                        <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium highlight-badge">AI Safety</span>
-                                        <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium highlight-badge">Reasoning in LMs</span>
+                                        <span class="px-2.5 py-0.5 bg-primary-50 text-primary-600 rounded-full text-xs font-medium">Information Retrieval</span>
+                                        <span class="px-2.5 py-0.5 bg-primary-50 text-primary-600 rounded-full text-xs font-medium">NLP</span>
+                                        <span class="px-2.5 py-0.5 bg-primary-50 text-primary-600 rounded-full text-xs font-medium">AI Safety</span>
+                                        <span class="px-2.5 py-0.5 bg-primary-50 text-primary-600 rounded-full text-xs font-medium">Reasoning in LMs</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <h3 class="text-lg font-medium mt-6 mb-4 text-slate-800 flex items-center">
-                                <span class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fas fa-book-reader text-primary-600 text-xs"></i>
-                                </span>
+                            <h3 class="text-lg font-medium mt-6 mb-3 text-slate-700">
                                 Education
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 h-8 w-8 rounded-full bg-primary-50 flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-building-columns text-primary-500 text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-slate-700">Vellore Institute of Technology-Chennai</h4>
+                                        <p class="text-sm text-slate-500">BTech in Computer Science, 2021 - Present</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-lg font-medium mt-6 mb-3 text-slate-700">
+                                Research Experience
                             </h3>
                             <div class="space-y-4">
                                 <div class="flex items-start">
-                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center mr-3 mt-1">
-                                        <i class="fas fa-building-columns text-primary-600"></i>
+                                    <div class="flex-shrink-0 h-8 w-8 rounded-full bg-primary-50 flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-clipboard-check text-primary-500 text-sm"></i>
                                     </div>
                                     <div>
-                                        <h4 class="font-medium text-slate-800">Vellore Institute of Technology-Chennai</h4>
-                                        <p class="text-sm text-slate-600">BTech in Computer Science, 2021 - Present</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h3 class="text-lg font-medium mt-8 mb-4 text-slate-800 flex items-center">
-                                <span class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fas fa-flask text-primary-600 text-xs"></i>
-                                </span>
-                                Research Experience
-                            </h3>
-                            <div class="space-y-6">
-                                <div class="flex items-start">
-                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center mr-3 mt-1">
-                                        <i class="fas fa-clipboard-check text-primary-600"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-medium text-slate-800">Carnegie Mellon University</h4>
-                                        <p class="text-sm text-slate-600">Research Student, 2025 - Present</p>
-                                        <p class="text-sm text-slate-500 mt-1">Working on the evaluation of agents under Prof. Anand Rao.</p>
+                                        <h4 class="font-medium text-slate-700">Carnegie Mellon University</h4>
+                                        <p class="text-sm text-slate-500">Research Student, 2025 - Present</p>
+                                        <p class="text-xs text-slate-400 mt-0.5">Working on the evaluation of agents under Prof. Anand Rao.</p>
                                     </div>
                                 </div>
 
                                 <div class="flex items-start">
-                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center mr-3 mt-1">
-                                        <i class="fas fa-eye-slash text-primary-600"></i>
+                                    <div class="flex-shrink-0 h-8 w-8 rounded-full bg-primary-50 flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-eye-slash text-primary-500 text-sm"></i>
                                     </div>
                                     <div>
-                                        <h4 class="font-medium text-slate-800">AI Institute, University of South Carolina</h4>
-                                        <p class="text-sm text-slate-600">Research Student, 2024 - Present</p>
-                                        <p class="text-sm text-slate-500 mt-1">Mitigating hallucinations in Text2Video models under Prof. Amitava Das.</p>
+                                        <h4 class="font-medium text-slate-700">AI Institute, University of South Carolina</h4>
+                                        <p class="text-sm text-slate-500">Research Student, 2024 - Present</p>
+                                        <p class="text-xs text-slate-400 mt-0.5">Mitigating hallucinations in Text2Video models under Prof. Amitava Das.</p>
                                     </div>
                                 </div>
 
                                 <div class="flex items-start">
-                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center mr-3 mt-1">
-                                        <i class="fas fa-magnifying-glass text-primary-600"></i>
+                                    <div class="flex-shrink-0 h-8 w-8 rounded-full bg-primary-50 flex items-center justify-center mr-3 mt-1">
+                                        <i class="fas fa-magnifying-glass text-primary-500 text-sm"></i>
                                     </div>
                                     <div>
-                                        <h4 class="font-medium text-slate-800">Indian Institute of Technology-Madras</h4>
-                                        <p class="text-sm text-slate-600">Research Student, 2023 - Present</p>
-                                        <p class="text-sm text-slate-500 mt-1">Building efficient and scalable dense retrievers under Prof. Nirav Bhatt.</p>
+                                        <h4 class="font-medium text-slate-700">Indian Institute of Technology-Madras</h4>
+                                        <p class="text-sm text-slate-500">Research Student, 2023 - Present</p>
+                                        <p class="text-xs text-slate-400 mt-0.5">Building efficient and scalable dense retrievers under Prof. Nirav Bhatt.</p>
                                     </div>
                                 </div>
                             </div>
@@ -392,61 +378,58 @@
                     </div>
 
                     <div>
-                        <div class="bg-white bg-opacity-80 rounded-xl shadow-sm p-6">
-                            <h2 class="text-xl font-semibold mb-4 text-slate-800 flex items-center">
-                                <span class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fas fa-newspaper text-primary-600 text-xs"></i>
-                                </span>
+                        <div class="bg-white bg-opacity-60 rounded-lg shadow-sm p-6">
+                            <h2 class="text-xl font-semibold mb-4 text-slate-700">
                                 Recent Updates
                             </h2>
                             <!-- MODIFIED: Changed max-h-28 to max-h-96 -->
                             <div class="max-h-56 overflow-y-auto custom-scrollbar pr-2">
-                                <div class="space-y-4 -mr-2">
-                                    <div class="p-4 bg-primary-50/70 rounded-lg glow">
+                                <div class="space-y-3 -mr-2">
+                                    <div class="p-3 bg-primary-50/50 rounded-md">
                                         <div class="flex items-start">
-                                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center mr-3 mt-1">
-                                                <i class="ai ai-arxiv text-slate-600 text-sm"></i>
+                                            <div class="flex-shrink-0 h-7 w-7 rounded-full bg-primary-100 flex items-center justify-center mr-2.5 mt-0.5">
+                                                <i class="ai ai-arxiv text-primary-600 text-xs"></i>
                                             </div>
                                             <div>
-                                                <h4 class="font-medium text-primary-700">New Preprint</h4>
-                                                <p class="text-sm text-slate-600">New pre-print on synthetic dataset generation for dense retrieval on ArXiv.</p>
-                                                <p class="text-xs text-slate-500 mt-1">May, 2025</p>
+                                                <h4 class="font-medium text-primary-700 text-sm">New Preprint</h4>
+                                                <p class="text-xs text-slate-500">New pre-print on synthetic dataset generation for dense retrieval on ArXiv.</p>
+                                                <p class="text-xs text-slate-400 mt-0.5">May, 2025</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="p-4 bg-slate-50/70 rounded-lg">
+                                    <div class="p-3 bg-slate-50/50 rounded-md">
                                         <div class="flex items-start">
-                                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center mr-3 mt-1">
-                                                <i class="fas fa-handshake text-slate-600 text-sm"></i>
+                                            <div class="flex-shrink-0 h-7 w-7 rounded-full bg-slate-100 flex items-center justify-center mr-2.5 mt-0.5">
+                                                <i class="fas fa-handshake text-slate-500 text-xs"></i>
                                             </div>
                                             <div>
-                                                <h4 class="font-medium text-primary-800">New Collaboration</h4>
-                                                <p class="text-sm text-slate-600">Started working on Agentic Systems and Evaluation with Prof. Anand Rao at CMU.</p>
-                                                <p class="text-xs text-slate-500 mt-1">April, 2025</p>
+                                                <h4 class="font-medium text-slate-700 text-sm">New Collaboration</h4>
+                                                <p class="text-xs text-slate-500">Started working on Agentic Systems and Evaluation with Prof. Anand Rao at CMU.</p>
+                                                <p class="text-xs text-slate-400 mt-0.5">April, 2025</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="p-4 bg-slate-50/70 rounded-lg">
+                                    <div class="p-3 bg-slate-50/50 rounded-md">
                                         <div class="flex items-start">
-                                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center mr-3 mt-1">
-                                                <i class="ai ai-arxiv text-slate-600 text-sm"></i>
+                                            <div class="flex-shrink-0 h-7 w-7 rounded-full bg-slate-100 flex items-center justify-center mr-2.5 mt-0.5">
+                                                <i class="ai ai-arxiv text-slate-500 text-xs"></i>
                                             </div>
                                             <div>
-                                                <h4 class="font-medium text-slate-800">New Preprint</h4>
-                                                <p class="text-sm text-slate-600">Released <span class="font-medium">Graph Masked Language Models</span> on arXiv.</p>
-                                                <p class="text-xs text-slate-500 mt-1">March, 2025</p>
+                                                <h4 class="font-medium text-slate-700 text-sm">New Preprint</h4>
+                                                <p class="text-xs text-slate-500">Released <span class="font-medium">Graph Masked Language Models</span> on arXiv.</p>
+                                                <p class="text-xs text-slate-400 mt-0.5">March, 2025</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="p-4 bg-slate-50/70 rounded-lg">
+                                    <div class="p-3 bg-slate-50/50 rounded-md">
                                         <div class="flex items-start">
-                                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center mr-3 mt-1">
-                                                <i class="fas fa-trophy text-slate-600 text-sm"></i>
+                                            <div class="flex-shrink-0 h-7 w-7 rounded-full bg-slate-100 flex items-center justify-center mr-2.5 mt-0.5">
+                                                <i class="fas fa-trophy text-slate-500 text-xs"></i>
                                             </div>
                                             <div>
-                                                <h4 class="font-medium text-slate-800">Paper Accepted</h4>
-                                                <p class="text-sm text-slate-600">Our dataset paper on <span class="font-medium">Text2Video Hallucinations</span> accepted to TrustNLP@NAACL.</p>
-                                                <p class="text-xs text-slate-500 mt-1">February, 2025</p>
+                                                <h4 class="font-medium text-slate-700 text-sm">Paper Accepted</h4>
+                                                <p class="text-xs text-slate-500">Our dataset paper on <span class="font-medium">Text2Video Hallucinations</span> accepted to TrustNLP@NAACL.</p>
+                                                <p class="text-xs text-slate-400 mt-0.5">February, 2025</p>
                                             </div>
                                         </div>
                                     </div>
@@ -454,53 +437,46 @@
                             </div>
                         </div>
 
-                        <div class="bg-white bg-opacity-80 rounded-xl shadow-sm p-6 mt-8">
-                             <h2 class="text-xl font-semibold mb-4 text-slate-800 flex items-center">
-                                <span class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center mr-3">
-                                    <!-- MODIFIED: Changed icon -->
-                                    <i class="fas fa-thumbs-down text-red-600 text-xs"></i>
-                                </span>
+                        <div class="bg-white bg-opacity-60 rounded-lg shadow-sm p-6 mt-6">
+                             <h2 class="text-xl font-semibold mb-4 text-slate-700">
                                 Recent Flops
                             </h2>
                             <!-- MODIFIED: Changed max-h-28 to max-h-96 -->
                             <div class="max-h-56 overflow-y-auto custom-scrollbar pr-2">
-                                <div class="space-y-4 -mr-2">
-                                    <div class="p-4 bg-slate-50/70 rounded-lg">
+                                <div class="space-y-3 -mr-2">
+                                    <div class="p-3 bg-slate-50/50 rounded-md">
                                         <div class="flex items-start">
-                                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center mr-3 mt-1">
-                                                <!-- MODIFIED: Changed icon -->
-                                                <i class="fas fa-thumbs-down text-slate-600 text-sm"></i>
+                                            <div class="flex-shrink-0 h-7 w-7 rounded-full bg-red-100 flex items-center justify-center mr-2.5 mt-0.5">
+                                                <i class="fas fa-thumbs-down text-red-500 text-xs"></i>
                                             </div>
                                             <div>
-                                                <h4 class="font-medium text-slate-800">Rejected Fellowship</h4>
-                                                <p class="text-sm text-slate-600">Did not get selected for a research fellowship, after making it to the second round.</p>
-                                                <p class="text-xs text-slate-500 mt-1">April, 2025</p>
+                                                <h4 class="font-medium text-slate-700 text-sm">Rejected Fellowship</h4>
+                                                <p class="text-xs text-slate-500">Did not get selected for a research fellowship, after making it to the second round.</p>
+                                                <p class="text-xs text-slate-400 mt-0.5">April, 2025</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="p-4 bg-slate-50/70 rounded-lg">
+                                    <div class="p-3 bg-slate-50/50 rounded-md">
                                         <div class="flex items-start">
-                                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center mr-3 mt-1">
-                                                 <!-- MODIFIED: Changed icon -->
-                                                <i class="fas fa-thumbs-down text-slate-600 text-sm"></i>
+                                            <div class="flex-shrink-0 h-7 w-7 rounded-full bg-red-100 flex items-center justify-center mr-2.5 mt-0.5">
+                                                <i class="fas fa-thumbs-down text-red-500 text-xs"></i>
                                             </div>
                                             <div>
-                                                <h4 class="font-medium text-slate-800">Paper Rejected</h4>
-                                                <p class="text-sm text-slate-600">Semester long research work got rejected from TMLR.</p>
-                                                <p class="text-xs text-slate-500 mt-1">March, 2025</p>
+                                                <h4 class="font-medium text-slate-700 text-sm">Paper Rejected</h4>
+                                                <p class="text-xs text-slate-500">Semester long research work got rejected from TMLR.</p>
+                                                <p class="text-xs text-slate-400 mt-0.5">March, 2025</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="p-4 bg-slate-50/70 rounded-lg">
+                                    <div class="p-3 bg-slate-50/50 rounded-md">
                                         <div class="flex items-start">
-                                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center mr-3 mt-1">
-                                                 <!-- MODIFIED: Changed icon -->
-                                                <i class="fas fa-thumbs-down text-slate-600 text-sm"></i>
+                                            <div class="flex-shrink-0 h-7 w-7 rounded-full bg-red-100 flex items-center justify-center mr-2.5 mt-0.5">
+                                                <i class="fas fa-thumbs-down text-red-500 text-xs"></i>
                                             </div>
                                             <div>
-                                                <h4 class="font-medium text-slate-800">Paper Withdrawn</h4>
-                                                <p class="text-sm text-slate-600">Dataset paper on Text2Video hallucinations withdrawn from CVPR.</p>
-                                                <p class="text-xs text-slate-500 mt-1">January, 2025</p>
+                                                <h4 class="font-medium text-slate-700 text-sm">Paper Withdrawn</h4>
+                                                <p class="text-xs text-slate-500">Dataset paper on Text2Video hallucinations withdrawn from CVPR.</p>
+                                                <p class="text-xs text-slate-400 mt-0.5">January, 2025</p>
                                             </div>
                                         </div>
                                     </div>
@@ -513,91 +489,88 @@
             </div>
 
             <div id="publications-content" class="tab-content">
-                <div class="bg-white bg-opacity-80 rounded-xl shadow-sm p-6">
-                    <h2 class="text-xl font-semibold mb-6 text-slate-800 flex items-center">
-                        <span class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-3">
-                            <i class="fas fa-book-open text-primary-600 text-xs"></i>
-                        </span>
+                <div class="bg-white bg-opacity-60 rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold mb-6 text-slate-700">
                         Publications
                     </h2>
 
-                    <div class="mb-8">
-                        <h3 class="text-lg font-medium mb-4 text-slate-700 flex items-center">
+                    <div class="mb-6">
+                        <h3 class="text-lg font-medium mb-3 text-slate-600">
                             2025
                         </h3>
-                        <div class="space-y-4">
-                            <div class="publication-item p-4 border border-slate-100 rounded-lg">
+                        <div class="space-y-3">
+                            <div class="p-3 border border-slate-100 rounded-md hover:bg-slate-50/70 transition-colors">
                                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-                                    <div class="mb-2 sm:mb-0 sm:pr-4">
-                                        <h4 class="font-medium text-primary-600 hover:text-primary-800 transition-colors">
-                                            <a href="https://arxiv.org/abs/2411.10867" target="_blank" rel="noopener noreferrer" class="flex items-start">
-                                                <i class="fas fa-external-link-alt text-xs mt-1 mr-2 opacity-70"></i>
+                                    <div class="mb-1.5 sm:mb-0 sm:pr-4">
+                                        <h4 class="font-medium text-primary-600 hover:text-primary-700 transition-colors text-sm">
+                                            <a href="https://arxiv.org/abs/2411.10867" target="_blank" rel="noopener noreferrer" class="flex items-center">
+                                                <i class="fas fa-external-link-alt text-xs mr-1.5 opacity-60"></i>
                                                 <span>ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models</span>
                                             </a>
                                         </h4>
-                                        <p class="text-sm text-slate-600 mb-2">Vipula Rawte, Sarthak Jain, <span class="font-medium text-slate-800">Aarush Sinha</span>, Garv Kaushik, Aman Bansal, Prathiksha Rumale Vishwanath, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P Sheth, Amitava Das</p>
-                                        <p class="text-sm text-slate-700 font-medium">The 5th Workshop on Trustworthy NLP @ NAACL2025</p>
+                                        <p class="text-xs text-slate-500 mb-1">Vipula Rawte, Sarthak Jain, <span class="font-medium text-slate-700">Aarush Sinha</span>, Garv Kaushik, Aman Bansal, Prathiksha Rumale Vishwanath, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P Sheth, Amitava Das</p>
+                                        <p class="text-xs text-slate-600 font-medium">The 5th Workshop on Trustworthy NLP @ NAACL2025</p>
                                     </div>
 
-                                    <span class="flex items-center px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-xs font-medium whitespace-nowrap">
-                                        <i class="fas fa-users mr-1.5"></i>Conference
+                                    <span class="flex items-center px-2 py-0.5 bg-primary-50 text-primary-600 rounded-full text-xs font-medium whitespace-nowrap mt-1 sm:mt-0">
+                                        <i class="fas fa-users mr-1"></i>Conference
                                     </span>
                                 </div>
                             </div>
 
-                            <div class="publication-item p-4 border border-slate-100 rounded-lg">
+                            <div class="p-3 border border-slate-100 rounded-md hover:bg-slate-50/70 transition-colors">
                                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-                                    <div class="mb-2 sm:mb-0 sm:pr-4">
-                                        <h4 class="font-medium text-primary-600 hover:text-primary-800 transition-colors">
-                                            <a href="https://arxiv.org/abs/2504.21015" target="_blank" rel="noopener noreferrer" class="flex items-start">
-                                                <i class="fas fa-external-link-alt text-xs mt-1 mr-2 opacity-70"></i>
+                                    <div class="mb-1.5 sm:mb-0 sm:pr-4">
+                                        <h4 class="font-medium text-primary-600 hover:text-primary-700 transition-colors text-sm">
+                                            <a href="https://arxiv.org/abs/2504.21015" target="_blank" rel="noopener noreferrer" class="flex items-center">
+                                                <i class="fas fa-external-link-alt text-xs mr-1.5 opacity-60"></i>
                                                 <span>Don't Retrieve, Generate: Prompting LLMs for Synthetic Training Data in Dense Retrieval</span>
                                             </a>
                                         </h4>
-                                        <p class="text-sm text-slate-600 mb-2"><span class="font-medium text-slate-800">Aarush Sinha</span></p>
-                                        <p class="text-sm text-slate-700 font-medium">arXiv preprint</p>
+                                        <p class="text-xs text-slate-500 mb-1"><span class="font-medium text-slate-700">Aarush Sinha</span></p>
+                                        <p class="text-xs text-slate-600 font-medium">arXiv preprint</p>
                                     </div>
 
-                                    <span class="flex items-center px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium whitespace-nowrap">
-                                        <i class="ai ai-arxiv mr-1.5"></i>Preprint
+                                    <span class="flex items-center px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full text-xs font-medium whitespace-nowrap mt-1 sm:mt-0">
+                                        <i class="ai ai-arxiv mr-1"></i>Preprint
                                     </span>
                                 </div>
                             </div>
 
-                            <div class="publication-item p-4 border border-slate-100 rounded-lg">
+                            <div class="p-3 border border-slate-100 rounded-md hover:bg-slate-50/70 transition-colors">
                                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-                                    <div class="mb-2 sm:mb-0 sm:pr-4">
-                                        <h4 class="font-medium text-primary-600 hover:text-primary-800 transition-colors">
-                                            <a href="https://arxiv.org/abs/2503.05763" target="_blank" rel="noopener noreferrer" class="flex items-start">
-                                                <i class="fas fa-external-link-alt text-xs mt-1 mr-2 opacity-70"></i>
+                                    <div class="mb-1.5 sm:mb-0 sm:pr-4">
+                                        <h4 class="font-medium text-primary-600 hover:text-primary-700 transition-colors text-sm">
+                                            <a href="https://arxiv.org/abs/2503.05763" target="_blank" rel="noopener noreferrer" class="flex items-center">
+                                                <i class="fas fa-external-link-alt text-xs mr-1.5 opacity-60"></i>
                                                 <span>Graph Masked Language Models</span>
                                             </a>
                                         </h4>
-                                        <p class="text-sm text-slate-600 mb-2"><span class="font-medium text-slate-800">Aarush Sinha</span>, OM Kumar CU</p>
-                                        <p class="text-sm text-slate-700 font-medium">arXiv preprint</p>
+                                        <p class="text-xs text-slate-500 mb-1"><span class="font-medium text-slate-700">Aarush Sinha</span>, OM Kumar CU</p>
+                                        <p class="text-xs text-slate-600 font-medium">arXiv preprint</p>
                                     </div>
 
-                                    <span class="flex items-center px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium whitespace-nowrap">
-                                        <i class="ai ai-arxiv mr-1.5"></i>Preprint
+                                    <span class="flex items-center px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full text-xs font-medium whitespace-nowrap mt-1 sm:mt-0">
+                                        <i class="ai ai-arxiv mr-1"></i>Preprint
                                     </span>
                                 </div>
                             </div>
 
-                            <div class="publication-item p-4 border border-slate-100 rounded-lg">
+                            <div class="p-3 border border-slate-100 rounded-md hover:bg-slate-50/70 transition-colors">
                                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-                                    <div class="mb-2 sm:mb-0 sm:pr-4">
-                                        <h4 class="font-medium text-primary-600 hover:text-primary-800 transition-colors">
-                                            <a href="https://arxiv.org/abs/2502.17011" target="_blank" rel="noopener noreferrer" class="flex items-start">
-                                                <i class="fas fa-external-link-alt text-xs mt-1 mr-2 opacity-70"></i>
+                                    <div class="mb-1.5 sm:mb-0 sm:pr-4">
+                                        <h4 class="font-medium text-primary-600 hover:text-primary-700 transition-colors text-sm">
+                                            <a href="https://arxiv.org/abs/2502.17011" target="_blank" rel="noopener noreferrer" class="flex items-center">
+                                                <i class="fas fa-external-link-alt text-xs mr-1.5 opacity-60"></i>
                                                 <span>Predicting Liquidity-Aware Bond Yields using Causal GANs and Deep Reinforcement Learning with LLM Evaluation</span>
                                             </a>
                                         </h4>
-                                        <p class="text-sm text-slate-600 mb-2">Jaskaran Singh Walia, <span class="font-medium text-slate-800">Aarush Sinha</span>, Srinitish Srinivasan, Srihari Unnikrishnan</p>
-                                        <p class="text-sm text-slate-700 font-medium">arXiv preprint</p>
+                                        <p class="text-xs text-slate-500 mb-1">Jaskaran Singh Walia, <span class="font-medium text-slate-700">Aarush Sinha</span>, Srinitish Srinivasan, Srihari Unnikrishnan</p>
+                                        <p class="text-xs text-slate-600 font-medium">arXiv preprint</p>
                                     </div>
 
-                                    <span class="flex items-center px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium whitespace-nowrap">
-                                        <i class="ai ai-arxiv mr-1.5"></i>Preprint
+                                    <span class="flex items-center px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full text-xs font-medium whitespace-nowrap mt-1 sm:mt-0">
+                                        <i class="ai ai-arxiv mr-1"></i>Preprint
                                     </span>
                                 </div>
                             </div>
@@ -607,28 +580,28 @@
             </div>
         </main>
 
-        <footer class="bg-white/80 backdrop-blur-sm border-t border-slate-100 py-6 flex-shrink-0">
+        <footer class="bg-white/70 backdrop-blur-sm border-t border-slate-100 py-4 flex-shrink-0">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
-                    <div class="mb-4 md:mb-0">
-                        <p class="text-slate-600 text-sm">© <span id="current-year">2025</span> Aarush Sinha. All rights reserved.</p>
+                    <div class="mb-3 md:mb-0">
+                        <p class="text-slate-500 text-xs">© <span id="current-year">2025</span> Aarush Sinha. All rights reserved.</p>
                     </div>
-                    <div class="flex space-x-4 items-center">
+                    <div class="flex space-x-3 items-center">
 
-                        <a href="https://x.com/Aarush1003" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-primary-600 transition-colors" aria-label="Twitter Profile">
-                            <i class="fab fa-twitter"></i>
+                        <a href="https://x.com/Aarush1003" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-primary-500 transition-colors" aria-label="Twitter Profile">
+                            <i class="fab fa-twitter fa-sm"></i>
                         </a>
-                        <a href="http://github.com/chungimungi" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-primary-600 transition-colors" aria-label="GitHub Profile">
-                            <i class="fab fa-github"></i>
+                        <a href="http://github.com/chungimungi" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-primary-500 transition-colors" aria-label="GitHub Profile">
+                            <i class="fab fa-github fa-sm"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/asj10/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-primary-600 transition-colors" aria-label="LinkedIn Profile">
-                            <i class="fab fa-linkedin-in"></i>
+                        <a href="https://www.linkedin.com/in/asj10/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-primary-500 transition-colors" aria-label="LinkedIn Profile">
+                            <i class="fab fa-linkedin-in fa-sm"></i>
                         </a>
-                        <a href="https://scholar.google.com/citations?user=5cl3fb8AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-primary-600 transition-colors" aria-label="Google Scholar Profile">
+                        <a href="https://scholar.google.com/citations?user=5cl3fb8AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-primary-500 transition-colors" aria-label="Google Scholar Profile">
                             <i class="ai ai-google-scholar"></i>
                         </a>
-                        <a href="mailto:aarush.sinha@gmail.com" class="text-slate-500 hover:text-primary-600 transition-colors" aria-label="Email">
-                            <i class="fas fa-envelope"></i>
+                        <a href="mailto:aarush.sinha@gmail.com" class="text-slate-400 hover:text-primary-500 transition-colors" aria-label="Email">
+                            <i class="fas fa-envelope fa-sm"></i>
                         </a>
                     </div>
                 </div>
@@ -648,20 +621,20 @@
 
             function switchTab(tabName) {
                 document.querySelectorAll('.tab-button').forEach(button => {
-                    button.classList.remove('active', 'bg-white', 'shadow-sm', 'text-primary-600');
-                    button.classList.add('text-slate-600', 'hover:text-primary-600');
+                    button.classList.remove('active', 'text-primary-600', 'border-b-2', 'border-primary-600');
+                    button.classList.add('text-slate-500', 'hover:text-primary-600', 'hover:border-primary-500');
                 });
                 document.querySelectorAll('.tab-content').forEach(content => {
                     content.classList.remove('active');
                 });
 
                 if (tabName === 'about') {
-                    aboutTab.classList.add('active', 'bg-white', 'shadow-sm', 'text-primary-600');
-                    aboutTab.classList.remove('text-slate-600', 'hover:text-primary-600');
+                    aboutTab.classList.add('active', 'text-primary-600', 'border-b-2', 'border-primary-600');
+                    aboutTab.classList.remove('text-slate-500', 'hover:text-primary-600', 'hover:border-primary-500');
                     aboutContent.classList.add('active');
                 } else {
-                    publicationsTab.classList.add('active', 'bg-white', 'shadow-sm', 'text-primary-600');
-                    publicationsTab.classList.remove('text-slate-600', 'hover:text-primary-600');
+                    publicationsTab.classList.add('active', 'text-primary-600', 'border-b-2', 'border-primary-600');
+                    publicationsTab.classList.remove('text-slate-500', 'hover:text-primary-600', 'hover:border-primary-500');
                     publicationsContent.classList.add('active');
                 }
             }
