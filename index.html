@@ -4,528 +4,574 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aarush Sinha</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: { // Accent color - used sparingly
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                        },
-                        neutral: { // Main palette for text, backgrounds, borders
-                            50:  '#f8fafc', // Lightest background / paper
-                            100: '#f1f5f9', // Page background
-                            200: '#e2e8f0', // Subtle borders, dividers
-                            300: '#cbd5e1', // SVG Animation color 1 (very subtle)
-                            400: '#94a3b8', // SVG Animation color 2 (very subtle) / muted text
-                            500: '#64748b', // Secondary text
-                            700: '#334155', // Main body text
-                            800: '#1e293b', // Headings
-                            900: '#0f172a', // Stronger headings
-                        },
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-                    },
-                    spacing: {
-                        '128': '32rem',
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        :root {
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+            --text-light: #6a6a6a;
+            --accent: #2563eb;
+            --border: #e5e5e5;
+            --bg-subtle: #fafafa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f1f5f9; /* neutral-100 */
-            color: #334155; /* neutral-700 */
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            font-family: 'Crimson Text', Georgia, serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #fff;
+            font-size: 18px;
         }
 
-        .tab-content { display: none; animation: fadeIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        .tab-content.active { display: block; }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .navigation {
+            margin-bottom: 20px;
+        }
+
+        .navigation a {
+            color: var(--text-medium);
+            text-decoration: none;
+            margin: 0 15px;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .navigation a:hover {
+            color: var(--accent);
+        }
+
+        .navigation a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--accent);
+            transition: all 0.2s ease;
+        }
+
+        .navigation a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.2s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Main content */
+        .content {
+            display: grid;
+            gap: 35px;
+        }
+
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .publication-item {
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-        .publication-item:hover {
-            background-color: #f8fafc; /* neutral-50 */
-            border-left-color: #0ea5e9; /* primary-500 */
-        }
-
-        /* Custom Scrollbar - Keep it subtle */
-        .custom-scrollbar::-webkit-scrollbar { width: 5px; height: 5px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; /* neutral-300 */ border-radius: 10px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; /* neutral-400 */ }
-
-        .ai { font-size: 1.15em; vertical-align: middle; }
-
-        #ml-background {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -1;
-          opacity: 0.2; /* Extremely subtle */
-          pointer-events: none;
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
         }
 
-        .node {
-          fill: #e2e8f0; /* neutral-200/300 - Very subtle color */
-          transition: r 0.5s ease;
+        /* About section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 30px;
+            align-items: start;
         }
 
-        .link {
-          stroke: #e2e8f0; /* neutral-200/300 - Very subtle color */
-          stroke-opacity: 0.15; /* Extremely subtle */
+        .profile-image {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
         }
 
-        .data-point {
-          fill: #cbd5e1; /* neutral-300 */
-          opacity: 0.1; /* Extremely subtle */
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .research-interests {
+            margin-top: 20px;
+        }
+
+        .research-interests h4 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .interests-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .interest-tag {
+            background: var(--bg-subtle);
+            color: var(--text-medium);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border);
+        }
+
+        /* Experience section */
+        .experience-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .experience-item {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .experience-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .experience-org {
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 4px;
+        }
+
+        .experience-period {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .experience-desc {
+            color: var(--text-medium);
+            line-height: 1.5;
+        }
+
+        /* Publications */
+        .publications-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .publication {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .publication:hover {
+            background: var(--bg-subtle);
+            padding: 15px;
+            margin: 0 -15px;
+            border-radius: 6px;
+            border-bottom: 1px solid transparent;
+        }
+
+        .publication:last-child {
+            border-bottom: none;
+        }
+
+        .pub-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .pub-title a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .pub-title a:hover {
+            text-decoration: underline;
+        }
+
+        .pub-authors {
+            color: var(--text-medium);
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+
+        .pub-venue {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* Updates */
+        .updates-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .update {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .update:last-child {
+            border-bottom: none;
+        }
+
+        .update-date {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .update-text {
+            color: var(--text-medium);
+        }
+
+        /* Education subsection */
+        .education {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .education h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .profile-image {
+                max-width: 180px;
+                margin: 0 auto;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .contact-links {
+                gap: 15px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
-<body class="bg-neutral-100 text-neutral-700 antialiased">
-
-    <svg id="ml-background"></svg>
-
-    <script>
-        // Background animation script (highly subdued)
-        document.addEventListener('DOMContentLoaded', function() {
-          const svg = document.getElementById('ml-background');
-          let width = window.innerWidth;
-          let height = window.innerHeight;
-
-          svg.setAttribute('width', width);
-          svg.setAttribute('height', height);
-
-          const nodeCount = 15; // Fewer nodes
-          const nodes = [];
-
-          for (let i = 0; i < nodeCount; i++) {
-            const node = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            const x = Math.random() * width;
-            const y = Math.random() * height;
-            const r = 2 + Math.random() * 4; // Slightly larger, but fewer
-
-            node.setAttribute('class', 'node');
-            node.setAttribute('cx', x);
-            node.setAttribute('cy', y);
-            node.setAttribute('r', r);
-
-            nodes.push({
-              element: node, x, y,
-              vx: (Math.random() - 0.5) * 0.05, // Very slow movement
-              vy: (Math.random() - 0.5) * 0.05
-            });
-            svg.appendChild(node);
-          }
-
-          const links = [];
-          const maxDistance = width * 0.25;
-
-          for (let i = 0; i < nodes.length; i++) {
-            for (let j = i + 1; j < nodes.length; j++) {
-              const dx = nodes[i].x - nodes[j].x;
-              const dy = nodes[i].y - nodes[j].y;
-              const distance = Math.sqrt(dx * dx + dy * dy);
-
-              if (distance < maxDistance) {
-                const link = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                link.setAttribute('class', 'link');
-                link.setAttribute('x1', nodes[i].x);
-                link.setAttribute('y1', nodes[i].y);
-                link.setAttribute('x2', nodes[j].x);
-                link.setAttribute('y2', nodes[j].y);
-                link.setAttribute('stroke-width', Math.max(0.05, (1 - distance / maxDistance) * 0.5)); // Very thin
-                links.push({ element: link, source: i, target: j });
-                svg.insertBefore(link, svg.firstChild);
-              }
-            }
-          }
-          // No data points for extreme simplicity
-
-          function animate() {
-            nodes.forEach(node => {
-              node.x += node.vx;
-              node.y += node.vy;
-              if (node.x < 0 || node.x > width) node.vx *= -1;
-              if (node.y < 0 || node.y > height) node.vy *= -1;
-              node.element.setAttribute('cx', node.x);
-              node.element.setAttribute('cy', node.y);
-            });
-
-            links.forEach(link => {
-              const sourceNode = nodes[link.source];
-              const targetNode = nodes[link.target];
-              link.element.setAttribute('x1', sourceNode.x);
-              link.element.setAttribute('y1', sourceNode.y);
-              link.element.setAttribute('x2', targetNode.x);
-              link.element.setAttribute('y2', targetNode.y);
-              const dx = sourceNode.x - targetNode.x;
-              const dy = sourceNode.y - targetNode.y;
-              const distance = Math.sqrt(dx * dx + dy * dy);
-              if (distance < maxDistance) {
-                const opacity = Math.max(0.02, (1 - distance / maxDistance) * 0.1);
-                link.element.setAttribute('stroke-opacity', opacity);
-              } else {
-                link.element.setAttribute('stroke-opacity', 0);
-              }
-            });
-            requestAnimationFrame(animate);
-          }
-
-          window.addEventListener('resize', function() {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            svg.setAttribute('width', width);
-            svg.setAttribute('height', height);
-          });
-          animate();
-        });
-    </script>
-
-    <div class="min-h-screen flex flex-col relative z-0">
-        <header class="py-6 sm:py-8 sticky top-0 z-20 bg-neutral-100/80 backdrop-blur-md">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-                <div class="flex flex-col sm:flex-row justify-between items-center">
-                    <div class="mb-4 sm:mb-0 text-center sm:text-left">
-                        <h1 class="text-3xl sm:text-4xl font-bold text-neutral-900">Aarush Sinha</h1>
-                        <p class="text-primary-600 font-medium text-lg">NLP Researcher</p>
-                    </div>
-                    <nav class="flex space-x-3 sm:space-x-2">
-                        <button id="about-tab" class="px-3 py-1.5 rounded-md font-medium text-sm sm:text-base transition-colors duration-200 tab-button active text-primary-600 border-b-2 border-primary-500">
-                            About
-                        </button>
-                        <button id="publications-tab" class="px-3 py-1.5 rounded-md font-medium text-sm sm:text-base transition-colors duration-200 tab-button text-neutral-500 hover:text-primary-600 hover:border-b-2 hover:border-primary-500/50">
-                            Publications
-                        </button>
-                    </nav>
-                </div>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Aarush Sinha</h1>
+            
+            <nav class="navigation">
+                <a href="#about">About</a>
+                <a href="#research">Research</a>
+                <a href="#publications">Publications</a>
+                <a href="#updates">Updates</a>
+            </nav>
+            
+            <div class="contact-links">
+                <a href="https://x.com/Aarush1003" target="_blank" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="http://github.com/chungimungi" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/asj10/" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://scholar.google.com/citations?user=5cl3fb8AAAAJ&hl=en" target="_blank" aria-label="Google Scholar">
+                    <i class="ai ai-google-scholar"></i>
+                </a>
+                <a href="mailto:aarush.sinha@gmail.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
             </div>
         </header>
 
-        <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 max-w-4xl">
-            <!-- Content Sections will have a light background to distinguish from page bg -->
-            <div id="about-content" class="tab-content active bg-neutral-50 shadow-sm rounded-lg p-6 sm:p-8 md:p-10">
-                <section class="mb-10 md:mb-12">
-                    <div class="flex flex-col md:flex-row items-start">
-                        <img src="avatar.png" alt="Aarush Sinha" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover mr-0 mb-6 md:mr-8 md:mb-0 border-4 border-neutral-200 flex-shrink-0">
-                        <div>
-                            <p class="text-base sm:text-lg leading-relaxed mb-5">
-                                I am an undergraduate student at Vellore Institute of Technology - Chennai.
-                                My research is centered on enhancing the reasoning and retrieval capabilities and overall performance of small language models while ensuring efficiency.
-                                Additionally, I work on addressing hallucination issues in models across various modalities.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-primary-500/10 text-primary-700 rounded-full text-xs font-medium">Information Retrieval</span>
-                                <span class="px-3 py-1 bg-primary-500/10 text-primary-700 rounded-full text-xs font-medium">NLP</span>
-                                <span class="px-3 py-1 bg-primary-500/10 text-primary-700 rounded-full text-xs font-medium">AI Safety</span>
-                                <span class="px-3 py-1 bg-primary-500/10 text-primary-700 rounded-full text-xs font-medium">Reasoning in LMs</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="mb-10 md:mb-12">
-                    <h3 class="text-xl sm:text-2xl font-semibold mb-5 text-neutral-800 border-b border-neutral-200 pb-3">Education</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-500/10 flex items-center justify-center mr-4 mt-1">
-                                <i class="fas fa-building-columns text-primary-500 text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-neutral-700 text-base sm:text-lg">Vellore Institute of Technology-Chennai</h4>
-                                <p class="text-sm text-neutral-500">BTech in Computer Science, 2021 - Present</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="mb-10 md:mb-12">
-                    <h3 class="text-xl sm:text-2xl font-semibold mb-6 text-neutral-800 border-b border-neutral-200 pb-3">Research Experience</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-500/10 flex items-center justify-center mr-4 mt-1">
-                                <i class="fas fa-flask text-primary-500 text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-neutral-700 text-base sm:text-lg">Carnegie Mellon University</h4>
-                                <p class="text-sm text-neutral-500">Research Student, 2025 - Present</p>
-                                <p class="text-sm text-neutral-500 mt-1">Working on the evaluation of agents under Prof. Anand Rao.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-500/10 flex items-center justify-center mr-4 mt-1">
-                                <i class="fas fa-microscope text-primary-500 text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-neutral-700 text-base sm:text-lg">AI Institute, University of South Carolina</h4>
-                                <p class="text-sm text-neutral-500">Research Student, 2024 - Present</p>
-                                <p class="text-sm text-neutral-500 mt-1">Mitigating hallucinations in Text2Video models under Prof. Amitava Das.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                           <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-500/10 flex items-center justify-center mr-4 mt-1">
-                                <i class="fas fa-cogs text-primary-500 text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-neutral-700 text-base sm:text-lg">Indian Institute of Technology-Madras</h4>
-                                <p class="text-sm text-neutral-500">Research Student, 2023 - Present</p>
-                                <p class="text-sm text-neutral-500 mt-1">Building efficient and scalable dense retrievers under Prof. Nirav Bhatt.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                 <section>
-                    <h3 class="text-xl sm:text-2xl font-semibold mb-6 text-neutral-800 border-b border-neutral-200 pb-3">Recent Updates</h3>
-                    <div class="space-y-5 max-h-96 overflow-y-auto custom-scrollbar pr-2">
-                        <div class="p-3.5 bg-neutral-100 rounded-md">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 h-7 w-7 rounded-full bg-primary-500/20 flex items-center justify-center mr-3 mt-0.5">
-                                    <i class="fas fa-handshake text-primary-600 text-xs"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-primary-700 text-sm">New Collaboration with Stanford STAIR</h4>
-                                    <p class="text-xs text-neutral-500">Working on Model Collapse.</p>
-                                    <p class="text-xs text-neutral-400 mt-0.5">May, 2025</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-3.5 bg-neutral-100 rounded-md">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 h-7 w-7 rounded-full bg-neutral-200 flex items-center justify-center mr-3 mt-0.5">
-                                        <i class="ai ai-arxiv text-neutral-600 text-xs"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-medium text-neutral-700 text-sm">New Preprint</h4>
-                                        <p class="text-xs text-neutral-500">New pre-print on synthetic dataset generation for dense retrieval on ArXiv.</p>
-                                        <p class="text-xs text-neutral-400 mt-0.5">May, 2025</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="p-3.5 bg-neutral-100 rounded-md">
-                                <div class="flex items-start">
-                                    <div class="flex-shrink-0 h-7 w-7 rounded-full bg-neutral-200 flex items-center justify-center mr-3 mt-0.5">
-                                        <i class="fas fa-handshake text-neutral-500 text-xs"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-medium text-neutral-700 text-sm">New Collaboration</h4>
-                                        <p class="text-xs text-neutral-500">Started working on Agentic Systems and Evaluation with Prof. Anand Rao at CMU.</p>
-                                        <p class="text-xs text-neutral-400 mt-0.5">April, 2025</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="p-3.5 bg-neutral-100 rounded-md">
-                                <div class="flex items-start">
-                                    <div class="flex-shrink-0 h-7 w-7 rounded-full bg-neutral-200 flex items-center justify-center mr-3 mt-0.5">
-                                        <i class="ai ai-arxiv text-neutral-500 text-xs"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-medium text-neutral-700 text-sm">New Preprint</h4>
-                                        <p class="text-xs text-neutral-500">Released <span class="font-medium">Graph Masked Language Models</span> on arXiv.</p>
-                                        <p class="text-xs text-neutral-400 mt-0.5">March, 2025</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="p-3.5 bg-neutral-100 rounded-md">
-                                <div class="flex items-start">
-                                    <div class="flex-shrink-0 h-7 w-7 rounded-full bg-neutral-200 flex items-center justify-center mr-3 mt-0.5">
-                                        <i class="fas fa-trophy text-neutral-500 text-xs"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-medium text-neutral-700 text-sm">Paper Accepted</h4>
-                                        <p class="text-xs text-neutral-500">Our dataset paper on <span class="font-medium">Text2Video Hallucinations</span> accepted to TrustNLP@NAACL.</p>
-                                        <p class="text-xs text-neutral-400 mt-0.5">February, 2025</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </section>
-            </div>
-
-            <div id="publications-content" class="tab-content bg-neutral-50 shadow-sm rounded-lg p-6 sm:p-8 md:p-10">
-                <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-neutral-800 border-b border-neutral-200 pb-4">
-                    Publications
-                </h2>
-                <div class="mb-8">
-                    <h3 class="text-xl font-medium mb-5 text-neutral-700">
-                        2025
-                    </h3>
-                    <div class="space-y-5">
-                        <div class="publication-item p-4 border-l-4 border-transparent rounded-r-md">
-                            <div class="flex flex-col sm:flex-row justify-between items-start">
-                                <div class="mb-2 sm:mb-0 sm:pr-4 flex-grow">
-                                    <h4 class="font-medium text-primary-600 hover:text-primary-700 transition-colors text-base leading-snug">
-                                        <a href="https://arxiv.org/abs/2411.10867" target="_blank" rel="noopener noreferrer" class="inline-flex items-center group">
-                                            <span>ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models</span>
-                                            <i class="fas fa-external-link-alt text-xs ml-1.5 opacity-40 group-hover:opacity-80 transition-opacity"></i>
-                                        </a>
-                                    </h4>
-                                    <p class="text-xs text-neutral-500 mt-1 mb-1.5">Vipula Rawte, Sarthak Jain, <span class="font-medium text-neutral-600">Aarush Sinha</span>, Garv Kaushik, Aman Bansal, Prathiksha Rumale Vishwanath, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P Sheth, Amitava Das</p>
-                                    <p class="text-xs text-neutral-600 font-medium">The 5th Workshop on Trustworthy NLP @ NAACL2025</p>
-                                </div>
-                                <span class="flex-shrink-0 items-center px-2.5 py-1 bg-primary-500/10 text-primary-700 rounded-full text-xs font-semibold whitespace-nowrap mt-2 sm:mt-0">
-                                    <i class="fas fa-users mr-1.5 opacity-70"></i>Conference
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="publication-item p-4 border-l-4 border-transparent rounded-r-md">
-                            <div class="flex flex-col sm:flex-row justify-between items-start">
-                                <div class="mb-2 sm:mb-0 sm:pr-4 flex-grow">
-                                    <h4 class="font-medium text-primary-600 hover:text-primary-700 transition-colors text-base leading-snug">
-                                        <a href="https://arxiv.org/abs/2504.21015" target="_blank" rel="noopener noreferrer" class="inline-flex items-center group">
-                                            <span>Don't Retrieve, Generate: Prompting LLMs for Synthetic Training Data in Dense Retrieval</span>
-                                            <i class="fas fa-external-link-alt text-xs ml-1.5 opacity-40 group-hover:opacity-80 transition-opacity"></i>
-                                        </a>
-                                    </h4>
-                                    <p class="text-xs text-neutral-500 mt-1 mb-1.5"><span class="font-medium text-neutral-600">Aarush Sinha</span></p>
-                                    <p class="text-xs text-neutral-600 font-medium">arXiv preprint</p>
-                                </div>
-                                <span class="flex-shrink-0 items-center px-2.5 py-1 bg-neutral-400/20 text-neutral-600 rounded-full text-xs font-semibold whitespace-nowrap mt-2 sm:mt-0">
-                                    <i class="ai ai-arxiv mr-1.5 opacity-70"></i>Preprint
-                                </span>
-                            </div>
-                        </div>
-
-                       <div class="publication-item p-4 border-l-4 border-transparent rounded-r-md">
-                            <div class="flex flex-col sm:flex-row justify-between items-start">
-                                <div class="mb-2 sm:mb-0 sm:pr-4 flex-grow">
-                                    <h4 class="font-medium text-primary-600 hover:text-primary-700 transition-colors text-base leading-snug">
-                                        <a href="https://arxiv.org/abs/2503.05763" target="_blank" rel="noopener noreferrer" class="inline-flex items-center group">
-                                            <span>Graph Masked Language Models</span>
-                                            <i class="fas fa-external-link-alt text-xs ml-1.5 opacity-40 group-hover:opacity-80 transition-opacity"></i>
-                                        </a>
-                                    </h4>
-                                    <p class="text-xs text-neutral-500 mt-1 mb-1.5"><span class="font-medium text-neutral-600">Aarush Sinha</span>, OM Kumar CU</p>
-                                    <p class="text-xs text-neutral-600 font-medium">arXiv preprint</p>
-                                </div>
-                                <span class="flex-shrink-0 items-center px-2.5 py-1 bg-neutral-400/20 text-neutral-600 rounded-full text-xs font-semibold whitespace-nowrap mt-2 sm:mt-0">
-                                    <i class="ai ai-arxiv mr-1.5 opacity-70"></i>Preprint
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="publication-item p-4 border-l-4 border-transparent rounded-r-md">
-                            <div class="flex flex-col sm:flex-row justify-between items-start">
-                                <div class="mb-2 sm:mb-0 sm:pr-4 flex-grow">
-                                    <h4 class="font-medium text-primary-600 hover:text-primary-700 transition-colors text-base leading-snug">
-                                        <a href="https://arxiv.org/abs/2502.17011" target="_blank" rel="noopener noreferrer" class="inline-flex items-center group">
-                                            <span>Predicting Liquidity-Aware Bond Yields using Causal GANs and Deep Reinforcement Learning with LLM Evaluation</span>
-                                            <i class="fas fa-external-link-alt text-xs ml-1.5 opacity-40 group-hover:opacity-80 transition-opacity"></i>
-                                        </a>
-                                    </h4>
-                                    <p class="text-xs text-neutral-500 mt-1 mb-1.5">Jaskaran Singh Walia, <span class="font-medium text-neutral-600">Aarush Sinha</span>, Srinitish Srinivasan, Srihari Unnikrishnan</p>
-                                    <p class="text-xs text-neutral-600 font-medium">arXiv preprint</p>
-                                </div>
-                                <span class="flex-shrink-0 items-center px-2.5 py-1 bg-neutral-400/20 text-neutral-600 rounded-full text-xs font-semibold whitespace-nowrap mt-2 sm:mt-0">
-                                    <i class="ai ai-arxiv mr-1.5 opacity-70"></i>Preprint
-                                </span>
+        <main class="content">
+            <section id="about" class="section">
+                <h2 class="section-title">About</h2>
+                <div class="about-grid">
+                    <img src="avatar.png" alt="Aarush Sinha" class="profile-image">
+                    <div class="about-text">
+                        <p>
+                            I am an undergraduate student at Vellore Institute of Technology - Chennai. 
+                            My research is centered on enhancing the reasoning and retrieval capabilities 
+                            and overall performance of small language models while ensuring efficiency.
+                        </p>
+                        <p>
+                            Additionally, I work on addressing hallucination issues in models across various modalities.
+                        </p>
+                        
+                        <div class="research-interests">
+                            <h4>Research Interests</h4>
+                            <div class="interests-list">
+                                <span class="interest-tag">Information Retrieval</span>
+                                <span class="interest-tag">Natural Language Processing</span>
+                                <span class="interest-tag">AI Safety</span>
+                                <span class="interest-tag">Reasoning in Language Models</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <section id="research" class="section">
+                <h2 class="section-title">Research Experience</h2>
+                <div class="experience-list">
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-org">Stanford STAIR Lab</div>
+                                <div class="experience-title">Research Student</div>
+                            </div>
+                            <div class="experience-period">May 2025 - Present</div>
+                        </div>
+                        <div class="experience-desc">
+                            Working on model collapse with Rylan Schaeffer, under Prof. Sanmi Koyejo.
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-org">Carnegie Mellon University</div>
+                                <div class="experience-title">Research Student</div>
+                            </div>
+                            <div class="experience-period">March 2025 - Present</div>
+                        </div>
+                        <div class="experience-desc">
+                            Working on the evaluation of agents under Prof. Anand Rao.
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-org">AI Institute, University of South Carolina</div>
+                                <div class="experience-title">Research Student</div>
+                            </div>
+                            <div class="experience-period">May 2024 - Present</div>
+                        </div>
+                        <div class="experience-desc">
+                            Mitigating hallucinations in Text2Video models under Prof. Amitava Das.
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-org">Indian Institute of Technology-Madras</div>
+                                <div class="experience-title">Research Student</div>
+                            </div>
+                            <div class="experience-period">August 2023 - Present</div>
+                        </div>
+                        <div class="experience-desc">
+                            Building efficient and scalable dense retrievers under Prof. Nirav Bhatt.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="education">
+                    <h3>Education</h3>
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-org">Vellore Institute of Technology-Chennai</div>
+                                <div class="experience-title">Bachelor of Technology in Computer Science</div>
+                            </div>
+                            <div class="experience-period">2021 - Present</div>
+                        </div>
+                    </div>
+                </div> -->
+            </section>
+
+            <section id="publications" class="section">
+                <h2 class="section-title">Publications</h2>
+                <div class="publications-list">
+                    <div class="publication">
+                        <div class="pub-title">
+                            <a href="https://arxiv.org/abs/2411.10867" target="_blank">
+                                ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models
+                            </a>
+                        </div>
+                        <div class="pub-authors">
+                            Vipula Rawte, Sarthak Jain, <strong>Aarush Sinha</strong>, Garv Kaushik, Aman Bansal, Prathiksha Rumale Vishwanath, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P Sheth, Amitava Das
+                        </div>
+                        <div class="pub-venue">The 5th Workshop on Trustworthy NLP @ NAACL 2025</div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="pub-title">
+                            <a href="https://arxiv.org/abs/2504.21015" target="_blank">
+                                Don't Retrieve, Generate: Prompting LLMs for Synthetic Training Data in Dense Retrieval
+                            </a>
+                        </div>
+                        <div class="pub-authors"><strong>Aarush Sinha</strong></div>
+                        <div class="pub-venue">arXiv preprint arXiv:2504.21015</div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="pub-title">
+                            <a href="https://arxiv.org/abs/2503.05763" target="_blank">
+                                Graph Masked Language Models
+                            </a>
+                        </div>
+                        <div class="pub-authors"><strong>Aarush Sinha</strong>, OM Kumar CU</div>
+                        <div class="pub-venue">arXiv preprint arXiv:2503.05763</div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="pub-title">
+                            <a href="https://arxiv.org/abs/2502.17011" target="_blank">
+                                Predicting Liquidity-Aware Bond Yields using Causal GANs and Deep Reinforcement Learning with LLM Evaluation
+                            </a>
+                        </div>
+                        <div class="pub-authors">Jaskaran Singh Walia, <strong>Aarush Sinha</strong>, Srinitish Srinivasan, Srihari Unnikrishnan</div>
+                        <div class="pub-venue">arXiv preprint arXiv:2502.17011</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="updates" class="section">
+                <h2 class="section-title">Recent Updates</h2>
+                <div class="updates-list">
+                    <div class="update">
+                        <div class="update-date">May 2025</div>
+                        <div class="update-text">Started new collaboration with Stanford STAIR on Model Collapse.</div>
+                    </div>
+
+                    <div class="update">
+                        <div class="update-date">May 2025</div>
+                        <div class="update-text">New pre-print on synthetic dataset generation for dense retrieval released on ArXiv.</div>
+                    </div>
+
+                    <div class="update">
+                        <div class="update-date">April 2025</div>
+                        <div class="update-text">Started working on Agentic Systems and Evaluation with Prof. Anand Rao at CMU.</div>
+                    </div>
+
+                    <div class="update">
+                        <div class="update-date">March 2025</div>
+                        <div class="update-text">Released <strong>Graph Masked Language Models</strong> on arXiv.</div>
+                    </div>
+
+                    <div class="update">
+                        <div class="update-date">February 2025</div>
+                        <div class="update-text">Our dataset paper on <strong>Text2Video Hallucinations</strong> accepted to TrustNLP@NAACL.</div>
+                    </div>
+                </div>
+            </section>
         </main>
-
-        <footer class="py-8 mt-12 border-t border-neutral-200">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-                <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                    <p class="text-neutral-500 text-sm mb-4 md:mb-0">© <span id="current-year">2025</span> Aarush Sinha. All rights reserved.</p>
-                    <div class="flex space-x-5 items-center">
-                        <a href="https://x.com/Aarush1003" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-primary-500 transition-colors" aria-label="Twitter Profile">
-                            <i class="fab fa-twitter fa-lg"></i>
-                        </a>
-                        <a href="http://github.com/chungimungi" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-primary-500 transition-colors" aria-label="GitHub Profile">
-                            <i class="fab fa-github fa-lg"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/asj10/" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-primary-500 transition-colors" aria-label="LinkedIn Profile">
-                            <i class="fab fa-linkedin-in fa-lg"></i>
-                        </a>
-                        <a href="https://scholar.google.com/citations?user=5cl3fb8AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-primary-500 transition-colors" aria-label="Google Scholar Profile">
-                            <i class="ai ai-google-scholar ai-lg"></i>
-                        </a>
-                        <a href="mailto:aarush.sinha@gmail.com" class="text-neutral-400 hover:text-primary-500 transition-colors" aria-label="Email">
-                            <i class="fas fa-envelope fa-lg"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </footer>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const aboutTab = document.getElementById('about-tab');
-            const publicationsTab = document.getElementById('publications-tab');
-            const aboutContent = document.getElementById('about-content');
-            const publicationsContent = document.getElementById('publications-content');
-
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-
-            function switchTab(tabName) {
-                document.querySelectorAll('.tab-button').forEach(button => {
-                    button.classList.remove('active', 'text-primary-600', 'border-primary-500');
-                    button.classList.add('text-neutral-500', 'hover:text-primary-600', 'hover:border-primary-500/50', 'border-transparent');
-                });
-                document.querySelectorAll('.tab-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-
-                if (tabName === 'about') {
-                    aboutTab.classList.add('active', 'text-primary-600', 'border-primary-500');
-                    aboutTab.classList.remove('text-neutral-500', 'hover:text-primary-600', 'hover:border-primary-500/50', 'border-transparent');
-                    aboutContent.classList.add('active');
-                } else {
-                    publicationsTab.classList.add('active', 'text-primary-600', 'border-primary-500');
-                    publicationsTab.classList.remove('text-neutral-500', 'hover:text-primary-600', 'hover:border-primary-500/50', 'border-transparent');
-                    publicationsContent.classList.add('active');
-                }
-            }
-
-            aboutTab.addEventListener('click', () => switchTab('about'));
-            publicationsTab.addEventListener('click', () => switchTab('publications'));
-
-            // Ensure default active tab border is correct
-            if (aboutTab.classList.contains('active')) {
-                 aboutTab.classList.remove('border-transparent');
-                 aboutTab.classList.add('border-primary-500');
-            }
-
-
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href && href.startsWith('#') && href.length > 1) {
-                        try {
-                            const targetElement = document.querySelector(href);
-                            if (targetElement) {
-                                 e.preventDefault();
-                                targetElement.scrollIntoView({ behavior: 'smooth' });
-                            }
-                        } catch (error) {
-                            console.warn(`Smooth scroll target not found or invalid selector: ${href}`);
-                        }
-                    }
-                });
-            });
+            // Simple fade-in animation is handled by CSS
+            // No complex JavaScript needed
         });
     </script>
 </body>
