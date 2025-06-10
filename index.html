@@ -25,46 +25,47 @@
 
         body {
             font-family: 'Crimson Text', Georgia, serif;
-            line-height: 1.6;
+            line-height: 1.5;
             color: var(--text-dark);
             background: #fff;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 850px;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 20px 15px;
         }
 
         /* Header */
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 25px;
-            border-bottom: 2px solid var(--border);
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
         }
 
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             letter-spacing: -0.02em;
         }
 
         .navigation {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .navigation a {
             color: var(--text-medium);
             text-decoration: none;
-            margin: 0 15px;
+            margin: 0 10px;
             font-family: 'Source Sans Pro', sans-serif;
-            font-weight: 500;
-            font-size: 0.95rem;
+            font-weight: 400;
+            font-size: 0.9rem;
             transition: color 0.2s ease;
             position: relative;
+            padding-bottom: 3px;
         }
 
         .navigation a:hover {
@@ -75,8 +76,8 @@
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
-            bottom: -5px;
+            height: 1px;
+            bottom: 0;
             left: 50%;
             background-color: var(--accent);
             transition: all 0.2s ease;
@@ -90,14 +91,14 @@
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         .contact-links a {
             color: var(--text-light);
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1rem;
             transition: color 0.2s ease;
         }
 
@@ -108,7 +109,7 @@
         /* Main content */
         .content {
             display: grid;
-            gap: 35px;
+            gap: 25px;
         }
 
         .section {
@@ -130,41 +131,41 @@
         }
 
         .section-title {
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: var(--text-dark);
             border-bottom: 1px solid var(--border);
-            padding-bottom: 6px;
+            padding-bottom: 5px;
         }
 
         /* About section */
         .about-grid {
             display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 30px;
+            grid-template-columns: 140px 1fr;
+            gap: 25px;
             align-items: start;
         }
 
         .profile-image {
             width: 100%;
-            border-radius: 8px;
+            border-radius: 6px;
             border: 1px solid var(--border);
         }
 
         .about-text p {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .research-interests {
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .research-interests h4 {
             font-family: 'Source Sans Pro', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--text-medium);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -173,91 +174,107 @@
         .interests-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
         }
 
         .interest-tag {
             background: var(--bg-subtle);
             color: var(--text-medium);
-            padding: 4px 10px;
+            padding: 2px 8px;
             border-radius: 4px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             border: 1px solid var(--border);
         }
 
         /* Experience section */
         .experience-list {
             display: grid;
-            gap: 20px;
+            gap: 15px;
         }
 
         .experience-item {
-            padding: 20px 0;
+            padding: 12px 0;
             border-bottom: 1px solid var(--border);
         }
 
         .experience-item:last-child {
             border-bottom: none;
+            padding-bottom: 0;
         }
 
         .experience-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .experience-title {
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .experience-org {
             color: var(--accent);
             font-style: italic;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
+            font-size: 1rem;
+        }
+
+        .experience-org a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.2s ease;
+        }
+
+        .experience-org a:hover {
+            border-bottom-color: var(--accent);
         }
 
         .experience-period {
             font-family: 'Source Sans Pro', sans-serif;
             color: var(--text-light);
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             white-space: nowrap;
         }
 
         .experience-desc {
             color: var(--text-medium);
-            line-height: 1.5;
+            line-height: 1.45;
+            font-size: 0.95rem;
         }
 
         /* Publications */
         .publications-list {
             display: grid;
-            gap: 18px;
+            gap: 12px;
         }
 
         .publication {
-            padding: 15px 0;
+            padding: 10px 0;
             border-bottom: 1px solid var(--border);
             transition: all 0.2s ease;
         }
 
         .publication:hover {
             background: var(--bg-subtle);
-            padding: 15px;
-            margin: 0 -15px;
+            padding: 10px;
+            margin: 0 -10px;
             border-radius: 6px;
             border-bottom: 1px solid transparent;
         }
 
         .publication:last-child {
             border-bottom: none;
+            padding-bottom: 0;
         }
 
         .pub-title {
             font-weight: 600;
-            margin-bottom: 6px;
-            line-height: 1.4;
+            margin-bottom: 4px;
+            line-height: 1.3;
+            font-size: 1rem;
         }
 
         .pub-title a {
@@ -271,54 +288,56 @@
 
         .pub-authors {
             color: var(--text-medium);
-            margin-bottom: 4px;
-            font-size: 0.95rem;
+            margin-bottom: 3px;
+            font-size: 0.9rem;
         }
 
         .pub-venue {
             font-family: 'Source Sans Pro', sans-serif;
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-style: italic;
         }
 
         /* Updates */
         .updates-list {
             display: grid;
-            gap: 15px;
+            gap: 10px;
         }
 
         .update {
-            padding: 12px 0;
+            padding: 8px 0;
             border-bottom: 1px solid var(--border);
         }
 
         .update:last-child {
             border-bottom: none;
+            padding-bottom: 0;
         }
 
         .update-date {
             font-family: 'Source Sans Pro', sans-serif;
             color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 5px;
+            font-size: 0.8rem;
+            margin-bottom: 4px;
             font-weight: 600;
         }
 
         .update-text {
             color: var(--text-medium);
+            font-size: 0.95rem;
         }
 
         /* Education subsection */
         .education {
-            margin-top: 30px;
-            padding-top: 20px;
+            margin-top: 25px;
+            padding-top: 15px;
             border-top: 1px solid var(--border);
         }
 
         .education h3 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
             color: var(--text-dark);
         }
 
@@ -329,7 +348,11 @@
             }
 
             .header h1 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
+            }
+            
+            .navigation a {
+                margin: 0 8px;
             }
 
             .about-grid {
@@ -339,17 +362,17 @@
             }
 
             .profile-image {
-                max-width: 180px;
+                max-width: 140px;
                 margin: 0 auto;
             }
 
             .experience-header {
                 flex-direction: column;
-                gap: 5px;
+                gap: 4px;
             }
 
             .contact-links {
-                gap: 15px;
+                gap: 10px;
             }
         }
 
@@ -381,7 +404,7 @@
                 <a href="https://www.linkedin.com/in/asj10/" target="_blank" aria-label="LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://scholar.google.com/citations?user=5cl3fb8AAAAJ&hl=en" target="_blank" aria-label="Google Scholar">
+                <a href="https://scholar.google.com/citations?user=5cl3fb8AAAAJ&hl=en" target="_blank"aria-label="Google Scholar">
                     <i class="ai ai-google-scholar"></i>
                 </a>
                 <a href="mailto:aarush.sinha@gmail.com" aria-label="Email">
@@ -425,7 +448,7 @@
                     <div class="experience-item">
                         <div class="experience-header">
                             <div>
-                                <div class="experience-org">Stanford STAIR Lab</div>
+                                <div class="experience-org"><a href="https://stairlab.stanford.edu/" target="_blank">Stanford STAIR Lab</a></div>
                                 <div class="experience-title">Research Student</div>
                             </div>
                             <div class="experience-period">May 2025 - Present</div>
@@ -438,7 +461,7 @@
                     <div class="experience-item">
                         <div class="experience-header">
                             <div>
-                                <div class="experience-org">Carnegie Mellon University</div>
+                                <div class="experience-org"><a href="https://www.cmu.edu/" target="_blank">Carnegie Mellon University</a></div>
                                 <div class="experience-title">Research Student</div>
                             </div>
                             <div class="experience-period">March 2025 - Present</div>
@@ -451,7 +474,7 @@
                     <div class="experience-item">
                         <div class="experience-header">
                             <div>
-                                <div class="experience-org">AI Institute, University of South Carolina</div>
+                                <div class="experience-org"><a href="https://aiisc.ai/" target="_blank">AI Institute, University of South Carolina</a></div>
                                 <div class="experience-title">Research Student</div>
                             </div>
                             <div class="experience-period">May 2024 - Present</div>
@@ -464,7 +487,7 @@
                     <div class="experience-item">
                         <div class="experience-header">
                             <div>
-                                <div class="experience-org">Indian Institute of Technology-Madras</div>
+                                <div class="experience-org"><a href="https://wsai.iitm.ac.in/" target="_blank">Indian Institute of Technology-Madras</a></div>
                                 <div class="experience-title">Research Student</div>
                             </div>
                             <div class="experience-period">August 2023 - Present</div>
@@ -494,7 +517,7 @@
                 <div class="publications-list">
                     <div class="publication">
                         <div class="pub-title">
-                            <a href="https://arxiv.org/abs/2411.10867" target="_blank">
+                            <a href="https://aclanthology.org/2025.trustnlp-main.15/" target="_blank">
                                 ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models
                             </a>
                         </div>
@@ -517,7 +540,7 @@
                     <div class="publication">
                         <div class="pub-title">
                             <a href="https://arxiv.org/abs/2503.05763" target="_blank">
-                                Graph Masked Language Models
+                                GMLM: Bridging Graph Neural Networks and Language Models for Heterophilic Node Classification
                             </a>
                         </div>
                         <div class="pub-authors"><strong>Aarush Sinha</strong>, OM Kumar CU</div>
