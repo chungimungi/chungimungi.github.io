@@ -110,16 +110,25 @@
             gap: 25px;
         }
 
+        .about-updates-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
         .section {
             opacity: 0;
             transform: translateY(20px);
             animation: fadeIn 0.8s ease forwards;
         }
 
-        .section:nth-child(1) { animation-delay: 0.1s; }
-        .section:nth-child(2) { animation-delay: 0.2s; }
-        .section:nth-child(3) { animation-delay: 0.3s; }
-        .section:nth-child(4) { animation-delay: 0.4s; }
+        #about, #updates {
+            animation-delay: 0.1s;
+        }
+        #publications {
+            animation-delay: 0.2s;
+        }
 
         @keyframes fadeIn {
             to {
@@ -483,6 +492,10 @@
                 text-align: center;
             }
 
+            .about-updates-grid {
+                grid-template-columns: 1fr;
+            }
+
             .profile-image {
                 max-width: 140px;
                 margin: 0 auto;
@@ -545,32 +558,68 @@
         </header>
 
         <main class="content">
-            <section id="about" class="section">
-                <h2 class="section-title">About</h2>
-                <div class="about-grid">
-                    <img src="avatar.png" alt="Aarush Sinha" class="profile-image">
-                    <div class="about-text">
-                        <p>
-                            I am an undergraduate student at Vellore Institute of Technology - Chennai. 
-                            My research is centered on enhancing the reasoning and retrieval capabilities 
-                            and overall performance of small language models while ensuring efficiency. Additionally, I work on addressing hallucination issues in models across various modalities.
-                        </p>
-                        <p>
-                            I am fortunate to collaborate with wonderful mentors across various labs. At the <a href="https://stairlab.stanford.edu/" target="_blank">Stanford STAIR Lab</a>, I'm working with Rylan Schaeffer and Prof. Sanmi Koyejo on model collapse. I'm also exploring agent evaluation with Prof. Anand Rao at <a href="https://www.cmu.edu/" target="_blank">Carnegie Mellon University</a>, mitigating hallucinations in Text2Video models with Prof. Amitava Das at the <a href="https://aiisc.ai/" target="_blank">AI Institute, UofSC</a>, and building efficient dense retrievers with Prof. Nirav Bhatt at <a href="https://wsai.iitm.ac.in/" target="_blank">IIT-Madras</a>.
-                        </p>
-                        
-                        <div class="research-interests">
-                            <h4>Research Interests</h4>
-                            <div class="interests-list">
-                                <span class="interest-tag">Information Retrieval</span>
-                                <span class="interest-tag">Natural Language Processing</span>
-                                <span class="interest-tag">AI Safety</span>
-                                <span class="interest-tag">Reasoning in Language Models</span>
+            <div class="about-updates-grid">
+                <section id="about" class="section">
+                    <h2 class="section-title">About</h2>
+                    <div class="about-grid">
+                        <img src="avatar.png" alt="Aarush Sinha" class="profile-image">
+                        <div class="about-text">
+                            <p>
+                                I am an undergraduate student at Vellore Institute of Technology - Chennai. 
+                                My research is centered on enhancing the reasoning and retrieval capabilities 
+                                and overall performance of small language models while ensuring efficiency. Additionally, I work on addressing hallucination issues in models across various modalities.
+                            </p>
+                            <p>
+                                I am fortunate to collaborate with wonderful mentors across various labs. At the <a href="https://stairlab.stanford.edu/" target="_blank">Stanford STAIR Lab</a>, I'm working with Rylan Schaeffer and Prof. Sanmi Koyejo on model collapse. I'm also exploring agent evaluation with Prof. Anand Rao at <a href="https://www.cmu.edu/" target="_blank">Carnegie Mellon University</a>, mitigating hallucinations in Text2Video models with Prof. Amitava Das at the <a href="https://aiisc.ai/" target="_blank">AI Institute, UofSC</a>, and building efficient dense retrievers with Prof. Nirav Bhatt at <a href="https://wsai.iitm.ac.in/" target="_blank">IIT-Madras</a>.
+                            </p>
+                            
+                            <div class="research-interests">
+                                <h4>Research Interests</h4>
+                                <div class="interests-list">
+                                    <span class="interest-tag">Information Retrieval</span>
+                                    <span class="interest-tag">Natural Language Processing</span>
+                                    <span class="interest-tag">AI Safety</span>
+                                    <span class="interest-tag">Reasoning in Language Models</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+                <section id="updates" class="section">
+                    <h2 class="section-title">Recent Updates</h2>
+                    <div class="updates-list">
+                        <div class="update">
+                            <div class="update-date">Junw 2025</div>
+                            <div class="update-text">Serving as a reviewer for the 2025 ACL SRW workshop.</div>
+                        </div>
+                    
+                        <div class="update">
+                            <div class="update-date">May 2025</div>
+                            <div class="update-text">Started new collaboration with Stanford STAIR on Model Collapse.</div>
+                        </div>
+    
+                        <div class="update">
+                            <div class="update-date">May 2025</div>
+                            <div class="update-text">New pre-print on synthetic dataset generation for dense retrieval released on ArXiv.</div>
+                        </div>
+    
+                        <div class="update">
+                            <div class="update-date">April 2025</div>
+                            <div class="update-text">Started working on Agentic Systems and Evaluation with Prof. Anand Rao at CMU.</div>
+                        </div>
+    
+                        <div class="update">
+                            <div class="update-date">March 2025</div>
+                            <div class="update-text">Released <strong>GMLM: Bridging Graph Neural Networks and Language Models for Heterophilic Node Classification</strong> on arXiv.</div>
+                        </div>
+    
+                        <!-- <div class="update">
+                            <div class="update-date">February 2025</div>
+                            <div class="update-text">Our dataset paper on <strong>Text2Video Hallucinations</strong> accepted to TrustNLP@NAACL.</div>
+                        </div> -->
+                    </div>
+                </section>
+            </div>
 
             <section id="publications" class="section">
                 <h2 class="section-title">Publications</h2>
@@ -593,24 +642,7 @@
                             <div class="pub-venue">The 5th Workshop on Trustworthy NLP @ NAACL 2025</div>
                             <div class="pub-abstract-toggle">Abstract</div>
                             <div class="pub-abstract-content">
-                                <p>Recent advances in Large Multimodal Models (LMMs) have expanded their capabilities
-                                    to video understanding, with Text-to-Video
-                                    (T2V) models excelling in generating videos
-                                    from textual prompts. However, they still frequently produce hallucinated content, revealing
-                                    AI-generated inconsistencies. We introduce
-                                    ViBe*: a large-scale dataset of hallucinated
-                                    videos from open-source T2V models. We identify five major hallucination types: Vanishing
-                                    Subject, Omission Error, Numeric Variability,
-                                    Subject Dysmorphia, and Visual Incongruity.
-                                    Using ten T2V models, we generated and manually annotated 3,782 videos from 837 diverse
-                                    MS COCO captions. Our proposed benchmark
-                                    includes a dataset of hallucinated videos and
-                                    a classification framework using video embeddings. ViBe serves as a critical resource for
-                                    evaluating T2V reliability and advancing hallucination detection. We establish classification
-                                    as a baseline, with the TimeSFormer + CNN ensemble achieving the best performance (0.345
-                                    accuracy, 0.342 F1 score). While initial baselines proposed achieve modest accuracy, this
-                                    highlights the difficulty of automated hallucination detection and the need for improved methods. Our research aims to drive the development of more robust T2V models and evaluate
-                                    their outputs based on user preferences.</p>
+                                <p>Recent advances in Large Multimodal Models (LMMs) have expanded their capabilities to video understanding, with Text-to-Video (T2V) models excelling in generating videos from textual prompts. However, they still frequently produce hallucinated content, revealing AI-generated inconsistencies. We introduce ViBe https://huggingface.co/datasets/ViBe-T2V-Bench/ViBe: a large-scale dataset of hallucinated videos from open-source T2V models. We identify five major hallucination types: Vanishing Subject, Omission Error, Numeric Variability, Subject Dysmorphia, and Visual Incongruity. Using ten T2V models, we generated and manually annotated 3,782 videos from 837 diverse MS COCO captions. Our proposed benchmark includes a dataset of hallucinated videos and a classification framework using video embeddings. ViBe serves as a critical resource for evaluating T2V reliability and advancing hallucination detection. We establish classification as a baseline, with the TimeSFormer + CNN ensemble achieving the best performance (0.345 accuracy, 0.342 F1 score). While initial baselines proposed achieve modest accuracy, this highlights the difficulty of automated hallucination detection and the need for improved methods. Our research aims to drive the development of more robust T2V models and evaluate their outputs based on user preferences.</p>
                             </div>
                         </div>
                     </div>
@@ -629,7 +661,7 @@
                             <div class="pub-venue">arXiv preprint arXiv:2504.21015</div>
                             <div class="pub-abstract-toggle">Abstract</div>
                             <div class="pub-abstract-content">
-                                <p>Training effective dense retrieval models often relies on hard negative (HN) examples mined from the document corpus via methods like BM25 or cross-encoders (CE), processes that can be computationally demanding and require full corpus access. This paper introduces a different approach, an end-to-end pipeline where a Large Language Model (LLM) first generates a query from a passage, and then generates a hard negative example using <em>only</em> that query text. This corpus-free negative generation contrasts with standard mining techniques. We evaluated this <span class="small-caps">LLM Query LLM HN</span> approach against traditional <span class="small-caps">LLM Query BM25 HN</span> and <span class="small-caps">LLM Query CE HN</span> pipelines using E5-Base and GTE-Base models on several BEIR benchmark datasets. Our results show the proposed all-LLM pipeline achieves performance identical to both the BM25 and the computationally intensive CE baselines across nDCG@10, Precision@10, and Recall@100 metrics. This demonstrates that our corpus-free negative generation method matches the effectiveness of complex, corpus-dependent mining techniques, offering a potentially simpler and more efficient pathway for training high-performance retrievers without sacrificing results. We make the dataset including the queries and the hard-negatives for all three methods publicly available</p>
+                                 <p>Training effective dense retrieval models often relies on hard negative (HN) examples mined from the document corpus via methods like BM25 or cross-encoders (CE), processes that can be computationally demanding and require full corpus access. This paper introduces a different approach, an end-to-end pipeline where a Large Language Model (LLM) first generates a query from a passage, and then generates a hard negative example using <em>only</em> that query text. This corpus-free negative generation contrasts with standard mining techniques. We evaluated this <span class="small-caps">LLM Query LLM HN</span> approach against traditional <span class="small-caps">LLM Query BM25 HN</span> and <span class="small-caps">LLM Query CE HN</span> pipelines using E5-Base and GTE-Base models on several BEIR benchmark datasets. Our results show the proposed all-LLM pipeline achieves performance identical to both the BM25 and the computationally intensive CE baselines across nDCG@10, Precision@10, and Recall@100 metrics. This demonstrates that our corpus-free negative generation method matches the effectiveness of complex, corpus-dependent mining techniques, offering a potentially simpler and more efficient pathway for training high-performance retrievers without sacrificing results. We make the dataset including the queries and the hard-negatives for all three methods publicly available</p>
                             </div>
                         </div>
                     </div>
@@ -648,7 +680,7 @@
                             <div class="pub-venue">arXiv preprint arXiv:2503.05763</div>
                             <div class="pub-abstract-toggle">Abstract</div>
                             <div class="pub-abstract-content">
-                                <p>Integrating structured graph data with rich textual information from nodes poses a significant challenge, particularly for heterophilic node classification. Current approaches often struggle with computational costs or effective fusion of disparate modalities. We propose <strong>Graph Masked Language Model (GMLM)</strong>, a novel architecture efficiently combining Graph Neural Networks (GNNs) with Pre-trained Language Models (PLMs). GMLM introduces three key innovations: (i) a <strong>dynamic active node selection</strong> strategy for scalable PLM text processing; (ii) a GNN-specific <strong>contrastive pretraining stage</strong> using soft masking with a learnable graph <code>[MASK]</code> token for robust structural representations; and (iii) a <strong>dedicated fusion module</strong> integrating RGCN-based GNN embeddings with PLM (GTE-Small & DistilBERT) embeddings. Extensive experiments on heterophilic benchmarks (Cornell, Wisconsin, Texas) demonstrate GMLM's superiority. Notably, GMLM(DistilBERT) achieves significant performance gains, improving accuracy by over <strong>4.7%</strong> on Cornell and over <strong>2.0%</strong> on Texas compared to the previous best-performing baselines. This work underscores the benefits of targeted PLM engagement and modality-specific pretraining for improved, efficient learning on text-rich graphs.</p>
+                                 <p>Integrating structured graph data with rich textual information from nodes poses a significant challenge, particularly for heterophilic node classification. Current approaches often struggle with computational costs or effective fusion of disparate modalities. We propose <strong>Graph Masked Language Model (GMLM)</strong>, a novel architecture efficiently combining Graph Neural Networks (GNNs) with Pre-trained Language Models (PLMs). GMLM introduces three key innovations: (i) a <strong>dynamic active node selection</strong> strategy for scalable PLM text processing; (ii) a GNN-specific <strong>contrastive pretraining stage</strong> using soft masking with a learnable graph <code>[MASK]</code> token for robust structural representations; and (iii) a <strong>dedicated fusion module</strong> integrating RGCN-based GNN embeddings with PLM (GTE-Small &amp; DistilBERT) embeddings. Extensive experiments on heterophilic benchmarks (Cornell, Wisconsin, Texas) demonstrate GMLM's superiority. Notably, GMLM(DistilBERT) achieves significant performance gains, improving accuracy by over <strong>4.7%</strong> on Cornell and over <strong>2.0%</strong> on Texas compared to the previous best-performing baselines. This work underscores the benefits of targeted PLM engagement and modality-specific pretraining for improved, efficient learning on text-rich graphs.</p>
                             </div>
                         </div>
                     </div>
@@ -667,39 +699,9 @@
                             <div class="pub-venue">arXiv preprint arXiv:2502.17011</div>
                             <div class="pub-abstract-toggle">Abstract</div>
                             <div class="pub-abstract-content">
-                                <p>Financial bond yield forecasting is challenging due to data scarcity, nonlinear macroeconomic dependencies, and evolving market conditions. In this paper, we propose a novel framework that leverages Causal Generative Adversarial Networks (CausalGANs) and Soft Actor-Critic (SAC) reinforcement learning (RL) to generate high-fidelity synthetic bond yield data for four major bond categories (AAA, BAA, US10Y, Junk). By incorporating 12 key macroeconomic variables, we ensure statistical fidelity by preserving essential market properties. To transform this market dependent synthetic data into actionable insights, we employ a finetuned Large Language Model (LLM) Qwen2.5-7B that generates trading signals (BUY/HOLD/SELL), risk assessments, and volatility projections. We use automated, human and LLM evaluations, all of which demonstrate that our framework improves forecasting performance over existing methods, with statistical validation via predictive accuracy, MAE evaluation(0.103%), profit/loss evaluation (60% profit rate), LLM evaluation (3.37/5) and expert assessments scoring 4.67 out of 5. The reinforcement learning-enhanced synthetic data generation achieves the least Mean Absolute Error of 0.103, demonstrating its effectiveness in replicating real-world bond market dynamics. We not only enhance data-driven trading strategies but also provides a scalable, high-fidelity synthetic financial data pipeline for risk & volatility management and investment decision-making. This work establishes a bridge between synthetic data generation, LLM driven financial forecasting, and language model evaluation, contributing to AI-driven financial decision-making.</p>
+                                <p>Financial bond yield forecasting is challenging due to data scarcity, nonlinear macroeconomic dependencies, and evolving market conditions. In this paper, we propose a novel framework that leverages Causal Generative Adversarial Networks (CausalGANs) and Soft Actor-Critic (SAC) reinforcement learning (RL) to generate high-fidelity synthetic bond yield data for four major bond categories (AAA, BAA, US10Y, Junk). By incorporating 12 key macroeconomic variables, we ensure statistical fidelity by preserving essential market properties. To transform this market dependent synthetic data into actionable insights, we employ a finetuned Large Language Model (LLM) Qwen2.5-7B that generates trading signals (BUY/HOLD/SELL), risk assessments, and volatility projections. We use automated, human and LLM evaluations, all of which demonstrate that our framework improves forecasting performance over existing methods, with statistical validation via predictive accuracy, MAE evaluation(0.103%), profit/loss evaluation (60% profit rate), LLM evaluation (3.37/5) and expert assessments scoring 4.67 out of 5. The reinforcement learning-enhanced synthetic data generation achieves the least Mean Absolute Error of 0.103, demonstrating its effectiveness in replicating real-world bond market dynamics. We not only enhance data-driven trading strategies but also provides a scalable, high-fidelity synthetic financial data pipeline for risk &amp; volatility management and investment decision-making. This work establishes a bridge between synthetic data generation, LLM driven financial forecasting, and language model evaluation, contributing to AI-driven financial decision-making.</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="updates" class="section">
-                <h2 class="section-title">Recent Updates</h2>
-                <div class="updates-list">
-                    <div class="update">
-                        <div class="update-date">May 2025</div>
-                        <div class="update-text">Started new collaboration with Stanford STAIR on Model Collapse.</div>
-                    </div>
-
-                    <div class="update">
-                        <div class="update-date">May 2025</div>
-                        <div class="update-text">New pre-print on synthetic dataset generation for dense retrieval released on ArXiv.</div>
-                    </div>
-
-                    <div class="update">
-                        <div class="update-date">April 2025</div>
-                        <div class="update-text">Started working on Agentic Systems and Evaluation with Prof. Anand Rao at CMU.</div>
-                    </div>
-
-                    <div class="update">
-                        <div class="update-date">March 2025</div>
-                        <div class="update-text">Released <strong>Graph Masked Language Models</strong> on arXiv.</div>
-                    </div>
-
-                    <div class="update">
-                        <div class="update-date">February 2025</div>
-                        <div class="update-text">Our dataset paper on <strong>Text2Video Hallucinations</strong> accepted to TrustNLP@NAACL.</div>
                     </div>
                 </div>
             </section>
@@ -707,7 +709,7 @@
     </div>
 
     <div id="lightbox" class="lightbox">
-        <span class="lightbox-close">&times;</span>
+        <span class="lightbox-close">x</span>
         <div class="lightbox-content" id="lightbox-content"></div>
     </div>
 
