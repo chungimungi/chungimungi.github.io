@@ -186,6 +186,10 @@
             border: 1px solid var(--border);
         }
 
+        .small-caps {
+            font-variant: small-caps;
+        }
+
         /* Experience section */
         .experience-list {
             display: grid;
@@ -252,22 +256,38 @@
         }
 
         .publication {
-            padding: 10px 0;
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 20px;
+            align-items: start;
+            padding: 15px 0;
             border-bottom: 1px solid var(--border);
             transition: all 0.2s ease;
         }
 
         .publication:hover {
             background: var(--bg-subtle);
-            padding: 10px;
-            margin: 0 -10px;
+            padding: 15px;
+            margin: 0 -15px;
             border-radius: 6px;
-            border-bottom: 1px solid transparent;
+            border-bottom-color: transparent;
         }
 
         .publication:last-child {
             border-bottom: none;
             padding-bottom: 0;
+        }
+
+        .pub-media {
+            cursor: pointer;
+        }
+
+        .pub-media img, .pub-media video {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            object-fit: cover;
         }
 
         .pub-title {
@@ -297,6 +317,103 @@
             color: var(--text-light);
             font-size: 0.85rem;
             font-style: italic;
+        }
+
+        .pub-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pub-abstract-toggle {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.85rem;
+            color: var(--accent);
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .pub-abstract-toggle:hover {
+            text-decoration: underline;
+        }
+        
+        .pub-abstract-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s ease-in-out, margin-top 0.4s ease-in-out;
+            margin-top: 0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: var(--text-medium);
+        }
+
+        .pub-abstract-content p {
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+
+        .pub-abstract-content.expanded {
+            grid-template-rows: 1fr;
+            margin-top: 10px;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .lightbox-content img,
+        .lightbox-content video {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 85vh;
+            display: block;
+            margin: 0 auto;
+            border-radius: 4px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .lightbox-close:hover,
+        .lightbox-close:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
+
+        body.lightbox-active {
+            overflow: hidden;
         }
 
         /* Updates */
@@ -373,6 +490,16 @@
 
             .contact-links {
                 gap: 10px;
+            }
+
+            .publication {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .pub-media {
+                max-width: 240px;
+                margin: 0 auto;
             }
         }
 
@@ -516,45 +643,100 @@
                 <h2 class="section-title">Publications</h2>
                 <div class="publications-list">
                     <div class="publication">
-                        <div class="pub-title">
-                            <a href="https://aclanthology.org/2025.trustnlp-main.15/" target="_blank">
-                                ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models
-                            </a>
+                        <div class="pub-media">
+                            <video autoplay loop muted playsinline>
+                                <source src="images/vibe.mp4" type="video/mp4">
+                            </video>
                         </div>
-                        <div class="pub-authors">
-                            Vipula Rawte, Sarthak Jain, <strong>Aarush Sinha</strong>, Garv Kaushik, Aman Bansal, Prathiksha Rumale Vishwanath, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P Sheth, Amitava Das
+                        <div class="pub-details">
+                            <div class="pub-title">
+                                <a href="https://aclanthology.org/2025.trustnlp-main.15/" target="_blank">
+                                    ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models
+                                </a>
+                            </div>
+                            <div class="pub-authors">
+                                Vipula Rawte, Sarthak Jain, <strong>Aarush Sinha</strong>, Garv Kaushik, Aman Bansal, Prathiksha Rumale Vishwanath, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P Sheth, Amitava Das
+                            </div>
+                            <div class="pub-venue">The 5th Workshop on Trustworthy NLP @ NAACL 2025</div>
+                            <div class="pub-abstract-toggle">Abstract</div>
+                            <div class="pub-abstract-content">
+                                <p>Recent advances in Large Multimodal Models (LMMs) have expanded their capabilities
+                                    to video understanding, with Text-to-Video
+                                    (T2V) models excelling in generating videos
+                                    from textual prompts. However, they still frequently produce hallucinated content, revealing
+                                    AI-generated inconsistencies. We introduce
+                                    ViBe*: a large-scale dataset of hallucinated
+                                    videos from open-source T2V models. We identify five major hallucination types: Vanishing
+                                    Subject, Omission Error, Numeric Variability,
+                                    Subject Dysmorphia, and Visual Incongruity.
+                                    Using ten T2V models, we generated and manually annotated 3,782 videos from 837 diverse
+                                    MS COCO captions. Our proposed benchmark
+                                    includes a dataset of hallucinated videos and
+                                    a classification framework using video embeddings. ViBe serves as a critical resource for
+                                    evaluating T2V reliability and advancing hallucination detection. We establish classification
+                                    as a baseline, with the TimeSFormer + CNN ensemble achieving the best performance (0.345
+                                    accuracy, 0.342 F1 score). While initial baselines proposed achieve modest accuracy, this
+                                    highlights the difficulty of automated hallucination detection and the need for improved methods. Our research aims to drive the development of more robust T2V models and evaluate
+                                    their outputs based on user preferences.</p>
+                            </div>
                         </div>
-                        <div class="pub-venue">The 5th Workshop on Trustworthy NLP @ NAACL 2025</div>
                     </div>
 
                     <div class="publication">
-                        <div class="pub-title">
-                            <a href="https://arxiv.org/abs/2504.21015" target="_blank">
-                                Don't Retrieve, Generate: Prompting LLMs for Synthetic Training Data in Dense Retrieval
-                            </a>
+                        <div class="pub-media">
+                            <img src="images/llm-ir.png" alt="Dense Retrieval paper thumbnail">
                         </div>
-                        <div class="pub-authors"><strong>Aarush Sinha</strong></div>
-                        <div class="pub-venue">arXiv preprint arXiv:2504.21015</div>
+                        <div class="pub-details">
+                            <div class="pub-title">
+                                <a href="https://arxiv.org/abs/2504.21015" target="_blank">
+                                    Don't Retrieve, Generate: Prompting LLMs for Synthetic Training Data in Dense Retrieval
+                                </a>
+                            </div>
+                            <div class="pub-authors"><strong>Aarush Sinha</strong></div>
+                            <div class="pub-venue">arXiv preprint arXiv:2504.21015</div>
+                            <div class="pub-abstract-toggle">Abstract</div>
+                            <div class="pub-abstract-content">
+                                <p>Training effective dense retrieval models often relies on hard negative (HN) examples mined from the document corpus via methods like BM25 or cross-encoders (CE), processes that can be computationally demanding and require full corpus access. This paper introduces a different approach, an end-to-end pipeline where a Large Language Model (LLM) first generates a query from a passage, and then generates a hard negative example using <em>only</em> that query text. This corpus-free negative generation contrasts with standard mining techniques. We evaluated this <span class="small-caps">LLM Query LLM HN</span> approach against traditional <span class="small-caps">LLM Query BM25 HN</span> and <span class="small-caps">LLM Query CE HN</span> pipelines using E5-Base and GTE-Base models on several BEIR benchmark datasets. Our results show the proposed all-LLM pipeline achieves performance identical to both the BM25 and the computationally intensive CE baselines across nDCG@10, Precision@10, and Recall@100 metrics. This demonstrates that our corpus-free negative generation method matches the effectiveness of complex, corpus-dependent mining techniques, offering a potentially simpler and more efficient pathway for training high-performance retrievers without sacrificing results. We make the dataset including the queries and the hard-negatives for all three methods publicly available</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="publication">
-                        <div class="pub-title">
-                            <a href="https://arxiv.org/abs/2503.05763" target="_blank">
-                                GMLM: Bridging Graph Neural Networks and Language Models for Heterophilic Node Classification
-                            </a>
+                        <div class="pub-media">
+                            <img src="images/gmlml.png" alt="GMLM paper thumbnail">
                         </div>
-                        <div class="pub-authors"><strong>Aarush Sinha</strong>, OM Kumar CU</div>
-                        <div class="pub-venue">arXiv preprint arXiv:2503.05763</div>
+                        <div class="pub-details">
+                            <div class="pub-title">
+                                <a href="https://arxiv.org/abs/2503.05763" target="_blank">
+                                    GMLM: Bridging Graph Neural Networks and Language Models for Heterophilic Node Classification
+                                </a>
+                            </div>
+                            <div class="pub-authors"><strong>Aarush Sinha</strong>, OM Kumar CU</div>
+                            <div class="pub-venue">arXiv preprint arXiv:2503.05763</div>
+                            <div class="pub-abstract-toggle">Abstract</div>
+                            <div class="pub-abstract-content">
+                                <p>Integrating structured graph data with rich textual information from nodes poses a significant challenge, particularly for heterophilic node classification. Current approaches often struggle with computational costs or effective fusion of disparate modalities. We propose <strong>Graph Masked Language Model (GMLM)</strong>, a novel architecture efficiently combining Graph Neural Networks (GNNs) with Pre-trained Language Models (PLMs). GMLM introduces three key innovations: (i) a <strong>dynamic active node selection</strong> strategy for scalable PLM text processing; (ii) a GNN-specific <strong>contrastive pretraining stage</strong> using soft masking with a learnable graph <code>[MASK]</code> token for robust structural representations; and (iii) a <strong>dedicated fusion module</strong> integrating RGCN-based GNN embeddings with PLM (GTE-Small & DistilBERT) embeddings. Extensive experiments on heterophilic benchmarks (Cornell, Wisconsin, Texas) demonstrate GMLM's superiority. Notably, GMLM(DistilBERT) achieves significant performance gains, improving accuracy by over <strong>4.7%</strong> on Cornell and over <strong>2.0%</strong> on Texas compared to the previous best-performing baselines. This work underscores the benefits of targeted PLM engagement and modality-specific pretraining for improved, efficient learning on text-rich graphs.</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="publication">
-                        <div class="pub-title">
-                            <a href="https://arxiv.org/abs/2502.17011" target="_blank">
-                                Predicting Liquidity-Aware Bond Yields using Causal GANs and Deep Reinforcement Learning with LLM Evaluation
-                            </a>
+                        <div class="pub-media">
+                            <img src="images/bonds.png" alt="Bond Yields paper thumbnail">
                         </div>
-                        <div class="pub-authors">Jaskaran Singh Walia, <strong>Aarush Sinha</strong>, Srinitish Srinivasan, Srihari Unnikrishnan</div>
-                        <div class="pub-venue">arXiv preprint arXiv:2502.17011</div>
+                        <div class="pub-details">
+                            <div class="pub-title">
+                                <a href="https://arxiv.org/abs/2502.17011" target="_blank">
+                                    Predicting Liquidity-Aware Bond Yields using Causal GANs and Deep Reinforcement Learning with LLM Evaluation
+                                </a>
+                            </div>
+                            <div class="pub-authors">Jaskaran Singh Walia, <strong>Aarush Sinha</strong>, Srinitish Srinivasan, Srihari Unnikrishnan</div>
+                            <div class="pub-venue">arXiv preprint arXiv:2502.17011</div>
+                            <div class="pub-abstract-toggle">Abstract</div>
+                            <div class="pub-abstract-content">
+                                <p>Financial bond yield forecasting is challenging due to data scarcity, nonlinear macroeconomic dependencies, and evolving market conditions. In this paper, we propose a novel framework that leverages Causal Generative Adversarial Networks (CausalGANs) and Soft Actor-Critic (SAC) reinforcement learning (RL) to generate high-fidelity synthetic bond yield data for four major bond categories (AAA, BAA, US10Y, Junk). By incorporating 12 key macroeconomic variables, we ensure statistical fidelity by preserving essential market properties. To transform this market dependent synthetic data into actionable insights, we employ a finetuned Large Language Model (LLM) Qwen2.5-7B that generates trading signals (BUY/HOLD/SELL), risk assessments, and volatility projections. We use automated, human and LLM evaluations, all of which demonstrate that our framework improves forecasting performance over existing methods, with statistical validation via predictive accuracy, MAE evaluation(0.103%), profit/loss evaluation (60% profit rate), LLM evaluation (3.37/5) and expert assessments scoring 4.67 out of 5. The reinforcement learning-enhanced synthetic data generation achieves the least Mean Absolute Error of 0.103, demonstrating its effectiveness in replicating real-world bond market dynamics. We not only enhance data-driven trading strategies but also provides a scalable, high-fidelity synthetic financial data pipeline for risk & volatility management and investment decision-making. This work establishes a bridge between synthetic data generation, LLM driven financial forecasting, and language model evaluation, contributing to AI-driven financial decision-making.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -591,10 +773,70 @@
         </main>
     </div>
 
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content" id="lightbox-content"></div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Simple fade-in animation is handled by CSS
-            // No complex JavaScript needed
+            // Abstract toggle
+            document.querySelectorAll('.pub-abstract-toggle').forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const abstractContent = toggle.nextElementSibling;
+                    const isExpanded = abstractContent.classList.toggle('expanded');
+                    toggle.textContent = isExpanded ? 'Hide Abstract' : 'Abstract';
+                });
+            });
+
+            // Lightbox functionality
+            const lightbox = document.getElementById('lightbox');
+            const lightboxContent = document.getElementById('lightbox-content');
+            const lightboxClose = document.querySelector('.lightbox-close');
+
+            document.querySelectorAll('.pub-media').forEach(item => {
+                item.addEventListener('click', () => {
+                    lightbox.classList.add('active');
+                    document.body.classList.add('lightbox-active');
+
+                    const mediaElement = item.querySelector('img, video');
+                    if (mediaElement) {
+                        let newMediaElement;
+                        if (mediaElement.tagName === 'VIDEO') {
+                            newMediaElement = document.createElement('video');
+                            newMediaElement.src = mediaElement.querySelector('source').src;
+                            newMediaElement.controls = true;
+                            newMediaElement.autoplay = true;
+                        } else {
+                            newMediaElement = document.createElement('img');
+                            newMediaElement.src = mediaElement.src;
+                        }
+                        newMediaElement.alt = mediaElement.alt;
+                        lightboxContent.innerHTML = ''; // Clear previous content
+                        lightboxContent.appendChild(newMediaElement);
+                    }
+                });
+            });
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.classList.remove('lightbox-active');
+                lightboxContent.innerHTML = ''; // Clear content to stop video playback
+            }
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) { // Close only if clicking on the background
+                    closeLightbox();
+                }
+            });
+
+            // Close lightbox with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
         });
     </script>
 </body>
