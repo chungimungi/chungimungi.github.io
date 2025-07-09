@@ -668,7 +668,7 @@
 
                     <div class="publication">
                         <div class="pub-media">
-                            <img src="images/gmlml.png" alt="GMLM paper thumbnail">
+                            <img src="images/gmlm.png" alt="GMLM paper thumbnail">
                         </div>
                         <div class="pub-details">
                             <div class="pub-title">
@@ -676,11 +676,11 @@
                                     GMLM: Bridging Graph Neural Networks and Language Models for Heterophilic Node Classification
                                 </a>
                             </div>
-                            <div class="pub-authors"><strong>Aarush Sinha</strong>, OM Kumar CU</div>
+                            <div class="pub-authors"><strong>Aarush Sinha</strong></div>
                             <div class="pub-venue">arXiv preprint arXiv:2503.05763</div>
                             <div class="pub-abstract-toggle">Abstract</div>
                             <div class="pub-abstract-content">
-                                 <p>Integrating structured graph data with rich textual information from nodes poses a significant challenge, particularly for heterophilic node classification. Current approaches often struggle with computational costs or effective fusion of disparate modalities. We propose <strong>Graph Masked Language Model (GMLM)</strong>, a novel architecture efficiently combining Graph Neural Networks (GNNs) with Pre-trained Language Models (PLMs). GMLM introduces three key innovations: (i) a <strong>dynamic active node selection</strong> strategy for scalable PLM text processing; (ii) a GNN-specific <strong>contrastive pretraining stage</strong> using soft masking with a learnable graph <code>[MASK]</code> token for robust structural representations; and (iii) a <strong>dedicated fusion module</strong> integrating RGCN-based GNN embeddings with PLM (GTE-Small &amp; DistilBERT) embeddings. Extensive experiments on heterophilic benchmarks (Cornell, Wisconsin, Texas) demonstrate GMLM's superiority. Notably, GMLM(DistilBERT) achieves significant performance gains, improving accuracy by over <strong>4.7%</strong> on Cornell and over <strong>2.0%</strong> on Texas compared to the previous best-performing baselines. This work underscores the benefits of targeted PLM engagement and modality-specific pretraining for improved, efficient learning on text-rich graphs.</p>
+                                 <p>Integrating powerful but computationally expensive Pre-trained Language Models (PLMs) with Graph Neural Networks (GNNs) is a key challenge, especially on text-rich heterophilic graphs. We propose the Graph Masked Language Model (GMLM), a framework designed for the efficient and effective fusion of graph structure and text semantics. GMLM employs a two-stage process: first, a contrastive pre-training stage with a novel soft masking technique builds a robust multi-scale GNN; second, an end-to-end fine-tuning stage uses a dynamic active node selection strategy for scalability and a bi-directional cross-attention module for deep fusion. Experiments on five heterophilic benchmarks show GMLM achieves state-of-the-art results on four, significantly outperforming prior GNN and large LLM-based methods. For instance, it improves accuracy on the Texas dataset by over 8% and on Wisconsin by nearly 5%. Our work demonstrates that a sophisticated, deeply-integrated architecture can be more effective and efficient than larger, general-purpose models for text-rich graph representation learning.</p>
                             </div>
                         </div>
                     </div>
