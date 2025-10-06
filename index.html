@@ -588,6 +588,10 @@
                     <h2 class="section-title">Recent Updates</h2>
                     <div class="updates-list">
                         <div class="update">
+                            <div class="update-date">October 2025</div>
+                            <div class="update-text">My the undergrad thesis has been publish in Scientific Reports</div>
+                        </div>                        
+                        <div class="update">
                             <div class="update-date">July 2025</div>
                             <div class="update-text">Joining the University of Copenhagen for my Masters in Computer Science.</div>
                         </div>
@@ -606,10 +610,10 @@
                             <div class="update-text">New pre-print on synthetic dataset generation for dense retrieval released on ArXiv.</div>
                         </div>
     
-                        <div class="update">
+                        <!-- <div class="update">
                             <div class="update-date">April 2025</div>
                             <div class="update-text">Started working on Agentic Systems and Evaluation with Prof. Anand Rao at CMU.</div>
-                        </div>
+                        </div> -->
     
                         <!-- <div class="update">
                             <div class="update-date">March 2025</div>
@@ -646,6 +650,25 @@
                             <div class="pub-abstract-toggle">Abstract</div>
                             <div class="pub-abstract-content">
                                 <p>Recent advances in Large Multimodal Models (LMMs) have expanded their capabilities to video understanding, with Text-to-Video (T2V) models excelling in generating videos from textual prompts. However, they still frequently produce hallucinated content, revealing AI-generated inconsistencies. We introduce ViBe https://huggingface.co/datasets/ViBe-T2V-Bench/ViBe: a large-scale dataset of hallucinated videos from open-source T2V models. We identify five major hallucination types: Vanishing Subject, Omission Error, Numeric Variability, Subject Dysmorphia, and Visual Incongruity. Using ten T2V models, we generated and manually annotated 3,782 videos from 837 diverse MS COCO captions. Our proposed benchmark includes a dataset of hallucinated videos and a classification framework using video embeddings. ViBe serves as a critical resource for evaluating T2V reliability and advancing hallucination detection. We establish classification as a baseline, with the TimeSFormer + CNN ensemble achieving the best performance (0.345 accuracy, 0.342 F1 score). While initial baselines proposed achieve modest accuracy, this highlights the difficulty of automated hallucination detection and the need for improved methods. Our research aims to drive the development of more robust T2V models and evaluate their outputs based on user preferences.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="pub-media">
+                            <img src="images/dr-cot.png" alt="dr-cot">
+                        </div>
+                        <div class="pub-details">
+                            <div class="pub-title">
+                                <a href="https://link.springer.com/article/10.1038/s41598-025-18622-6#Abs1" target="_blank">
+                                    Don't Retrieve, Generate: Prompting LLMs for Synthetic Training Data in Dense Retrieval
+                                </a>
+                            </div>
+                            <div class="pub-authors"><strong>Aarush Sinha, OmKumar Chandra Umakanthan & Sudhakaran Gajendran </strong></div>
+                            <div class="pub-venue">Scientific Reports</div>
+                            <div class="pub-abstract-toggle">Abstract</div>
+                            <div class="pub-abstract-content">
+                                 <p>Chain-of-Thought (CoT) prompting has revolutionized reasoning in Large Language Models (LLMs), enabling them to tackle complex tasks by mimicking step-by-step human thought processes. However, traditional CoT methods often suffer from high computational costs and context dilution, limiting their effectiveness, particularly in resource-constrained or real-time applications. To address these challenges, we introduce Dynamic Recursive Chain-of-Thought (DR-CoT), a novel reasoning framework for parameter-efficient models. DR-CoT synergistically integrates recursive reasoning, dynamic context truncation, and a voting mechanism. By selectively retaining the most salient context within a fixed token budget and aggregating inferences from multiple independent reasoning chains, DR-CoT significantly enhances reasoning accuracy. Extensive evaluations on challenging reasoning benchmarks, including GPQA Diamond and AIME2024, demonstrate the efficacy of DR-CoT. On GPQA Diamond, DR-CoT sees Pass@1 accuracy gains of 1.5% for Gemini 2.0 Flash Thinking Experimental, 2.7% for Grok 3 Beta, and 4.4% for o3 Mini. Similarly, AIME2024 results reveal consistent improvements of 3-4 percentage points across evaluated models. Furthermore, DR-CoT enhances zero-shot classification performance on GPQA Diamond, enabling compact BERT-sized models to surpass larger language models such as GPT-4 and LLaMA 2. In code generation tasks using HumanEval, DRCoT empowers models to exceed the performance of established frontier LLMs, including LLaMA 70B, Phi-3, and Claude Sonnet. These comprehensive results underscore DR-CoT’s effectiveness in bridging the performance gap between parameter-efficient models and state-of-the-art LLMs across multiple domains.</p>
                             </div>
                         </div>
                     </div>
