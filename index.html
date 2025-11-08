@@ -587,6 +587,10 @@
                     <h2 class="section-title">Recent Updates</h2>
                     <div class="updates-list">
                         <div class="update">
+                            <div class="update-date">November 2025</div>
+                            <div class="update-text">My work with WSAI has been accepted for an oral presentation at AAAI2026</div>
+                        </div>                         
+                        <div class="update">
                             <div class="update-date">October 2025</div>
                             <div class="update-text">GMLM has been accepted to a workshop at CIKM2025</div>
                         </div>    
@@ -603,10 +607,10 @@
                             <div class="update-text">Serving as a reviewer for the 2025 ACL SRW workshop.</div>
                         </div>
                     
-                        <div class="update">
+                        <!-- <div class="update">
                             <div class="update-date">May 2025</div>
                             <div class="update-text">Started new collaboration with Stanford STAIR on Model Collapse.</div>
-                        </div>
+                        </div> -->
     
                         <!-- <div class="update">
                             <div class="update-date">May 2025</div>
@@ -634,6 +638,26 @@
             <section id="publications" class="section">
                 <h2 class="section-title">Publications</h2>
                 <div class="publications-list">
+
+                    <div class="publication">
+                        <div class="pub-media">
+                            <img src="images/dr-cot.png" alt="dr-cot">
+                        </div>
+                        <div class="pub-details">
+                            <div class="pub-title">
+                                <a href="" target="_blank">
+                                    BiCA: Effective Biomedical Dense Retrieval with Citation-Aware Hard Negatives
+                                </a>
+                            </div>
+                            <div class="pub-authors"><strong>Aarush Sinha </strong>, Pavan Kumar, Roshan MSB, Nirav Bhatt</div>
+                            <div class="pub-venue">AAAI 2026 (Oral)</div>
+                            <div class="pub-abstract-toggle">Abstract</div>
+                            <div class="pub-abstract-content">
+                                <p>Hard negatives are essential for training effective retrieval models. Hard-negative mining typically relies on ranking documents using cross-encoders or static embedding models based on similarity metrics such as cosine distance. Hard negative mining becomes challenging for biomedical and scientific domains due to the difficulty in distinguishing between source and hard negative documents. However, referenced documents naturally share contextual relevance with the source document but are not duplicates, making them well-suited as hard negatives. In this work, we propose BiCA: Biomedical Dense Retrieval with Citation-Aware Hard Negatives, an approach for hard-negative mining by utilizing citation links in 20,000 PubMed articles for improving a domain-specific small dense retriever. We fine-tune the GTE_small and GTE_Base models using these citation-informed negatives and observe consistent improvements in zero-shot dense retrieval using nDCG@10 for both in-domain and out-of-domain tasks on BEIR and outperform baselines on long-tailed topics in LoTTE using Success@5. Our findings highlight the potential of leveraging document link structure to generate highly informative negatives, enabling state-of-the-art performance with minimal fine-tuning and demonstrating a path towards highly data-efficient domain adaptation.</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="publication">
                         <div class="pub-media">
                             <video autoplay loop muted playsinline>
@@ -671,7 +695,7 @@
                             <div class="pub-venue">Scientific Reports</div>
                             <div class="pub-abstract-toggle">Abstract</div>
                             <div class="pub-abstract-content">
-                                 <p>Chain-of-Thought (CoT) prompting has revolutionized reasoning in Large Language Models (LLMs), enabling them to tackle complex tasks by mimicking step-by-step human thought processes. However, traditional CoT methods often suffer from high computational costs and context dilution, limiting their effectiveness, particularly in resource-constrained or real-time applications. To address these challenges, we introduce Dynamic Recursive Chain-of-Thought (DR-CoT), a novel reasoning framework for parameter-efficient models. DR-CoT synergistically integrates recursive reasoning, dynamic context truncation, and a voting mechanism. By selectively retaining the most salient context within a fixed token budget and aggregating inferences from multiple independent reasoning chains, DR-CoT significantly enhances reasoning accuracy. Extensive evaluations on challenging reasoning benchmarks, including GPQA Diamond and AIME2024, demonstrate the efficacy of DR-CoT. On GPQA Diamond, DR-CoT sees Pass@1 accuracy gains of 1.5% for Gemini 2.0 Flash Thinking Experimental, 2.7% for Grok 3 Beta, and 4.4% for o3 Mini. Similarly, AIME2024 results reveal consistent improvements of 3-4 percentage points across evaluated models. Furthermore, DR-CoT enhances zero-shot classification performance on GPQA Diamond, enabling compact BERT-sized models to surpass larger language models such as GPT-4 and LLaMA 2. In code generation tasks using HumanEval, DRCoT empowers models to exceed the performance of established frontier LLMs, including LLaMA 70B, Phi-3, and Claude Sonnet. These comprehensive results underscore DR-CoT’s effectiveness in bridging the performance gap between parameter-efficient models and state-of-the-art LLMs across multiple domains.</p>
+                                <p>Chain-of-Thought (CoT) prompting has revolutionized reasoning in Large Language Models (LLMs), enabling them to tackle complex tasks by mimicking step-by-step human thought processes. However, traditional CoT methods often suffer from high computational costs and context dilution, limiting their effectiveness, particularly in resource-constrained or real-time applications. To address these challenges, we introduce Dynamic Recursive Chain-of-Thought (DR-CoT), a novel reasoning framework for parameter-efficient models. DR-CoT synergistically integrates recursive reasoning, dynamic context truncation, and a voting mechanism. By selectively retaining the most salient context within a fixed token budget and aggregating inferences from multiple independent reasoning chains, DR-CoT significantly enhances reasoning accuracy. Extensive evaluations on challenging reasoning benchmarks, including GPQA Diamond and AIME2024, demonstrate the efficacy of DR-CoT. On GPQA Diamond, DR-CoT sees Pass@1 accuracy gains of 1.5% for Gemini 2.0 Flash Thinking Experimental, 2.7% for Grok 3 Beta, and 4.4% for o3 Mini. Similarly, AIME2024 results reveal consistent improvements of 3-4 percentage points across evaluated models. Furthermore, DR-CoT enhances zero-shot classification performance on GPQA Diamond, enabling compact BERT-sized models to surpass larger language models such as GPT-4 and LLaMA 2. In code generation tasks using HumanEval, DRCoT empowers models to exceed the performance of established frontier LLMs, including LLaMA 70B, Phi-3, and Claude Sonnet. These comprehensive results underscore DR-CoT’s effectiveness in bridging the performance gap between parameter-efficient models and state-of-the-art LLMs across multiple domains.</p>
                             </div>
                         </div>
                     </div>
