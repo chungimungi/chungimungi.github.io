@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aarush Sinha</title>
+    <title>Publications - Aarush Sinha</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <style>
@@ -86,35 +86,10 @@
             left: 0;
         }
 
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .contact-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.2s ease;
-        }
-
-        .contact-links a:hover {
-            color: var(--accent);
-        }
-
         /* Main content */
         .content {
             display: grid;
             gap: 25px;
-        }
-
-        .about-updates-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
-            align-items: start;
         }
 
         .section {
@@ -123,11 +98,8 @@
             animation: fadeIn 0.8s ease forwards;
         }
 
-        #about, #updates {
-            animation-delay: 0.1s;
-        }
         #publications {
-            animation-delay: 0.2s;
+            animation-delay: 0.1s;
         }
 
         @keyframes fadeIn {
@@ -144,126 +116,6 @@
             color: var(--text-dark);
             border-bottom: 1px solid var(--border);
             padding-bottom: 5px;
-        }
-
-        /* About section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 140px 1fr;
-            gap: 25px;
-            align-items: start;
-        }
-
-        .profile-image {
-            width: 100%;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-        }
-
-        .about-text p {
-            margin-bottom: 10px;
-        }
-
-        .about-text p a {
-            color: var(--accent);
-            text-decoration: none;
-            border-bottom: 1px dotted var(--accent);
-            transition: border-bottom-style 0.2s ease;
-        }
-
-        .about-text p a:hover {
-            border-bottom-style: solid;
-        }
-
-        .research-interests {
-            margin-top: 15px;
-        }
-
-        .research-interests h4 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-medium);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .interests-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .interest-tag {
-            background: var(--bg-subtle);
-            color: var(--text-medium);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            border: 1px solid var(--border);
-        }
-
-        .small-caps {
-            font-variant: small-caps;
-        }
-
-        /* Experience section */
-        .experience-list {
-            display: grid;
-            gap: 15px;
-        }
-
-        .experience-item {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .experience-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 6px;
-        }
-
-        .experience-title {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .experience-org {
-            color: var(--accent);
-            font-style: italic;
-            margin-bottom: 3px;
-            font-size: 1rem;
-        }
-
-        .experience-org a {
-            color: inherit;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-bottom 0.2s ease;
-        }
-
-        .experience-org a:hover {
-            border-bottom-color: var(--accent);
-        }
-
-        .experience-period {
-            font-family: 'Source Sans Pro', sans-serif;
-            color: var(--text-light);
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-
-        .experience-desc {
-            color: var(--text-medium);
-            line-height: 1.45;
-            font-size: 0.95rem;
         }
 
         /* Publications */
@@ -431,44 +283,17 @@
             overflow: hidden;
         }
 
-        /* Updates */
-        .updates-list {
-            display: grid;
-            gap: 10px;
+        /* Back link */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
         }
 
-        .update {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .update:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .update-date {
-            color: var(--text-light);
-            font-size: 0.8rem;
-            margin-bottom: 4px;
-            font-weight: 600;
-        }
-
-        .update-text {
-            color: var(--text-medium);
-            font-size: 0.95rem;
-        }
-
-        /* Education subsection */
-        .education {
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border);
-        }
-
-        .education h3 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
+        .back-link:hover {
             color: var(--text-dark);
         }
 
@@ -480,34 +305,6 @@
 
             .header h1 {
                 font-size: 1.8rem;
-            }
-            
-            .navigation a {
-                margin: 0 8px;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                text-align: center;
-            }
-
-            .about-updates-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .profile-image {
-                max-width: 140px;
-                margin: 0 auto;
-            }
-
-            .experience-header {
-                flex-direction: column;
-                gap: 4px;
-            }
-
-            .contact-links {
-                gap: 10px;
             }
 
             .publication {
@@ -530,125 +327,12 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1>Aarush Sinha</h1>
-            
-            <nav class="navigation">
-                <a href="#about">About</a>
-                <a href="publications.html">Publications</a>
-                <a href="#updates">Updates</a>
-            </nav>
-            
-            <div class="contact-links">
-                <a href="https://x.com/Aarush1003" target="_blank" aria-label="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="http://github.com/chungimungi" target="_blank" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/asj10/" target="_blank" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://scholar.google.com/citations?user=5cl3fb8AAAAJ&hl=en" target="_blank"aria-label="Google Scholar">
-                    <i class="ai ai-google-scholar"></i>
-                </a>
-                <a href="mailto:aarush.sinha@gmail.com" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
+            <a href="index.html" class="back-link">← Back to Home</a>
+            <h1>Publications</h1>
         </header>
 
         <main class="content">
-            <div class="about-updates-grid">
-                <section id="about" class="section">
-                    <h2 class="section-title">About</h2>
-                    <div class="about-grid">
-                        <img src="avatar.png" alt="Aarush Sinha" class="profile-image">
-                        <div class="about-text">
-                            <p>
-                                I am a Masters student in Computer Science at the <a href="https://www.ku.dk/" target="_blank">University of Copenhagen</a>, specializing in Information Retrieval and Natural Language Processing. I previously completed my undergraduate at VIT Chennai</a>. 
-                                My research is centered on enhancing the reasoning and retrieval capabilities and overall performance of small language models while ensuring efficiency.
-                            </p>
-                            <p>
-                                I am fortunate to collaborate with wonderful mentors across various labs. I previously worked on hallucinations in Text2Video models with Prof. Amitava Das at the <a href="https://aiisc.ai/" target="_blank">AI Institute, UofSC</a> and on building efficient dense retrievers with Prof. Nirav Bhatt at <a href="https://wsai.iitm.ac.in/" target="_blank">WSAI-IIT Madras</a>. Currently, at the <a href="https://stairlab.stanford.edu/" target="_blank">Stanford STAIR Lab</a>, I'm working with Rylan Schaeffer and Prof. Sanmi Koyejo on model collapse.</p>
-                            <div class="research-interests">
-                                <h4>Research Interests</h4>
-                                <div class="interests-list">
-                                    <span class="interest-tag">Information Retrieval</span>
-                                    <span class="interest-tag">Natural Language Processing</span>
-                                    <span class="interest-tag">Reasoning in Language Models</span>
-                                </div>
-                            </div>
-                            <div class="research-interests">
-                                <h4>Service</h4>
-                                <div class="interests-list">
-                                    <span class="interest-tag">SRW@ACL'25 (Reviewer)</span>
-                                    <span class="interest-tag">FrontierIR@AAAI'26 (Reviewer)</span>
-                                    <span class="interest-tag">HCRS@WWW'26 (Reviewer)</span>
-                                    <span class="interest-tag">SIGIR'26 (Reviewer)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section id="updates" class="section">
-                    <h2 class="section-title">Recent Updates</h2>
-                    <div class="updates-list">
-                        <div class="update">
-                            <div class="update-date">November 2025</div>
-                            <div class="update-text">My work with WSAI has been accepted for an oral presentation at AAAI2026</div>
-                        </div>                         
-                        <div class="update">
-                            <div class="update-date">October 2025</div>
-                            <div class="update-text">GMLM has been accepted to a workshop at CIKM2025</div>
-                        </div>    
-                        <div class="update">
-                            <div class="update-date">October 2025</div>
-                            <div class="update-text">My undergrad thesis has been published in Scientific Reports</div>
-                        </div>                        
-                        <div class="update">
-                            <div class="update-date">July 2025</div>
-                            <div class="update-text">Joining the University of Copenhagen for my Masters in Computer Science.</div>
-                        </div>
-                        <div class="update">
-                            <div class="update-date">June 2025</div>
-                            <div class="update-text">Serving as a reviewer for the 2025 ACL SRW workshop.</div>
-                        </div>
-                    
-                        <!-- <div class="update">
-                            <div class="update-date">May 2025</div>
-                            <div class="update-text">Started new collaboration with Stanford STAIR on Model Collapse.</div>
-                        </div> -->
-    
-                        <!-- <div class="update">
-                            <div class="update-date">May 2025</div>
-                            <div class="update-text">New pre-print on synthetic dataset generation for dense retrieval released on ArXiv.</div>
-                        </div> -->
-    
-                        <!-- <div class="update">
-                            <div class="update-date">April 2025</div>
-                            <div class="update-text">Started working on Agentic Systems and Evaluation with Prof. Anand Rao at CMU.</div>
-                        </div> -->
-    
-                        <!-- <div class="update">
-                            <div class="update-date">March 2025</div>
-                            <div class="update-text">Released <strong>GMLM: Bridging Graph Neural Networks and Language Models for Heterophilic Node Classification</strong> on arXiv.</div>
-                        </div> -->
-    
-                        <!-- <div class="update">
-                            <div class="update-date">February 2025</div>
-                            <div class="update-text">Our dataset paper on <strong>Text2Video Hallucinations</strong> accepted to TrustNLP@NAACL.</div>
-                        </div> -->
-                    </div>
-                </section>
-            </div>
-
             <section id="publications" class="section">
-                <h2 class="section-title"><a href="publications.html" style="color: var(--text-dark); text-decoration: none; border-bottom: 1px dotted var(--accent); transition: border-bottom-style 0.2s ease;" onmouseover="this.style.borderBottomStyle='solid'" onmouseout="this.style.borderBottomStyle='dotted'">Publications</a></h2>
-                <p style="color: var(--text-medium); font-size: 0.95rem;">View all my publications and research work on the <a href="publications.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); transition: border-bottom-style 0.2s ease;" onmouseover="this.style.borderBottomStyle='solid'" onmouseout="this.style.borderBottomStyle='dotted'">publications page</a>.</p>
-            </section>
-
-            <section id="publications-old" style="display:none;" class="section">
-                <h2 class="section-title">Publications</h2>
                 <div class="publications-list">
 
                     <div class="publication">
@@ -707,7 +391,7 @@
                             <div class="pub-venue">Scientific Reports</div>
                             <div class="pub-abstract-toggle">Abstract</div>
                             <div class="pub-abstract-content">
-                                <p>Chain-of-Thought (CoT) prompting has revolutionized reasoning in Large Language Models (LLMs), enabling them to tackle complex tasks by mimicking step-by-step human thought processes. However, traditional CoT methods often suffer from high computational costs and context dilution, limiting their effectiveness, particularly in resource-constrained or real-time applications. To address these challenges, we introduce Dynamic Recursive Chain-of-Thought (DR-CoT), a novel reasoning framework for parameter-efficient models. DR-CoT synergistically integrates recursive reasoning, dynamic context truncation, and a voting mechanism. By selectively retaining the most salient context within a fixed token budget and aggregating inferences from multiple independent reasoning chains, DR-CoT significantly enhances reasoning accuracy. Extensive evaluations on challenging reasoning benchmarks, including GPQA Diamond and AIME2024, demonstrate the efficacy of DR-CoT. On GPQA Diamond, DR-CoT sees Pass@1 accuracy gains of 1.5% for Gemini 2.0 Flash Thinking Experimental, 2.7% for Grok 3 Beta, and 4.4% for o3 Mini. Similarly, AIME2024 results reveal consistent improvements of 3-4 percentage points across evaluated models. Furthermore, DR-CoT enhances zero-shot classification performance on GPQA Diamond, enabling compact BERT-sized models to surpass larger language models such as GPT-4 and LLaMA 2. In code generation tasks using HumanEval, DRCoT empowers models to exceed the performance of established frontier LLMs, including LLaMA 70B, Phi-3, and Claude Sonnet. These comprehensive results underscore DR-CoT’s effectiveness in bridging the performance gap between parameter-efficient models and state-of-the-art LLMs across multiple domains.</p>
+                                <p>Chain-of-Thought (CoT) prompting has revolutionized reasoning in Large Language Models (LLMs), enabling them to tackle complex tasks by mimicking step-by-step human thought processes. However, traditional CoT methods often suffer from high computational costs and context dilution, limiting their effectiveness, particularly in resource-constrained or real-time applications. To address these challenges, we introduce Dynamic Recursive Chain-of-Thought (DR-CoT), a novel reasoning framework for parameter-efficient models. DR-CoT synergistically integrates recursive reasoning, dynamic context truncation, and a voting mechanism. By selectively retaining the most salient context within a fixed token budget and aggregating inferences from multiple independent reasoning chains, DR-CoT significantly enhances reasoning accuracy. Extensive evaluations on challenging reasoning benchmarks, including GPQA Diamond and AIME2024, demonstrate the efficacy of DR-CoT. On GPQA Diamond, DR-CoT sees Pass@1 accuracy gains of 1.5% for Gemini 2.0 Flash Thinking Experimental, 2.7% for Grok 3 Beta, and 4.4% for o3 Mini. Similarly, AIME2024 results reveal consistent improvements of 3-4 percentage points across evaluated models. Furthermore, DR-CoT enhances zero-shot classification performance on GPQA Diamond, enabling compact BERT-sized models to surpass larger language models such as GPT-4 and LLaMA 2. In code generation tasks using HumanEval, DRCoT empowers models to exceed the performance of established frontier LLMs, including LLaMA 70B, Phi-3, and Claude Sonnet. These comprehensive results underscore DR-CoT's effectiveness in bridging the performance gap between parameter-efficient models and state-of-the-art LLMs across multiple domains.</p>
                             </div>
                         </div>
                     </div>
