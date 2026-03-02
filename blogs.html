@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs - Aarush Sinha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <style>
+        :root {
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+            --text-light: #6a6a6a;
+            --accent: #2563eb;
+            --border: #e5e5e5;
+            --bg-subtle: #fafafa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+            line-height: 1.5;
+            color: var(--text-dark);
+            background: #fff;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px 15px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        .navigation {
+            margin-bottom: 15px;
+        }
+
+        .navigation a {
+            color: var(--text-medium);
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 400;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            position: relative;
+            padding-bottom: 3px;
+        }
+
+        .navigation a:hover {
+            color: var(--accent);
+        }
+
+        .navigation a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--accent);
+            transition: all 0.2s ease;
+        }
+
+        .navigation a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Main content */
+        .content {
+            display: grid;
+            gap: 25px;
+        }
+
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 5px;
+        }
+
+        /* Blog List */
+        .blog-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .blog-item {
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .blog-item:hover {
+            border-color: var(--accent);
+            background: var(--bg-subtle);
+            transform: translateY(-2px);
+        }
+
+        .blog-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .blog-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .blog-description {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            line-height: 1.4;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--text-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="back-link">← Back to Home</a>
+            <h1>Blogs</h1>
+            <nav class="navigation">
+                <a href="index.html">About</a>
+                <a href="publications.html">Publications</a>
+                <a href="blogs.html" style="color: var(--accent); border-bottom: 1px solid var(--accent);">Blogs</a>
+            </nav>
+        </header>
+
+        <main class="content">
+            <section id="blogs" class="section">
+                <div class="blog-list">
+                    <a href="https://www.notion.so/The-Wait-What-Was-I-Researching-Again-Guide-to-Research-24bae48aa9288089a012ef879374eb4b" target="_blank" class="blog-item">
+                        <div class="blog-date">March 2026</div>
+                        <div class="blog-title">The “Wait, What Was I Researching Again?” Guide to Research</div>
+                        <p class="blog-description">A practical guide to staying organized and focused during the research process, even when things get overwhelming.</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
