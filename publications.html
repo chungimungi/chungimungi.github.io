@@ -387,6 +387,30 @@
 
                     <div class="publication">
                         <div class="pub-media">
+                            <img src="images/eci.png" alt="Dense Retrieval paper thumbnail">
+                        </div>
+                        <div class="pub-details">
+                            <div class="pub-title">
+                                <a href="https://arxiv.org/abs/2603.20990" target="_blank">
+                                    ECI: Effective Contrastive Information to Evaluate Hard-Negatives
+                                </a>
+                            </div>
+                            <div class="pub-authors"><strong>Aarush Sinha</strong>, Rahul Seetharaman, Aman Bansal</div>
+                            <div class="pub-meta">
+                                <span class="pub-venue">arXiv preprint arXiv:2603.20990</span>
+                                <span class="pub-tags">
+                                    <span class="tag tag--preprint">Preprint</span>
+                                </span>
+                            </div>
+                            <div class="pub-abstract-toggle">Abstract</div>
+                            <div class="pub-abstract-content">
+                                <p>Hard negatives play a critical role in training and fine-tuning dense retrieval models, as they are semantically similar to positive documents yet non-relevant, and correctly distinguishing them is essential for improving retrieval accuracy. However, identifying effective hard negatives typically requires extensive ablation studies involving repeated fine-tuning with different negative sampling strategies and hyperparameters, resulting in substantial computational cost. In this paper, we introduce ECI: Effective Contrastive Information, a theoretically grounded metric grounded in Information Theory and Information Retrieval principles that enables practitioners to assess the quality of hard negatives prior to model fine-tuning. ECI evaluates negatives by optimizing the trade-off between Information Capacity, the logarithmic bound on mutual information determined by set size, and Discriminative Efficiency, a harmonic balance of Signal Magnitude (Hardness) and Safety (Max-Margin). Unlike heuristic approaches, ECI strictly penalizes unsafe, false-positive negatives prevalent in generative methods. We evaluate ECI across hard-negative sets mined or generated using BM25, cross-encoders, and large language models. Our results demonstrate that ECI accurately predicts downstream retrieval performance, identifying that hybrid strategies (BM25+Cross-Encoder) offer the optimal balance of volume and reliability, significantly reducing the need for costly end-to-end ablation studies.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="pub-media">
                             <img src="images/llm-ir.png" alt="Dense Retrieval paper thumbnail">
                         </div>
                         <div class="pub-details">
