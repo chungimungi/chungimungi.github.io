@@ -221,6 +221,12 @@
             border-color: #ddd6fe;
         }
 
+        .tag--award {
+            background: #fef9c3;
+            color: #854d0e;
+            border-color: #fde047;
+        }
+
         .year-divider {
             margin: 10px 0 0;
             padding-top: 10px;
@@ -387,7 +393,32 @@
 
                     <div class="publication">
                         <div class="pub-media">
-                            <img src="images/eci.png" alt="Dense Retrieval paper thumbnail">
+                            <!-- Image missing, placeholder used for now -->
+                            <img src="images/conscientia.png" alt="CONSCIENTIA thumbnail" onerror="this.style.display='none'">
+                        </div>
+                        <div class="pub-details">
+                            <div class="pub-title">
+                                <a href="https://arxiv.org/abs/2604.09746" target="_blank">
+                                    CONSCIENTIA: Can LLM Agents Learn to Strategize? Emergent Deception and Trust in a Multi-Agent NYC Simulation
+                                </a>
+                            </div>
+                            <div class="pub-authors"><strong>Aarush Sinha</strong>, Arion Das, Soumyadeep Nag, Charan Karnati, Shravani Nag, Chandra Vadhan Raj, Aman Chadha, Vinija Jain, Suranjana Trivedy, Amitava Das</div>
+                            <div class="pub-meta">
+                                <span class="pub-venue">arXiv preprint arXiv:2604.09746</span>
+                                <span class="pub-tags">
+                                    <span class="tag tag--preprint">Preprint</span>
+                                </span>
+                            </div>
+                            <div class="pub-abstract-toggle">Abstract</div>
+                            <div class="pub-abstract-content">
+                                <p>As large language models (LLMs) are increasingly deployed as autonomous agents, understanding how strategic behavior emerges in multi-agent environments has become an important alignment challenge. We take a neutral empirical stance and construct a controlled environment in which strategic behavior can be directly observed and measured. We introduce a large-scale multi-agent simulation in a simplified model of New York City, where LLM-driven agents interact under opposing incentives. Blue agents aim to reach their destinations efficiently, while Red agents attempt to divert them toward billboard-heavy routes using persuasive language to maximize advertising revenue. Hidden identities make navigation socially mediated, forcing agents to decide when to trust or deceive. We study policy learning through an iterative simulation pipeline that updates agent policies across repeated interaction rounds using Kahneman-Tversky Optimization (KTO). Blue agents are optimized to reduce billboard exposure while preserving navigation efficiency, whereas Red agents adapt to exploit remaining weaknesses. Across iterations, the best Blue policy improves task success from 46.0% to 57.3%, although susceptibility remains high at 70.7%. Later policies exhibit stronger selective cooperation while preserving trajectory efficiency. However, a persistent safety-helpfulness trade-off remains: policies that better resist adversarial steering do not simultaneously maximize task completion. Overall, our results show that LLM agents can exhibit limited strategic behavior, including selective trust and deception, while remaining highly vulnerable to adversarial persuasion.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="pub-media">
+                            <img src="images/llm-ir.png" alt="Dense Retrieval paper thumbnail">
                         </div>
                         <div class="pub-details">
                             <div class="pub-title">
@@ -424,6 +455,7 @@
                                 <span class="pub-venue">I Can't Believe It's Not Better @ ICLR 2026</span>
                                 <span class="pub-tags">
                                     <span class="tag tag--published">Published</span>
+                                    <span class="tag tag--award"><i class="fas fa-trophy"></i> Best Poster</span>
                                 </span>
                             </div>
                             <div class="pub-abstract-toggle">Abstract</div>
