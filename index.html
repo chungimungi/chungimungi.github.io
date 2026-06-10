@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <canvas id="bg-canvas" aria-hidden="true"></canvas>
     <div class="container">
         <header class="header">
             <h1>Aarush Sinha</h1>
@@ -131,6 +130,10 @@
         <footer class="site-footer"><span class="prompt">$</span> last indexed: 2026-06</footer>
     </div>
 
+    <div class="bg-layer" aria-hidden="true">
+        <canvas id="bg-canvas"></canvas>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -170,8 +173,9 @@
             /* ---------- Background: drifting docs + kNN retrieval ----------
                Documents drift through "embedding space"; a slow-moving query
                point links to its nearest neighbors, like vector retrieval. */
+            const bgLayer = document.querySelector('.bg-layer');
             const canvas = document.getElementById('bg-canvas');
-            if (reducedMotion || !canvas) { if (canvas) canvas.remove(); return; }
+            if (reducedMotion || !canvas) { if (bgLayer) bgLayer.remove(); return; }
 
             const ctx = canvas.getContext('2d');
             const ACCENT = '37, 99, 235';
@@ -179,8 +183,10 @@
             let w, h, docs = [], rafId = null;
 
             function resize() {
-                w = canvas.width = window.innerWidth;
-                h = canvas.height = window.innerHeight;
+                w = window.innerWidth;
+                h = window.innerHeight;
+                canvas.width = w;
+                canvas.height = h;
                 const n = Math.min(70, Math.floor((w * h) / 26000));
                 docs = Array.from({ length: n }, () => ({
                     x: Math.random() * w,
