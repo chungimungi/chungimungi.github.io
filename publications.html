@@ -393,6 +393,54 @@
 
                     <div class="publication">
                         <div class="pub-media">
+                            <img src="images/mech-int.png" alt="Mechanistic Analysis thumbnail" onerror="this.style.display='none'">
+                        </div>
+                        <div class="pub-details">
+                            <div class="pub-title">
+                                <a href="https://arxiv.org/abs/2606.09850" target="_blank">
+                                    Mechanistic Analysis of Alignment Algorithms in Language Models
+                                </a>
+                            </div>
+                            <div class="pub-authors"><strong>Aarush Sinha</strong>, Ishan Garg, Veeraraju Elluru, Arth Singh, Kushal Garg</div>
+                            <div class="pub-meta">
+                                <span class="pub-venue">arXiv preprint arXiv:2606.09850</span>
+                                <span class="pub-tags">
+                                    <span class="tag tag--preprint">Preprint</span>
+                                </span>
+                            </div>
+                            <div class="pub-abstract-toggle">Abstract</div>
+                            <div class="pub-abstract-content">
+                                <p>Post-training alignment algorithms are predominantly evaluated as black boxes, obscuring how they reshape language models' internal computations. We present a systematic mechanistic analysis of six preference-optimization methods: PPO, DPO, SimPO, ORPO, GRPO, and KTO across three open-weight model families. By integrating layer-wise linear probing, Sparse Autoencoders, and crosscoders, we localize preference representations and quantify alignment-induced geometric transformations in latent space. We find that preference signals consistently concentrate in early--mid or mid--late layers, but different objectives induce qualitatively distinct representational shifts. KTO and GRPO enhance linear separability through constructive feature sharing and sparse, high-salience recruitment. In contrast, DPO and ORPO degrade separability via non-constructive geometric rotation and feature attenuation, while PPO and SimPO largely preserve baseline geometry. These transformations exhibit architecture-dependent variability, demonstrating that behavioral alignment does not imply uniform internal restructuring. Our findings establish alignment as a heterogeneous intervention, motivate standardized feature-level auditing for safety and interpretability, and highlight the need for mechanism-aware optimization objectives.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="pub-media">
+                            <img src="images/eval-cards.png" alt="Evaluation Cards thumbnail" onerror="this.style.display='none'">
+                        </div>
+                        <div class="pub-details">
+                            <div class="pub-title">
+                                <a href="https://arxiv.org/abs/2606.09809" target="_blank">
+                                    Evaluation Cards: An Interpretive Layer for AI Evaluation Reporting
+                                </a>
+                            </div>
+                            <div class="pub-authors">Avijit Ghosh, Anka Reuel, Jenny Chim, Wm. Matthew Kennedy, Srishti Yadav, Jennifer Mickel, Yanan Long, Andrew Tran, Anastassia Kornilova, Damian Stachura, Kevin Klyman, Felix Friedrich, Jeba Sania, Jan Batzner, Anoop Mishra, Eliya Habba, Yixiong Hao, Nathan Heath, Shalaleh Rismani, Usman Gohar, Andrea Loehr, David Manheim, Ruchira Dhar, Sree Harsha Nelaturu, <strong>Aarush Sinha</strong>, Leshem Choshen, Drishti Sharma, Ishan Khire, Amit Saha, Subramanyam Sahoo, Michael Hardy, Michael Alexander Riegler, Kabir Manghnani, Michelle Lin, Yanan Jiang, Yilin Huang, Asaf Yehudai, Jessica Ji, Aris Hofmann, Mubashara Akhtar, Max Lamparth, Nuno Moniz, Yacine Jernite, Stella Biderman, Zeerak Talat, Sanmi Koyejo, Mykel Kochenderfer, Irene Solaiman</div>
+                            <div class="pub-meta">
+                                <span class="pub-venue">arXiv preprint arXiv:2606.09809</span>
+                                <span class="pub-tags">
+                                    <span class="tag tag--preprint">Preprint</span>
+                                </span>
+                            </div>
+                            <div class="pub-abstract-toggle">Abstract</div>
+                            <div class="pub-abstract-content">
+                                <p>AI evaluation results are produced at scale but reported inconsistently across leaderboards, model cards, benchmark papers, and company blogs. The cost is interpretive: readers cannot reliably compare results across sources, identify what a report omits, or trace an aggregate claim to its underlying evidence. Recent efforts address isolated components but leave three gaps: they cover only narrow slices of the evaluation lifecycle and do not compose into a single interpretable record; they specify static representations that do not differentiate the questions different stakeholders bring to the same evidence; and they remain proposals on paper, lacking the extraction infrastructure required for adoption at scale. We present EvalCards, an operational reporting layer that composes benchmark metadata, evaluation run data, and model metadata into a unified record. We (1) derive a reporting schema from a structured review of 52 papers and 10 stakeholder interviews, (2) implement four interpretive signals (reproducibility, documentation completeness, provenance and risk, and score comparability), rendered through reader modes calibrated to research and non-research audiences, and (3) deploy a monitoring tool that applies EvalCards across 5,816 models, 635 benchmarks, and 101,843 results, surfacing systematic gaps in current reporting practice.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="pub-media">
                             <!-- Image missing, placeholder used for now -->
                             <img src="images/conscientia.png" alt="CONSCIENTIA thumbnail" onerror="this.style.display='none'">
                         </div>
@@ -423,7 +471,7 @@
                         <div class="pub-details">
                             <div class="pub-title">
                                 <a href="https://arxiv.org/abs/2603.20990" target="_blank">
-                                    ECI: Effective Contrastive Information to Evaluate Hard-Negatives
+                                    ECI<sub>sem</sub>: Semantic Residual Effective Contrastive Information for Evaluating Hard Negatives
                                 </a>
                             </div>
                             <div class="pub-authors"><strong>Aarush Sinha</strong>, Rahul Seetharaman, Aman Bansal</div>
@@ -435,7 +483,7 @@
                             </div>
                             <div class="pub-abstract-toggle">Abstract</div>
                             <div class="pub-abstract-content">
-                                <p>Hard negatives play a critical role in training and fine-tuning dense retrieval models, as they are semantically similar to positive documents yet non-relevant, and correctly distinguishing them is essential for improving retrieval accuracy. However, identifying effective hard negatives typically requires extensive ablation studies involving repeated fine-tuning with different negative sampling strategies and hyperparameters, resulting in substantial computational cost. In this paper, we introduce ECI: Effective Contrastive Information, a theoretically grounded metric grounded in Information Theory and Information Retrieval principles that enables practitioners to assess the quality of hard negatives prior to model fine-tuning. ECI evaluates negatives by optimizing the trade-off between Information Capacity, the logarithmic bound on mutual information determined by set size, and Discriminative Efficiency, a harmonic balance of Signal Magnitude (Hardness) and Safety (Max-Margin). Unlike heuristic approaches, ECI strictly penalizes unsafe, false-positive negatives prevalent in generative methods. We evaluate ECI across hard-negative sets mined or generated using BM25, cross-encoders, and large language models. Our results demonstrate that ECI accurately predicts downstream retrieval performance, identifying that hybrid strategies (BM25+Cross-Encoder) offer the optimal balance of volume and reliability, significantly reducing the need for costly end-to-end ablation studies.</p>
+                                <p>Hard-negative source selection for dense retrieval is usually decided only after fine-tuning and downstream evaluation. We propose ECI<sub>sem</sub>, a semantic residual variant of Effective Contrastive Information (ECI) that ranks candidate negative sources using frozen target-encoder embeddings. ECI<sub>sem</sub> is training-free, not label-free: each scored example requires a query, a labeled positive, and an explicit candidate negative. ECI<sub>sem</sub> builds a weighted residual information matrix from target consistency, semantic locality, lexical residuality, and a log-determinant diversity objective. On MS MARCO negative sources, in-family ECI<sub>sem</sub> ranks LLM negatives highest among non-hybrid sources and Dense+LLM highest among hybrid sources, matching the strongest aggregate BEIR transfer results across DistilBERT, E5-base, and Contriever. Controlled ablations show that this alignment depends on using the target encoder family, while additional ablations show stability under sample-size, temperature, tokenizer, and IDFcorpus perturbations. The theory gives a local linearized link to loss reduction, while the empirical study treats downstream evaluation as the final test.</p>
                             </div>
                         </div>
                     </div>
