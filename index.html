@@ -4,540 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aarush Sinha</title>
+    <meta name="description" content="Aarush Sinha — Information Retrieval and NLP researcher. MSc Computer Science at the University of Copenhagen.">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <style>
-        :root {
-            --text-dark: #1a1a1a;
-            --text-medium: #4a4a4a;
-            --text-light: #6a6a6a;
-            --accent: #2563eb;
-            --border: #e5e5e5;
-            --bg-subtle: #fafafa;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-            line-height: 1.5;
-            color: var(--text-dark);
-            background: #fff;
-            font-size: 16px;
-        }
-
-        .container {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 20px 15px;
-        }
-
-        /* Header */
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .header h1 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            letter-spacing: -0.02em;
-        }
-
-        .navigation {
-            margin-bottom: 15px;
-        }
-
-        .navigation a {
-            color: var(--text-medium);
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: 400;
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
-            position: relative;
-            padding-bottom: 3px;
-        }
-
-        .navigation a:hover {
-            color: var(--accent);
-        }
-
-        .navigation a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: 0;
-            left: 50%;
-            background-color: var(--accent);
-            transition: all 0.2s ease;
-        }
-
-        .navigation a:hover::after {
-            width: 100%;
-            left: 0;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .contact-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.2s ease;
-        }
-
-        .contact-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Main content */
-        .content {
-            display: grid;
-            gap: 25px;
-        }
-
-        .about-updates-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .section {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s ease forwards;
-        }
-
-        #about, #updates {
-            animation-delay: 0.1s;
-        }
-        #publications {
-            animation-delay: 0.2s;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 5px;
-        }
-
-        /* About section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 140px 1fr;
-            gap: 25px;
-            align-items: start;
-        }
-
-        .profile-image {
-            width: 100%;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-        }
-
-        .about-text p {
-            margin-bottom: 10px;
-        }
-
-        .about-text p a {
-            color: var(--accent);
-            text-decoration: none;
-            border-bottom: 1px dotted var(--accent);
-            transition: border-bottom-style 0.2s ease;
-        }
-
-        .about-text p a:hover {
-            border-bottom-style: solid;
-        }
-
-        .research-interests {
-            margin-top: 15px;
-        }
-
-        .research-interests h4 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-medium);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .interests-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .interest-tag {
-            background: var(--bg-subtle);
-            color: var(--text-medium);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            border: 1px solid var(--border);
-        }
-
-        .small-caps {
-            font-variant: small-caps;
-        }
-
-        /* Experience section */
-        .experience-list {
-            display: grid;
-            gap: 15px;
-        }
-
-        .experience-item {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .experience-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 6px;
-        }
-
-        .experience-title {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .experience-org {
-            color: var(--accent);
-            font-style: italic;
-            margin-bottom: 3px;
-            font-size: 1rem;
-        }
-
-        .experience-org a {
-            color: inherit;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-bottom 0.2s ease;
-        }
-
-        .experience-org a:hover {
-            border-bottom-color: var(--accent);
-        }
-
-        .experience-period {
-            font-family: 'Source Sans Pro', sans-serif;
-            color: var(--text-light);
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-
-        .experience-desc {
-            color: var(--text-medium);
-            line-height: 1.45;
-            font-size: 0.95rem;
-        }
-
-        /* Publications */
-        .publications-list {
-            display: grid;
-            gap: 12px;
-        }
-
-        .publication {
-            display: grid;
-            grid-template-columns: 160px 1fr;
-            gap: 20px;
-            align-items: start;
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border);
-            transition: all 0.2s ease;
-        }
-
-        .publication:hover {
-            background: var(--bg-subtle);
-            padding: 15px;
-            margin: 0 -15px;
-            border-radius: 6px;
-            border-bottom-color: transparent;
-        }
-
-        .publication:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .pub-media {
-            cursor: pointer;
-        }
-
-        .pub-media img, .pub-media video {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-            border: 1px solid var(--border);
-            object-fit: cover;
-        }
-
-        .pub-title {
-            font-weight: 600;
-            margin-bottom: 4px;
-            line-height: 1.3;
-            font-size: 1rem;
-        }
-
-        .pub-title a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .pub-title a:hover {
-            text-decoration: underline;
-        }
-
-        .pub-authors {
-            color: var(--text-medium);
-            margin-bottom: 3px;
-            font-size: 0.9rem;
-        }
-
-        .pub-venue {
-            color: var(--text-light);
-            font-size: 0.85rem;
-            font-style: italic;
-        }
-
-        .pub-details {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .pub-abstract-toggle {
-            font-size: 0.85rem;
-            color: var(--accent);
-            cursor: pointer;
-            display: inline-block;
-            margin-top: 8px;
-            font-weight: 600;
-        }
-
-        .pub-abstract-toggle:hover {
-            text-decoration: underline;
-        }
-        
-        .pub-abstract-content {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 0.4s ease-in-out, margin-top 0.4s ease-in-out;
-            margin-top: 0;
-            font-size: 0.9rem;
-            line-height: 1.4;
-            color: var(--text-medium);
-        }
-
-        .pub-abstract-content p {
-            overflow: hidden;
-            margin-bottom: 0;
-        }
-
-        .pub-abstract-content.expanded {
-            grid-template-rows: 1fr;
-            margin-top: 10px;
-        }
-
-        /* Lightbox Modal */
-        .lightbox {
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.85);
-            display: none; /* Hidden by default */
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-content {
-            max-width: 90vw;
-            max-height: 90vh;
-            position: relative;
-        }
-
-        .lightbox-content img,
-        .lightbox-content video {
-            width: auto;
-            height: auto;
-            max-width: 100%;
-            max-height: 85vh;
-            display: block;
-            margin: 0 auto;
-            border-radius: 4px;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -10px;
-            right: 10px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .lightbox-close:hover,
-        .lightbox-close:focus {
-            color: #bbb;
-            text-decoration: none;
-        }
-
-        body.lightbox-active {
-            overflow: hidden;
-        }
-
-        /* Updates */
-        .updates-list {
-            display: grid;
-            gap: 10px;
-        }
-
-        .update {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .update:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .update-date {
-            color: var(--text-light);
-            font-size: 0.8rem;
-            margin-bottom: 4px;
-            font-weight: 600;
-        }
-
-        .update-text {
-            color: var(--text-medium);
-            font-size: 0.95rem;
-        }
-
-        /* Education subsection */
-        .education {
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border);
-        }
-
-        .education h3 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: var(--text-dark);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px 15px;
-            }
-
-            .header h1 {
-                font-size: 1.8rem;
-            }
-            
-            .navigation a {
-                margin: 0 8px;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                text-align: center;
-            }
-
-            .about-updates-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .profile-image {
-                max-width: 140px;
-                margin: 0 auto;
-            }
-
-            .experience-header {
-                flex-direction: column;
-                gap: 4px;
-            }
-
-            .contact-links {
-                gap: 10px;
-            }
-
-            .publication {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .pub-media {
-                max-width: 240px;
-                margin: 0 auto;
-            }
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
             <h1>Aarush Sinha</h1>
-            
+            <div class="tagline"><span class="prompt">$</span> retrieving: information retrieval &middot; NLP &middot; reasoning</div>
+
             <nav class="navigation">
-                <a href="#about">About</a>
-                <a href="publications.html">Publications</a>
-                <a href="blogs.html">Blogs</a>
+                <a href="index.html" class="active">about</a>
+                <a href="publications.html">publications</a>
+                <a href="blogs.html">blogs</a>
             </nav>
-            
+
             <div class="contact-links">
                 <a href="https://x.com/Aarush1003" target="_blank" aria-label="Twitter">
                     <i class="fab fa-twitter"></i>
@@ -548,7 +33,7 @@
                 <a href="https://www.linkedin.com/in/asj10/" target="_blank" aria-label="LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://scholar.google.com/citations?user=5cl3fb8AAAAJ&hl=en" target="_blank"aria-label="Google Scholar">
+                <a href="https://scholar.google.com/citations?user=5cl3fb8AAAAJ&hl=en" target="_blank" aria-label="Google Scholar">
                     <i class="ai ai-google-scholar"></i>
                 </a>
                 <a href="mailto:aarush.sinha@gmail.com" aria-label="Email">
@@ -560,18 +45,19 @@
         <main class="content">
             <div class="about-updates-grid">
                 <section id="about" class="section">
-                    <h2 class="section-title">About</h2>
+                    <h2 class="section-title">about</h2>
                     <div class="about-grid">
                         <img src="avatar.png" alt="Aarush Sinha" class="profile-image">
                         <div class="about-text">
                             <p>
-                                I am a Master's student in Computer Science at the <a href="https://www.ku.dk/" target="_blank">University of Copenhagen</a>, specializing in Information Retrieval and Natural Language Processing, where I am advised by Prof. Maria Maistro and Prof. Christina Lioma. I previously completed my undergraduate at VIT Chennai</a>. 
+                                I am a Master's student in Computer Science at the <a href="https://www.ku.dk/" target="_blank">University of Copenhagen</a>, specializing in Information Retrieval and Natural Language Processing, where I am advised by Prof. Maria Maistro and Prof. Christina Lioma. I previously completed my undergraduate at VIT Chennai.
                             </p>
                             <p>
                                 My research is centered around the retrieval and generative capabilites of models particularly focusing on its shortcomings and efficiency.
                             </p>
                             <p>
                                 Over the years, I have had the opportunity to collaborate with wonderful mentors across several labs. I previously worked on hallucinations in Text2Video models with Prof. Amitava Das at the <a href="https://aiisc.ai/" target="_blank">AI Institute, UofSC</a>, and on efficient dense retrievers with Prof. Nirav Bhatt at <a href="https://wsai.iitm.ac.in/" target="_blank">WSAI-IIT Madras</a>. Most recently, at the <a href="https://stairlab.stanford.edu/" target="_blank">Stanford STAIR Lab</a>, I worked with Rylan Schaeffer and Prof. Sanmi Koyejo on model collapse.
+                            </p>
                             <div class="research-interests">
                                 <h4>Research Interests</h4>
                                 <div class="interests-list">
@@ -592,8 +78,9 @@
                         </div>
                     </div>
                 </section>
+
                 <section id="updates" class="section">
-                    <h2 class="section-title">Recent Updates</h2>
+                    <h2 class="section-title">updates</h2>
                     <div class="updates-list">
                         <div class="update">
                             <div class="update-date">June 2026</div>
@@ -614,15 +101,15 @@
                         <div class="update">
                             <div class="update-date">November 2025</div>
                             <div class="update-text">My work with WSAI has been accepted for an oral presentation at AAAI2026</div>
-                        </div>                         
+                        </div>
                         <div class="update">
                             <div class="update-date">October 2025</div>
                             <div class="update-text">GMLM has been accepted to a workshop at CIKM2025</div>
-                        </div>    
+                        </div>
                         <div class="update">
                             <div class="update-date">October 2025</div>
                             <div class="update-text">My undergrad thesis has been published in Scientific Reports</div>
-                        </div>                        
+                        </div>
                         <div class="update">
                             <div class="update-date">July 2025</div>
                             <div class="update-text">Joining the University of Copenhagen for my Masters in Computer Science.</div>
@@ -631,245 +118,12 @@
                             <div class="update-date">June 2025</div>
                             <div class="update-text">Serving as a reviewer for the 2025 ACL SRW workshop.</div>
                         </div> -->
-                    
-                        <!-- <div class="update">
-                            <div class="update-date">May 2025</div>
-                            <div class="update-text">Started new collaboration with Stanford STAIR on Model Collapse.</div>
-                        </div> -->
-    
-                        <!-- <div class="update">
-                            <div class="update-date">May 2025</div>
-                            <div class="update-text">New pre-print on synthetic dataset generation for dense retrieval released on ArXiv.</div>
-                        </div> -->
-    
-                        <!-- <div class="update">
-                            <div class="update-date">April 2025</div>
-                            <div class="update-text">Started working on Agentic Systems and Evaluation with Prof. Anand Rao at CMU.</div>
-                        </div> -->
-    
-                        <!-- <div class="update">
-                            <div class="update-date">March 2025</div>
-                            <div class="update-text">Released <strong>GMLM: Bridging Graph Neural Networks and Language Models for Heterophilic Node Classification</strong> on arXiv.</div>
-                        </div> -->
-    
-                        <!-- <div class="update">
-                            <div class="update-date">February 2025</div>
-                            <div class="update-text">Our dataset paper on <strong>Text2Video Hallucinations</strong> accepted to TrustNLP@NAACL.</div>
-                        </div> -->
                     </div>
                 </section>
             </div>
-
-            <section id="publications-old" style="display:none;" class="section">
-                <h2 class="section-title">Publications</h2>
-                <div class="publications-list">
-
-                    <div class="publication">
-                        <div class="pub-media">
-                            <img src="images/eci.png" alt="ECI paper table thumbnail" onerror="this.src='images/llm-ir.png'">
-                        </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://arxiv.org/abs/2603.20990" target="_blank">
-                                    ECI: Effective Contrastive Information to Evaluate Hard-Negatives
-                                </a>
-                            </div>
-                            <div class="pub-authors"><strong>Aarush Sinha</strong>, Rahul Seetharaman, Aman Bansal</div>
-                            <div class="pub-venue">arXiv preprint arXiv:2603.20990</div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>Hard negatives play a critical role in training and fine-tuning dense retrieval models, as they are semantically similar to positive documents yet non-relevant, and correctly distinguishing them is essential for improving retrieval accuracy. However, identifying effective hard negatives typically requires extensive ablation studies involving repeated fine-tuning with different negative sampling strategies and hyperparameters, resulting in substantial computational cost. In this paper, we introduce ECI: Effective Contrastive Information, a theoretically grounded metric grounded in Information Theory and Information Retrieval principles that enables practitioners to assess the quality of hard negatives prior to model fine-tuning. ECI evaluates negatives by optimizing the trade-off between Information Capacity, the logarithmic bound on mutual information determined by set size, and Discriminative Efficiency, a harmonic balance of Signal Magnitude (Hardness) and Safety (Max-Margin). Unlike heuristic approaches, ECI strictly penalizes unsafe, false-positive negatives prevalent in generative methods. We evaluate ECI across hard-negative sets mined or generated using BM25, cross-encoders, and large language models. Our results demonstrate that ECI accurately predicts downstream retrieval performance, identifying that hybrid strategies (BM25+Cross-Encoder) offer the optimal balance of volume and reliability, significantly reducing the need for costly end-to-end ablation studies.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="publication">
-                        <div class="pub-media">
-                            <img src="images/bica.png" alt="bica">
-                        </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://arxiv.org/abs/2511.08029" target="_blank">
-                                    BiCA: Effective Biomedical Dense Retrieval with Citation-Aware Hard Negatives
-                                </a>
-                            </div>
-                            <div class="pub-authors"><strong>Aarush Sinha </strong>, Pavan Kumar, Roshan MSB, Nirav Bhatt</div>
-                            <div class="pub-venue">AAAI 2026 (Oral)</div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>Hard negatives are essential for training effective retrieval models. Hard-negative mining typically relies on ranking documents using cross-encoders or static embedding models based on similarity metrics such as cosine distance. Hard negative mining becomes challenging for biomedical and scientific domains due to the difficulty in distinguishing between source and hard negative documents. However, referenced documents naturally share contextual relevance with the source document but are not duplicates, making them well-suited as hard negatives. In this work, we propose BiCA: Biomedical Dense Retrieval with Citation-Aware Hard Negatives, an approach for hard-negative mining by utilizing citation links in 20,000 PubMed articles for improving a domain-specific small dense retriever. We fine-tune the GTE_small and GTE_Base models using these citation-informed negatives and observe consistent improvements in zero-shot dense retrieval using nDCG@10 for both in-domain and out-of-domain tasks on BEIR and outperform baselines on long-tailed topics in LoTTE using Success@5. Our findings highlight the potential of leveraging document link structure to generate highly informative negatives, enabling state-of-the-art performance with minimal fine-tuning and demonstrating a path towards highly data-efficient domain adaptation.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="publication">
-                        <div class="pub-media">
-                            <video autoplay loop muted playsinline>
-                                <source src="images/vibe.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://aclanthology.org/2025.trustnlp-main.15/" target="_blank">
-                                    ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models
-                                </a>
-                            </div>
-                            <div class="pub-authors">
-                                Vipula Rawte, Sarthak Jain, <strong>Aarush Sinha</strong>, Garv Kaushik, Aman Bansal, Prathiksha Rumale Vishwanath, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P Sheth, Amitava Das
-                            </div>
-                            <div class="pub-venue">The 5th Workshop on Trustworthy NLP @ NAACL 2025</div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>Recent advances in Large Multimodal Models (LMMs) have expanded their capabilities to video understanding, with Text-to-Video (T2V) models excelling in generating videos from textual prompts. However, they still frequently produce hallucinated content, revealing AI-generated inconsistencies. We introduce ViBe https://huggingface.co/datasets/ViBe-T2V-Bench/ViBe: a large-scale dataset of hallucinated videos from open-source T2V models. We identify five major hallucination types: Vanishing Subject, Omission Error, Numeric Variability, Subject Dysmorphia, and Visual Incongruity. Using ten T2V models, we generated and manually annotated 3,782 videos from 837 diverse MS COCO captions. Our proposed benchmark includes a dataset of hallucinated videos and a classification framework using video embeddings. ViBe serves as a critical resource for evaluating T2V reliability and advancing hallucination detection. We establish classification as a baseline, with the TimeSFormer + CNN ensemble achieving the best performance (0.345 accuracy, 0.342 F1 score). While initial baselines proposed achieve modest accuracy, this highlights the difficulty of automated hallucination detection and the need for improved methods. Our research aims to drive the development of more robust T2V models and evaluate their outputs based on user preferences.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="publication">
-                        <div class="pub-media">
-                            <img src="images/dr-cot.png" alt="dr-cot">
-                        </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://link.springer.com/article/10.1038/s41598-025-18622-6#Abs1" target="_blank">
-                                    DR-CoT: Dynamic Recursive Chain of Thought with Meta Reasoning for Parameter Efficient Models
-                                </a>
-                            </div>
-                            <div class="pub-authors"><strong>Aarush Sinha </strong>, OmKumar Chandra Umakanthan & Sudhakaran Gajendran</div>
-                            <div class="pub-venue">Scientific Reports</div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>Chain-of-Thought (CoT) prompting has revolutionized reasoning in Large Language Models (LLMs), enabling them to tackle complex tasks by mimicking step-by-step human thought processes. However, traditional CoT methods often suffer from high computational costs and context dilution, limiting their effectiveness, particularly in resource-constrained or real-time applications. To address these challenges, we introduce Dynamic Recursive Chain-of-Thought (DR-CoT), a novel reasoning framework for parameter-efficient models. DR-CoT synergistically integrates recursive reasoning, dynamic context truncation, and a voting mechanism. By selectively retaining the most salient context within a fixed token budget and aggregating inferences from multiple independent reasoning chains, DR-CoT significantly enhances reasoning accuracy. Extensive evaluations on challenging reasoning benchmarks, including GPQA Diamond and AIME2024, demonstrate the efficacy of DR-CoT. On GPQA Diamond, DR-CoT sees Pass@1 accuracy gains of 1.5% for Gemini 2.0 Flash Thinking Experimental, 2.7% for Grok 3 Beta, and 4.4% for o3 Mini. Similarly, AIME2024 results reveal consistent improvements of 3-4 percentage points across evaluated models. Furthermore, DR-CoT enhances zero-shot classification performance on GPQA Diamond, enabling compact BERT-sized models to surpass larger language models such as GPT-4 and LLaMA 2. In code generation tasks using HumanEval, DRCoT empowers models to exceed the performance of established frontier LLMs, including LLaMA 70B, Phi-3, and Claude Sonnet. These comprehensive results underscore DR-CoT’s effectiveness in bridging the performance gap between parameter-efficient models and state-of-the-art LLMs across multiple domains.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="publication">
-                        <div class="pub-media">
-                            <img src="images/llm-ir.png" alt="Dense Retrieval paper thumbnail">
-                        </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://arxiv.org/abs/2504.21015" target="_blank">
-                                    Don't Retrieve, Generate: Prompting LLMs for Synthetic Training Data in Dense Retrieval
-                                </a>
-                            </div>
-                            <div class="pub-authors"><strong>Aarush Sinha</strong></div>
-                            <div class="pub-venue">I Can't Believe It's Not Better @ ICLR 2026</div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>Training effective dense retrieval models typically relies on hard negative (HN) examples mined from large document corpora using methods such as BM25 or cross-encoders, which require full corpus access and expensive index construction. We propose generating synthetic hard negatives directly from a provided query and positive passage, using Large Language Models(LLMs). We fine-tune DistilBERT using synthetic negatives generated by four state-of-the-art LLMs ranging from 4B to 30B parameters (Qwen3, LLaMA3, Phi4) and evaluate performance across 10 BEIR benchmark datasets. Contrary to the prevailing assumption that stronger generative models yield better synthetic data, find that our generative pipeline consistently underperforms traditional corpus-based mining strategies (BM25 and Cross-Encoder). Furthermore, we observe that scaling the generator model does not monotonically improve retrieval performance and find that the 14B parameter model outperforms the 30B model and in some settings it is the worst performing.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="publication">
-                        <div class="pub-media">
-                            <img src="images/gmlm.png" alt="GMLM paper thumbnail">
-                        </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://arxiv.org/abs/2503.05763" target="_blank">
-                                    GMLM: Bridging Graph Neural Networks and Language Models for Heterophilic Node Classification
-                                </a>
-                            </div>
-                            <div class="pub-authors"><strong>Aarush Sinha</strong></div>
-                            <div class="pub-venue">Frontiers in Graph Machine Learning for the Large Model Era @ CIKM2025</div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>Integrating powerful but computationally expensive Pre-trained Language Models (PLMs) with Graph Neural Networks (GNNs) is a key challenge, especially on text-rich heterophilic graphs. We propose the Graph Masked Language Model (GMLM), a framework designed for the efficient and effective fusion of graph structure and text semantics. GMLM employs a two-stage process: first, a contrastive pre-training stage with a novel soft masking technique builds a robust multi-scale GNN; second, an end-to-end fine-tuning stage uses a dynamic active node selection strategy for scalability and a bi-directional cross-attention module for deep fusion. Experiments on five heterophilic benchmarks show GMLM achieves state-of-the-art results on four, significantly outperforming prior GNN and large LLM-based methods. For instance, it improves accuracy on the Texas dataset by over 8% and on Wisconsin by nearly 5%. Our work demonstrates that a sophisticated, deeply-integrated architecture can be more effective and efficient than larger, general-purpose models for text-rich graph representation learning.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="publication">
-                        <div class="pub-media">
-                            <img src="images/bonds.png" alt="Bond Yields paper thumbnail">
-                        </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://arxiv.org/abs/2502.17011" target="_blank">
-                                    Predicting Liquidity-Aware Bond Yields using Causal GANs and Deep Reinforcement Learning with LLM Evaluation
-                                </a>
-                            </div>
-                            <div class="pub-authors">Jaskaran Singh Walia, <strong>Aarush Sinha</strong>, Srinitish Srinivasan, Srihari Unnikrishnan</div>
-                            <div class="pub-venue">arXiv preprint arXiv:2502.17011</div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>Financial bond yield forecasting is challenging due to data scarcity, nonlinear macroeconomic dependencies, and evolving market conditions. In this paper, we propose a novel framework that leverages Causal Generative Adversarial Networks (CausalGANs) and Soft Actor-Critic (SAC) reinforcement learning (RL) to generate high-fidelity synthetic bond yield data for four major bond categories (AAA, BAA, US10Y, Junk). By incorporating 12 key macroeconomic variables, we ensure statistical fidelity by preserving essential market properties. To transform this market dependent synthetic data into actionable insights, we employ a finetuned Large Language Model (LLM) Qwen2.5-7B that generates trading signals (BUY/HOLD/SELL), risk assessments, and volatility projections. We use automated, human and LLM evaluations, all of which demonstrate that our framework improves forecasting performance over existing methods, with statistical validation via predictive accuracy, MAE evaluation(0.103%), profit/loss evaluation (60% profit rate), LLM evaluation (3.37/5) and expert assessments scoring 4.67 out of 5. The reinforcement learning-enhanced synthetic data generation achieves the least Mean Absolute Error of 0.103, demonstrating its effectiveness in replicating real-world bond market dynamics. We not only enhance data-driven trading strategies but also provides a scalable, high-fidelity synthetic financial data pipeline for risk &amp; volatility management and investment decision-making. This work establishes a bridge between synthetic data generation, LLM driven financial forecasting, and language model evaluation, contributing to AI-driven financial decision-making.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </main>
+
+        <footer class="site-footer"><span class="prompt">$</span> last indexed: 2026-06</footer>
     </div>
-
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close">x</span>
-        <div class="lightbox-content" id="lightbox-content"></div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Abstract toggle
-            document.querySelectorAll('.pub-abstract-toggle').forEach(toggle => {
-                toggle.addEventListener('click', () => {
-                    const abstractContent = toggle.nextElementSibling;
-                    const isExpanded = abstractContent.classList.toggle('expanded');
-                    toggle.textContent = isExpanded ? 'Hide Abstract' : 'Abstract';
-                });
-            });
-
-            // Lightbox functionality
-            const lightbox = document.getElementById('lightbox');
-            const lightboxContent = document.getElementById('lightbox-content');
-            const lightboxClose = document.querySelector('.lightbox-close');
-
-            document.querySelectorAll('.pub-media').forEach(item => {
-                item.addEventListener('click', () => {
-                    lightbox.classList.add('active');
-                    document.body.classList.add('lightbox-active');
-
-                    const mediaElement = item.querySelector('img, video');
-                    if (mediaElement) {
-                        let newMediaElement;
-                        if (mediaElement.tagName === 'VIDEO') {
-                            newMediaElement = document.createElement('video');
-                            newMediaElement.src = mediaElement.querySelector('source').src;
-                            newMediaElement.controls = true;
-                            newMediaElement.autoplay = true;
-                        } else {
-                            newMediaElement = document.createElement('img');
-                            newMediaElement.src = mediaElement.src;
-                        }
-                        newMediaElement.alt = mediaElement.alt;
-                        lightboxContent.innerHTML = ''; // Clear previous content
-                        lightboxContent.appendChild(newMediaElement);
-                    }
-                });
-            });
-
-            function closeLightbox() {
-                lightbox.classList.remove('active');
-                document.body.classList.remove('lightbox-active');
-                lightboxContent.innerHTML = ''; // Clear content to stop video playback
-            }
-
-            lightboxClose.addEventListener('click', closeLightbox);
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) { // Close only if clicking on the background
-                    closeLightbox();
-                }
-            });
-
-            // Close lightbox with Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                    closeLightbox();
-                }
-            });
-        });
-    </script>
 </body>
 </html>

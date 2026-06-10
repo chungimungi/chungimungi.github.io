@@ -4,733 +4,359 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publications - Aarush Sinha</title>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <style>
-        :root {
-            --text-dark: #1a1a1a;
-            --text-medium: #4a4a4a;
-            --text-light: #6a6a6a;
-            --accent: #2563eb;
-            --border: #e5e5e5;
-            --bg-subtle: #fafafa;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-            line-height: 1.5;
-            color: var(--text-dark);
-            background: #fff;
-            font-size: 16px;
-        }
-
-        .container {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 20px 15px;
-        }
-
-        /* Header */
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .header h1 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            letter-spacing: -0.02em;
-        }
-
-        .navigation {
-            margin-bottom: 15px;
-        }
-
-        .navigation a {
-            color: var(--text-medium);
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: 400;
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
-            position: relative;
-            padding-bottom: 3px;
-        }
-
-        .navigation a:hover {
-            color: var(--accent);
-        }
-
-        .navigation a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: 0;
-            left: 50%;
-            background-color: var(--accent);
-            transition: all 0.2s ease;
-        }
-
-        .navigation a:hover::after {
-            width: 100%;
-            left: 0;
-        }
-
-        /* Main content */
-        .content {
-            display: grid;
-            gap: 25px;
-        }
-
-        .section {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s ease forwards;
-        }
-
-        #publications {
-            animation-delay: 0.1s;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 5px;
-        }
-
-        /* Publications */
-        .publications-list {
-            display: grid;
-            gap: 12px;
-        }
-
-        .publication {
-            display: grid;
-            grid-template-columns: 160px 1fr;
-            gap: 20px;
-            align-items: start;
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border);
-            transition: all 0.2s ease;
-        }
-
-        .publication:hover {
-            background: var(--bg-subtle);
-            padding: 15px;
-            margin: 0 -15px;
-            border-radius: 6px;
-            border-bottom-color: transparent;
-        }
-
-        .publication:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .pub-media {
-            cursor: pointer;
-        }
-
-        .pub-media img, .pub-media video {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-            border: 1px solid var(--border);
-            object-fit: cover;
-        }
-
-        .pub-title {
-            font-weight: 600;
-            margin-bottom: 4px;
-            line-height: 1.3;
-            font-size: 1rem;
-        }
-
-        .pub-title a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .pub-title a:hover {
-            text-decoration: underline;
-        }
-
-        .pub-authors {
-            color: var(--text-medium);
-            margin-bottom: 3px;
-            font-size: 0.9rem;
-        }
-
-        .pub-authors--compact {
-            line-height: 1.55;
-        }
-
-        .author-reveal {
-            display: none;
-            opacity: 0;
-        }
-
-        .author-reveal.is-visible {
-            display: inline;
-            animation: authorFadeIn 0.35s ease both;
-            opacity: 1;
-        }
-
-        @keyframes authorFadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        .author-ellipsis {
-            appearance: none;
-            background: rgba(37, 99, 235, 0.08);
-            border: 1px solid rgba(37, 99, 235, 0.16);
-            border-radius: 999px;
-            color: var(--accent);
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font: inherit;
-            font-weight: 700;
-            line-height: 1;
-            margin: 0 3px;
-            padding: 1px 8px 4px;
-            transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
-        }
-
-        .author-ellipsis:hover {
-            background: rgba(37, 99, 235, 0.14);
-            transform: translateY(-1px);
-        }
-
-        .author-ellipsis.is-hidden {
-            opacity: 0;
-            pointer-events: none;
-            transform: scale(0.92);
-            width: 0;
-            margin: 0;
-            padding-left: 0;
-            padding-right: 0;
-            border-width: 0;
-        }
-
-        .pub-venue {
-            color: var(--text-light);
-            font-size: 0.85rem;
-            font-style: italic;
-        }
-
-        .pub-meta {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .pub-tags {
-            display: inline-flex;
-            gap: 6px;
-        }
-
-        .tag {
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 999px;
-            border: 1px solid transparent;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
-        .tag--published {
-            background: #e0f2fe;
-            color: #0c4a6e;
-            border-color: #bae6fd;
-        }
-
-        .tag--preprint {
-            background: #ede9fe;
-            color: #5b21b6;
-            border-color: #ddd6fe;
-        }
-
-        .tag--award {
-            background: #fef9c3;
-            color: #854d0e;
-            border-color: #fde047;
-        }
-
-        .year-divider {
-            margin: 10px 0 0;
-            padding-top: 10px;
-            border-top: 1px solid var(--border);
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 1.05rem;
-        }
-
-        .pub-details {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .pub-abstract-toggle {
-            font-size: 0.85rem;
-            color: var(--accent);
-            cursor: pointer;
-            display: inline-block;
-            margin-top: 8px;
-            font-weight: 600;
-        }
-
-        .pub-abstract-toggle:hover {
-            text-decoration: underline;
-        }
-        
-        .pub-abstract-content {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 0.4s ease-in-out, margin-top 0.4s ease-in-out;
-            margin-top: 0;
-            font-size: 0.9rem;
-            line-height: 1.4;
-            color: var(--text-medium);
-        }
-
-        .pub-abstract-content p {
-            overflow: hidden;
-            margin-bottom: 0;
-        }
-
-        .pub-abstract-content.expanded {
-            grid-template-rows: 1fr;
-            margin-top: 10px;
-        }
-
-        /* Lightbox Modal */
-        .lightbox {
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.85);
-            display: none; /* Hidden by default */
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-content {
-            max-width: 90vw;
-            max-height: 90vh;
-            position: relative;
-        }
-
-        .lightbox-content img,
-        .lightbox-content video {
-            width: auto;
-            height: auto;
-            max-width: 100%;
-            max-height: 85vh;
-            display: block;
-            margin: 0 auto;
-            border-radius: 4px;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -10px;
-            right: 10px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .lightbox-close:hover,
-        .lightbox-close:focus {
-            color: #bbb;
-            text-decoration: none;
-        }
-
-        body.lightbox-active {
-            overflow: hidden;
-        }
-
-        /* Back link */
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .back-link:hover {
-            color: var(--text-dark);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px 15px;
-            }
-
-            .header h1 {
-                font-size: 1.8rem;
-            }
-
-            .publication {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .pub-media {
-                max-width: 240px;
-                margin: 0 auto;
-            }
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <a href="index.html" class="back-link">← Back to Home</a>
+            <a href="index.html" class="back-link">cd ~/home</a>
             <h1>Publications</h1>
+            <div class="tagline"><span class="prompt">$</span> retrieve --from publications --rank-by relevance</div>
             <nav class="navigation">
-                <a href="index.html">About</a>
-                <a href="publications.html" style="color: var(--accent); border-bottom: 1px solid var(--accent);">Publications</a>
-                <a href="blogs.html">Blogs</a>
+                <a href="index.html">about</a>
+                <a href="publications.html" class="active">publications</a>
+                <a href="blogs.html">blogs</a>
             </nav>
         </header>
 
         <main class="content">
             <section id="publications" class="section">
+                <div class="search-panel">
+                    <div class="search-box">
+                        <i class="fas fa-magnifying-glass search-icon"></i>
+                        <input type="search" id="pub-search" class="search-input" placeholder="query: title, author, venue, abstract..." autocomplete="off" aria-label="Search publications">
+                        <span class="search-kbd">/</span>
+                    </div>
+                    <div class="filter-chips" id="filter-chips" role="group" aria-label="Filter publications by category">
+                        <button class="chip active" data-cat="all" type="button">All</button>
+                        <button class="chip" data-cat="ir" type="button">Information Retrieval</button>
+                        <button class="chip" data-cat="llm" type="button">LLMs</button>
+                        <button class="chip" data-cat="eval" type="button">Evaluation &amp; Benchmarks</button>
+                        <button class="chip" data-cat="reasoning" type="button">Reasoning</button>
+                        <button class="chip" data-cat="interp" type="button">Interpretability</button>
+                        <button class="chip" data-cat="agents" type="button">Agents</button>
+                        <button class="chip" data-cat="multimodal" type="button">Multimodal</button>
+                        <button class="chip" data-cat="graphs" type="button">Graph ML</button>
+                        <button class="chip" data-cat="applied" type="button">Applied ML</button>
+                    </div>
+                    <div class="result-stats" id="result-stats" aria-live="polite"></div>
+                </div>
+
                 <div class="publications-list">
 
-                    <div class="year-divider">2026</div>
+                    <div class="year-group">
+                        <div class="year-divider">2026</div>
 
-                    <div class="publication">
-                        <div class="pub-media">
-                            <img src="images/mech-int.png" alt="Mechanistic Analysis thumbnail" onerror="this.style.display='none'">
+                        <div class="publication" data-cats="interp llm">
+                            <div class="pub-media">
+                                <img src="images/mech-int.png" alt="Mechanistic Analysis thumbnail" loading="lazy" onerror="this.style.display='none'">
+                            </div>
+                            <div class="pub-details">
+                                <div class="pub-title">
+                                    <a href="https://arxiv.org/abs/2606.09850" target="_blank">
+                                        Mechanistic Analysis of Alignment Algorithms in Language Models
+                                    </a>
+                                </div>
+                                <div class="pub-authors"><strong>Aarush Sinha</strong>, Ishan Garg, Veeraraju Elluru, Arth Singh, Kushal Garg</div>
+                                <div class="pub-meta">
+                                    <span class="pub-venue">arXiv preprint arXiv:2606.09850</span>
+                                    <span class="pub-tags">
+                                        <span class="tag tag--preprint">Preprint</span>
+                                        <button class="cat-tag" data-cat="interp" type="button">Interpretability</button>
+                                        <button class="cat-tag" data-cat="llm" type="button">LLMs</button>
+                                    </span>
+                                </div>
+                                <div class="pub-abstract-toggle">Abstract</div>
+                                <div class="pub-abstract-content">
+                                    <p>Post-training alignment algorithms are predominantly evaluated as black boxes, obscuring how they reshape language models' internal computations. We present a systematic mechanistic analysis of six preference-optimization methods: PPO, DPO, SimPO, ORPO, GRPO, and KTO across three open-weight model families. By integrating layer-wise linear probing, Sparse Autoencoders, and crosscoders, we localize preference representations and quantify alignment-induced geometric transformations in latent space. We find that preference signals consistently concentrate in early--mid or mid--late layers, but different objectives induce qualitatively distinct representational shifts. KTO and GRPO enhance linear separability through constructive feature sharing and sparse, high-salience recruitment. In contrast, DPO and ORPO degrade separability via non-constructive geometric rotation and feature attenuation, while PPO and SimPO largely preserve baseline geometry. These transformations exhibit architecture-dependent variability, demonstrating that behavioral alignment does not imply uniform internal restructuring. Our findings establish alignment as a heterogeneous intervention, motivate standardized feature-level auditing for safety and interpretability, and highlight the need for mechanism-aware optimization objectives.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://arxiv.org/abs/2606.09850" target="_blank">
-                                    Mechanistic Analysis of Alignment Algorithms in Language Models
-                                </a>
+
+                        <div class="publication" data-cats="eval">
+                            <div class="pub-media">
+                                <img src="images/eval-cards.png" alt="Evaluation Cards thumbnail" loading="lazy" onerror="this.style.display='none'">
                             </div>
-                            <div class="pub-authors"><strong>Aarush Sinha</strong>, Ishan Garg, Veeraraju Elluru, Arth Singh, Kushal Garg</div>
-                            <div class="pub-meta">
-                                <span class="pub-venue">arXiv preprint arXiv:2606.09850</span>
-                                <span class="pub-tags">
-                                    <span class="tag tag--preprint">Preprint</span>
-                                </span>
+                            <div class="pub-details">
+                                <div class="pub-title">
+                                    <a href="https://arxiv.org/abs/2606.09809" target="_blank">
+                                        Evaluation Cards: An Interpretive Layer for AI Evaluation Reporting
+                                    </a>
+                                </div>
+                                <div class="pub-authors pub-authors--compact">
+                                    Avijit Ghosh, Anka Reuel, Jenny Chim, Wm. Matthew Kennedy
+                                    <button class="author-ellipsis" type="button" data-author-target="eval-before" aria-expanded="false" aria-controls="eval-before-authors" aria-label="Show authors before Aarush Sinha">...</button>
+                                    <span class="author-reveal" id="eval-before-authors">, Srishti Yadav, Jennifer Mickel, Yanan Long, Andrew Tran, Anastassia Kornilova, Damian Stachura, Kevin Klyman, Felix Friedrich, Jeba Sania, Jan Batzner, Anoop Mishra, Eliya Habba, Yixiong Hao, Nathan Heath, Shalaleh Rismani, Usman Gohar, Andrea Loehr, David Manheim, Ruchira Dhar, Sree Harsha Nelaturu</span>,
+                                    <strong>Aarush Sinha</strong>
+                                    <button class="author-ellipsis" type="button" data-author-target="eval-after" aria-expanded="false" aria-controls="eval-after-authors" aria-label="Show authors after Aarush Sinha">...</button>
+                                    <span class="author-reveal" id="eval-after-authors">, Leshem Choshen, Drishti Sharma, Ishan Khire, Amit Saha, Subramanyam Sahoo, Michael Hardy, Michael Alexander Riegler, Kabir Manghnani, Michelle Lin, Yanan Jiang, Yilin Huang, Asaf Yehudai, Jessica Ji, Aris Hofmann, Mubashara Akhtar, Max Lamparth, Nuno Moniz, Yacine Jernite, Stella Biderman, Zeerak Talat, Sanmi Koyejo, Mykel Kochenderfer, Irene Solaiman</span>
+                                </div>
+                                <div class="pub-meta">
+                                    <span class="pub-venue">arXiv preprint arXiv:2606.09809</span>
+                                    <span class="pub-tags">
+                                        <span class="tag tag--preprint">Preprint</span>
+                                        <button class="cat-tag" data-cat="eval" type="button">Evaluation &amp; Benchmarks</button>
+                                    </span>
+                                </div>
+                                <div class="pub-abstract-toggle">Abstract</div>
+                                <div class="pub-abstract-content">
+                                    <p>AI evaluation results are produced at scale but reported inconsistently across leaderboards, model cards, benchmark papers, and company blogs. The cost is interpretive: readers cannot reliably compare results across sources, identify what a report omits, or trace an aggregate claim to its underlying evidence. Recent efforts address isolated components but leave three gaps: they cover only narrow slices of the evaluation lifecycle and do not compose into a single interpretable record; they specify static representations that do not differentiate the questions different stakeholders bring to the same evidence; and they remain proposals on paper, lacking the extraction infrastructure required for adoption at scale. We present EvalCards, an operational reporting layer that composes benchmark metadata, evaluation run data, and model metadata into a unified record. We (1) derive a reporting schema from a structured review of 52 papers and 10 stakeholder interviews, (2) implement four interpretive signals (reproducibility, documentation completeness, provenance and risk, and score comparability), rendered through reader modes calibrated to research and non-research audiences, and (3) deploy a monitoring tool that applies EvalCards across 5,816 models, 635 benchmarks, and 101,843 results, surfacing systematic gaps in current reporting practice.</p>
+                                </div>
                             </div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>Post-training alignment algorithms are predominantly evaluated as black boxes, obscuring how they reshape language models' internal computations. We present a systematic mechanistic analysis of six preference-optimization methods: PPO, DPO, SimPO, ORPO, GRPO, and KTO across three open-weight model families. By integrating layer-wise linear probing, Sparse Autoencoders, and crosscoders, we localize preference representations and quantify alignment-induced geometric transformations in latent space. We find that preference signals consistently concentrate in early--mid or mid--late layers, but different objectives induce qualitatively distinct representational shifts. KTO and GRPO enhance linear separability through constructive feature sharing and sparse, high-salience recruitment. In contrast, DPO and ORPO degrade separability via non-constructive geometric rotation and feature attenuation, while PPO and SimPO largely preserve baseline geometry. These transformations exhibit architecture-dependent variability, demonstrating that behavioral alignment does not imply uniform internal restructuring. Our findings establish alignment as a heterogeneous intervention, motivate standardized feature-level auditing for safety and interpretability, and highlight the need for mechanism-aware optimization objectives.</p>
+                        </div>
+
+                        <div class="publication" data-cats="agents llm">
+                            <div class="pub-media">
+                                <img src="images/conscientia.png" alt="CONSCIENTIA thumbnail" loading="lazy" onerror="this.style.display='none'">
+                            </div>
+                            <div class="pub-details">
+                                <div class="pub-title">
+                                    <a href="https://arxiv.org/abs/2604.09746" target="_blank">
+                                        CONSCIENTIA: Can LLM Agents Learn to Strategize? Emergent Deception and Trust in a Multi-Agent NYC Simulation
+                                    </a>
+                                </div>
+                                <div class="pub-authors"><strong>Aarush Sinha</strong>, Arion Das, Soumyadeep Nag, Charan Karnati, Shravani Nag, Chandra Vadhan Raj, Aman Chadha, Vinija Jain, Suranjana Trivedy, Amitava Das</div>
+                                <div class="pub-meta">
+                                    <span class="pub-venue">arXiv preprint arXiv:2604.09746</span>
+                                    <span class="pub-tags">
+                                        <span class="tag tag--preprint">Preprint</span>
+                                        <button class="cat-tag" data-cat="agents" type="button">Agents</button>
+                                        <button class="cat-tag" data-cat="llm" type="button">LLMs</button>
+                                    </span>
+                                </div>
+                                <div class="pub-abstract-toggle">Abstract</div>
+                                <div class="pub-abstract-content">
+                                    <p>As large language models (LLMs) are increasingly deployed as autonomous agents, understanding how strategic behavior emerges in multi-agent environments has become an important alignment challenge. We take a neutral empirical stance and construct a controlled environment in which strategic behavior can be directly observed and measured. We introduce a large-scale multi-agent simulation in a simplified model of New York City, where LLM-driven agents interact under opposing incentives. Blue agents aim to reach their destinations efficiently, while Red agents attempt to divert them toward billboard-heavy routes using persuasive language to maximize advertising revenue. Hidden identities make navigation socially mediated, forcing agents to decide when to trust or deceive. We study policy learning through an iterative simulation pipeline that updates agent policies across repeated interaction rounds using Kahneman-Tversky Optimization (KTO). Blue agents are optimized to reduce billboard exposure while preserving navigation efficiency, whereas Red agents adapt to exploit remaining weaknesses. Across iterations, the best Blue policy improves task success from 46.0% to 57.3%, although susceptibility remains high at 70.7%. Later policies exhibit stronger selective cooperation while preserving trajectory efficiency. However, a persistent safety-helpfulness trade-off remains: policies that better resist adversarial steering do not simultaneously maximize task completion. Overall, our results show that LLM agents can exhibit limited strategic behavior, including selective trust and deception, while remaining highly vulnerable to adversarial persuasion.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication" data-cats="ir">
+                            <div class="pub-media">
+                                <img src="images/eci.png" alt="ECI paper table thumbnail" loading="lazy" onerror="this.src='images/llm-ir.png'">
+                            </div>
+                            <div class="pub-details">
+                                <div class="pub-title">
+                                    <a href="https://arxiv.org/abs/2603.20990" target="_blank">
+                                        ECI<sub>sem</sub>: Semantic Residual Effective Contrastive Information for Evaluating Hard Negatives
+                                    </a>
+                                </div>
+                                <div class="pub-authors"><strong>Aarush Sinha</strong>, Rahul Seetharaman, Aman Bansal</div>
+                                <div class="pub-meta">
+                                    <span class="pub-venue">arXiv preprint arXiv:2603.20990</span>
+                                    <span class="pub-tags">
+                                        <span class="tag tag--preprint">Preprint</span>
+                                        <button class="cat-tag" data-cat="ir" type="button">Information Retrieval</button>
+                                    </span>
+                                </div>
+                                <div class="pub-abstract-toggle">Abstract</div>
+                                <div class="pub-abstract-content">
+                                    <p>Hard-negative source selection for dense retrieval is usually decided only after fine-tuning and downstream evaluation. We propose ECI<sub>sem</sub>, a semantic residual variant of Effective Contrastive Information (ECI) that ranks candidate negative sources using frozen target-encoder embeddings. ECI<sub>sem</sub> is training-free, not label-free: each scored example requires a query, a labeled positive, and an explicit candidate negative. ECI<sub>sem</sub> builds a weighted residual information matrix from target consistency, semantic locality, lexical residuality, and a log-determinant diversity objective. On MS MARCO negative sources, in-family ECI<sub>sem</sub> ranks LLM negatives highest among non-hybrid sources and Dense+LLM highest among hybrid sources, matching the strongest aggregate BEIR transfer results across DistilBERT, E5-base, and Contriever. Controlled ablations show that this alignment depends on using the target encoder family, while additional ablations show stability under sample-size, temperature, tokenizer, and IDFcorpus perturbations. The theory gives a local linearized link to loss reduction, while the empirical study treats downstream evaluation as the final test.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication" data-cats="ir llm">
+                            <div class="pub-media">
+                                <img src="images/llm-ir.png" alt="Dense Retrieval paper thumbnail" loading="lazy">
+                            </div>
+                            <div class="pub-details">
+                                <div class="pub-title">
+                                    <a href="https://openreview.net/forum?id=H4Kc3jzYjm&referrer=%5Bthe%20profile%20of%20Aarush%20Sinha%5D(%2Fprofile%3Fid%3D~Aarush_Sinha1)" target="_blank">
+                                        Don't Retrieve, Generate: Prompting LLMs for Synthetic Training Data in Dense Retrieval
+                                    </a>
+                                </div>
+                                <div class="pub-authors"><strong>Aarush Sinha</strong></div>
+                                <div class="pub-meta">
+                                    <span class="pub-venue">I Can't Believe It's Not Better @ ICLR 2026</span>
+                                    <span class="pub-tags">
+                                        <span class="tag tag--published">Published</span>
+                                        <span class="tag tag--award"><i class="fas fa-trophy"></i> Best Poster</span>
+                                        <button class="cat-tag" data-cat="ir" type="button">Information Retrieval</button>
+                                        <button class="cat-tag" data-cat="llm" type="button">LLMs</button>
+                                    </span>
+                                </div>
+                                <div class="pub-abstract-toggle">Abstract</div>
+                                <div class="pub-abstract-content">
+                                    <p>Training effective dense retrieval models typically relies on hard negative (HN) examples mined from large document corpora using methods such as BM25 or cross-encoders, which require full corpus access and expensive index construction. We propose generating synthetic hard negatives directly from a provided query and positive passage, using Large Language Models(LLMs). We fine-tune DistilBERT using synthetic negatives generated by four state-of-the-art LLMs ranging from 4B to 30B parameters (Qwen3, LLaMA3, Phi4) and evaluate performance across 10 BEIR benchmark datasets. Contrary to the prevailing assumption that stronger generative models yield better synthetic data, find that our generative pipeline consistently underperforms traditional corpus-based mining strategies (BM25 and Cross-Encoder). Furthermore, we observe that scaling the generator model does not monotonically improve retrieval performance and find that the 14B parameter model outperforms the 30B model and in some settings it is the worst performing.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication" data-cats="eval">
+                            <div class="pub-media">
+                                <img src="images/hle.png" alt="Humanity's Last Exam benchmark" loading="lazy">
+                            </div>
+                            <div class="pub-details">
+                                <div class="pub-title">
+                                    <a href="https://www.nature.com/articles/s41586-025-09962-4" target="_blank">
+                                        A benchmark of expert-level academic questions to assess AI capabilities
+                                    </a>
+                                </div>
+                                <div class="pub-authors">Center for AI Safety, Scale AI & HLE Contributors Consortium (<strong>Aarush Sinha</strong>)</div>
+                                <div class="pub-meta">
+                                    <span class="pub-venue">Nature</span>
+                                    <span class="pub-tags">
+                                        <span class="tag tag--published">Published</span>
+                                        <button class="cat-tag" data-cat="eval" type="button">Evaluation &amp; Benchmarks</button>
+                                    </span>
+                                </div>
+                                <div class="pub-abstract-toggle">Abstract</div>
+                                <div class="pub-abstract-content">
+                                    <p>Benchmarks are important tools for tracking the rapid advancements in large language model (LLM) capabilities. However, benchmarks are not keeping pace in difficulty: LLMs now achieve more than 90% accuracy on popular benchmarks such as Measuring Massive Multitask Language Understanding, limiting informed measurement of state-of-the-art LLM capabilities. Here, in response, we introduce Humanity's Last Exam (HLE), a multi-modal benchmark at the frontier of human knowledge, designed to be an expert-level closed-ended academic benchmark with broad subject coverage. HLE consists of 2,500 questions across dozens of subjects, including mathematics, humanities and the natural sciences. HLE is developed globally by subject-matter experts and consists of multiple-choice and short-answer questions suitable for automated grading. Each question has a known solution that is unambiguous and easily verifiable but cannot be quickly answered by internet retrieval. State-of-the-art LLMs demonstrate low accuracy and calibration on HLE, highlighting a marked gap between current LLM capabilities and the expert human frontier on closed-ended academic questions. To inform research and policymaking upon a clear understanding of model capabilities, we publicly release HLE at https://lastexam.ai.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication" data-cats="ir">
+                            <div class="pub-media">
+                                <img src="images/bica.png" alt="bica" loading="lazy">
+                            </div>
+                            <div class="pub-details">
+                                <div class="pub-title">
+                                    <a href="https://arxiv.org/abs/2511.08029" target="_blank">
+                                        BiCA: Effective Biomedical Dense Retrieval with Citation-Aware Hard Negatives
+                                    </a>
+                                </div>
+                                <div class="pub-authors"><strong>Aarush Sinha</strong>, Pavan Kumar, Roshan MSB, Nirav Bhatt</div>
+                                <div class="pub-meta">
+                                    <span class="pub-venue">AAAI 2026 (Oral)</span>
+                                    <span class="pub-tags">
+                                        <span class="tag tag--published">Published</span>
+                                        <button class="cat-tag" data-cat="ir" type="button">Information Retrieval</button>
+                                    </span>
+                                </div>
+                                <div class="pub-abstract-toggle">Abstract</div>
+                                <div class="pub-abstract-content">
+                                    <p>Hard negatives are essential for training effective retrieval models. Hard-negative mining typically relies on ranking documents using cross-encoders or static embedding models based on similarity metrics such as cosine distance. Hard negative mining becomes challenging for biomedical and scientific domains due to the difficulty in distinguishing between source and hard negative documents. However, referenced documents naturally share contextual relevance with the source document but are not duplicates, making them well-suited as hard negatives. In this work, we propose BiCA: Biomedical Dense Retrieval with Citation-Aware Hard Negatives, an approach for hard-negative mining by utilizing citation links in 20,000 PubMed articles for improving a domain-specific small dense retriever. We fine-tune the GTE_small and GTE_Base models using these citation-informed negatives and observe consistent improvements in zero-shot dense retrieval using nDCG@10 for both in-domain and out-of-domain tasks on BEIR and outperform baselines on long-tailed topics in LoTTE using Success@5. Our findings highlight the potential of leveraging document link structure to generate highly informative negatives, enabling state-of-the-art performance with minimal fine-tuning and demonstrating a path towards highly data-efficient domain adaptation.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="publication">
-                        <div class="pub-media">
-                            <img src="images/eval-cards.png" alt="Evaluation Cards thumbnail" onerror="this.style.display='none'">
+                    <div class="year-group">
+                        <div class="year-divider">2025</div>
+
+                        <div class="publication" data-cats="multimodal eval">
+                            <div class="pub-media">
+                                <video autoplay loop muted playsinline preload="metadata">
+                                    <source src="images/vibe.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="pub-details">
+                                <div class="pub-title">
+                                    <a href="https://aclanthology.org/2025.trustnlp-main.15/" target="_blank">
+                                        ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models
+                                    </a>
+                                </div>
+                                <div class="pub-authors">
+                                    Vipula Rawte, Sarthak Jain, <strong>Aarush Sinha</strong>, Garv Kaushik, Aman Bansal, Prathiksha Rumale Vishwanath, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P Sheth, Amitava Das
+                                </div>
+                                <div class="pub-meta">
+                                    <span class="pub-venue">The 5th Workshop on Trustworthy NLP @ NAACL 2025</span>
+                                    <span class="pub-tags">
+                                        <span class="tag tag--published">Published</span>
+                                        <button class="cat-tag" data-cat="multimodal" type="button">Multimodal</button>
+                                        <button class="cat-tag" data-cat="eval" type="button">Evaluation &amp; Benchmarks</button>
+                                    </span>
+                                </div>
+                                <div class="pub-abstract-toggle">Abstract</div>
+                                <div class="pub-abstract-content">
+                                    <p>Recent advances in Large Multimodal Models (LMMs) have expanded their capabilities to video understanding, with Text-to-Video (T2V) models excelling in generating videos from textual prompts. However, they still frequently produce hallucinated content, revealing AI-generated inconsistencies. We introduce ViBe https://huggingface.co/datasets/ViBe-T2V-Bench/ViBe: a large-scale dataset of hallucinated videos from open-source T2V models. We identify five major hallucination types: Vanishing Subject, Omission Error, Numeric Variability, Subject Dysmorphia, and Visual Incongruity. Using ten T2V models, we generated and manually annotated 3,782 videos from 837 diverse MS COCO captions. Our proposed benchmark includes a dataset of hallucinated videos and a classification framework using video embeddings. ViBe serves as a critical resource for evaluating T2V reliability and advancing hallucination detection. We establish classification as a baseline, with the TimeSFormer + CNN ensemble achieving the best performance (0.345 accuracy, 0.342 F1 score). While initial baselines proposed achieve modest accuracy, this highlights the difficulty of automated hallucination detection and the need for improved methods. Our research aims to drive the development of more robust T2V models and evaluate their outputs based on user preferences.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://arxiv.org/abs/2606.09809" target="_blank">
-                                    Evaluation Cards: An Interpretive Layer for AI Evaluation Reporting
-                                </a>
+
+                        <div class="publication" data-cats="reasoning llm">
+                            <div class="pub-media">
+                                <img src="images/dr-cot.png" alt="dr-cot" loading="lazy">
                             </div>
-                            <div class="pub-authors pub-authors--compact">
-                                Avijit Ghosh, Anka Reuel, Jenny Chim, Wm. Matthew Kennedy
-                                <button class="author-ellipsis" type="button" data-author-target="eval-before" aria-expanded="false" aria-controls="eval-before-authors" aria-label="Show authors before Aarush Sinha">...</button>
-                                <span class="author-reveal" id="eval-before-authors">, Srishti Yadav, Jennifer Mickel, Yanan Long, Andrew Tran, Anastassia Kornilova, Damian Stachura, Kevin Klyman, Felix Friedrich, Jeba Sania, Jan Batzner, Anoop Mishra, Eliya Habba, Yixiong Hao, Nathan Heath, Shalaleh Rismani, Usman Gohar, Andrea Loehr, David Manheim, Ruchira Dhar, Sree Harsha Nelaturu</span>,
-                                <strong>Aarush Sinha</strong>
-                                <button class="author-ellipsis" type="button" data-author-target="eval-after" aria-expanded="false" aria-controls="eval-after-authors" aria-label="Show authors after Aarush Sinha">...</button>
-                                <span class="author-reveal" id="eval-after-authors">, Leshem Choshen, Drishti Sharma, Ishan Khire, Amit Saha, Subramanyam Sahoo, Michael Hardy, Michael Alexander Riegler, Kabir Manghnani, Michelle Lin, Yanan Jiang, Yilin Huang, Asaf Yehudai, Jessica Ji, Aris Hofmann, Mubashara Akhtar, Max Lamparth, Nuno Moniz, Yacine Jernite, Stella Biderman, Zeerak Talat, Sanmi Koyejo, Mykel Kochenderfer, Irene Solaiman</span>
+                            <div class="pub-details">
+                                <div class="pub-title">
+                                    <a href="https://link.springer.com/article/10.1038/s41598-025-18622-6#Abs1" target="_blank">
+                                        DR-CoT: Dynamic Recursive Chain of Thought with Meta Reasoning for Parameter Efficient Models
+                                    </a>
+                                </div>
+                                <div class="pub-authors"><strong>Aarush Sinha</strong>, OmKumar Chandra Umakanthan & Sudhakaran Gajendran</div>
+                                <div class="pub-meta">
+                                    <span class="pub-venue">Scientific Reports</span>
+                                    <span class="pub-tags">
+                                        <span class="tag tag--published">Published</span>
+                                        <button class="cat-tag" data-cat="reasoning" type="button">Reasoning</button>
+                                        <button class="cat-tag" data-cat="llm" type="button">LLMs</button>
+                                    </span>
+                                </div>
+                                <div class="pub-abstract-toggle">Abstract</div>
+                                <div class="pub-abstract-content">
+                                    <p>Chain-of-Thought (CoT) prompting has revolutionized reasoning in Large Language Models (LLMs), enabling them to tackle complex tasks by mimicking step-by-step human thought processes. However, traditional CoT methods often suffer from high computational costs and context dilution, limiting their effectiveness, particularly in resource-constrained or real-time applications. To address these challenges, we introduce Dynamic Recursive Chain-of-Thought (DR-CoT), a novel reasoning framework for parameter-efficient models. DR-CoT synergistically integrates recursive reasoning, dynamic context truncation, and a voting mechanism. By selectively retaining the most salient context within a fixed token budget and aggregating inferences from multiple independent reasoning chains, DR-CoT significantly enhances reasoning accuracy. Extensive evaluations on challenging reasoning benchmarks, including GPQA Diamond and AIME2024, demonstrate the efficacy of DR-CoT. On GPQA Diamond, DR-CoT sees Pass@1 accuracy gains of 1.5% for Gemini 2.0 Flash Thinking Experimental, 2.7% for Grok 3 Beta, and 4.4% for o3 Mini. Similarly, AIME2024 results reveal consistent improvements of 3-4 percentage points across evaluated models. Furthermore, DR-CoT enhances zero-shot classification performance on GPQA Diamond, enabling compact BERT-sized models to surpass larger language models such as GPT-4 and LLaMA 2. In code generation tasks using HumanEval, DRCoT empowers models to exceed the performance of established frontier LLMs, including LLaMA 70B, Phi-3, and Claude Sonnet. These comprehensive results underscore DR-CoT's effectiveness in bridging the performance gap between parameter-efficient models and state-of-the-art LLMs across multiple domains.</p>
+                                </div>
                             </div>
-                            <div class="pub-meta">
-                                <span class="pub-venue">arXiv preprint arXiv:2606.09809</span>
-                                <span class="pub-tags">
-                                    <span class="tag tag--preprint">Preprint</span>
-                                </span>
+                        </div>
+
+                        <div class="publication" data-cats="graphs">
+                            <div class="pub-media">
+                                <img src="images/gmlm.png" alt="GMLM paper thumbnail" loading="lazy">
                             </div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>AI evaluation results are produced at scale but reported inconsistently across leaderboards, model cards, benchmark papers, and company blogs. The cost is interpretive: readers cannot reliably compare results across sources, identify what a report omits, or trace an aggregate claim to its underlying evidence. Recent efforts address isolated components but leave three gaps: they cover only narrow slices of the evaluation lifecycle and do not compose into a single interpretable record; they specify static representations that do not differentiate the questions different stakeholders bring to the same evidence; and they remain proposals on paper, lacking the extraction infrastructure required for adoption at scale. We present EvalCards, an operational reporting layer that composes benchmark metadata, evaluation run data, and model metadata into a unified record. We (1) derive a reporting schema from a structured review of 52 papers and 10 stakeholder interviews, (2) implement four interpretive signals (reproducibility, documentation completeness, provenance and risk, and score comparability), rendered through reader modes calibrated to research and non-research audiences, and (3) deploy a monitoring tool that applies EvalCards across 5,816 models, 635 benchmarks, and 101,843 results, surfacing systematic gaps in current reporting practice.</p>
+                            <div class="pub-details">
+                                <div class="pub-title">
+                                    <a href="https://arxiv.org/abs/2503.05763" target="_blank">
+                                        GMLM: Bridging Graph Neural Networks and Language Models for Heterophilic Node Classification
+                                    </a>
+                                </div>
+                                <div class="pub-authors"><strong>Aarush Sinha</strong></div>
+                                <div class="pub-meta">
+                                    <span class="pub-venue">Frontiers in Graph Machine Learning for the Large Model Era @ CIKM2025</span>
+                                    <span class="pub-tags">
+                                        <span class="tag tag--published">Published</span>
+                                        <button class="cat-tag" data-cat="graphs" type="button">Graph ML</button>
+                                    </span>
+                                </div>
+                                <div class="pub-abstract-toggle">Abstract</div>
+                                <div class="pub-abstract-content">
+                                    <p>Integrating powerful but computationally expensive Pre-trained Language Models (PLMs) with Graph Neural Networks (GNNs) is a key challenge, especially on text-rich heterophilic graphs. We propose the Graph Masked Language Model (GMLM), a framework designed for the efficient and effective fusion of graph structure and text semantics. GMLM employs a two-stage process: first, a contrastive pre-training stage with a novel soft masking technique builds a robust multi-scale GNN; second, an end-to-end fine-tuning stage uses a dynamic active node selection strategy for scalability and a bi-directional cross-attention module for deep fusion. Experiments on five heterophilic benchmarks show GMLM achieves state-of-the-art results on four, significantly outperforming prior GNN and large LLM-based methods. For instance, it improves accuracy on the Texas dataset by over 8% and on Wisconsin by nearly 5%. Our work demonstrates that a sophisticated, deeply-integrated architecture can be more effective and efficient than larger, general-purpose models for text-rich graph representation learning.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication" data-cats="applied">
+                            <div class="pub-media">
+                                <img src="images/bonds.png" alt="Bond Yields paper thumbnail" loading="lazy">
+                            </div>
+                            <div class="pub-details">
+                                <div class="pub-title">
+                                    <a href="https://arxiv.org/abs/2502.17011" target="_blank">
+                                        Predicting Liquidity-Aware Bond Yields using Causal GANs and Deep Reinforcement Learning with LLM Evaluation
+                                    </a>
+                                </div>
+                                <div class="pub-authors">Jaskaran Singh Walia, <strong>Aarush Sinha</strong>, Srinitish Srinivasan, Srihari Unnikrishnan</div>
+                                <div class="pub-meta">
+                                    <span class="pub-venue">arXiv preprint arXiv:2502.17011</span>
+                                    <span class="pub-tags">
+                                        <span class="tag tag--preprint">Preprint</span>
+                                        <button class="cat-tag" data-cat="applied" type="button">Applied ML</button>
+                                    </span>
+                                </div>
+                                <div class="pub-abstract-toggle">Abstract</div>
+                                <div class="pub-abstract-content">
+                                    <p>Financial bond yield forecasting is challenging due to data scarcity, nonlinear macroeconomic dependencies, and evolving market conditions. In this paper, we propose a novel framework that leverages Causal Generative Adversarial Networks (CausalGANs) and Soft Actor-Critic (SAC) reinforcement learning (RL) to generate high-fidelity synthetic bond yield data for four major bond categories (AAA, BAA, US10Y, Junk). By incorporating 12 key macroeconomic variables, we ensure statistical fidelity by preserving essential market properties. To transform this market dependent synthetic data into actionable insights, we employ a finetuned Large Language Model (LLM) Qwen2.5-7B that generates trading signals (BUY/HOLD/SELL), risk assessments, and volatility projections. We use automated, human and LLM evaluations, all of which demonstrate that our framework improves forecasting performance over existing methods, with statistical validation via predictive accuracy, MAE evaluation(0.103%), profit/loss evaluation (60% profit rate), LLM evaluation (3.37/5) and expert assessments scoring 4.67 out of 5. The reinforcement learning-enhanced synthetic data generation achieves the least Mean Absolute Error of 0.103, demonstrating its effectiveness in replicating real-world bond market dynamics. We not only enhance data-driven trading strategies but also provides a scalable, high-fidelity synthetic financial data pipeline for risk &amp; volatility management and investment decision-making. This work establishes a bridge between synthetic data generation, LLM driven financial forecasting, and language model evaluation, contributing to AI-driven financial decision-making.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="publication">
-                        <div class="pub-media">
-                            <!-- Image missing, placeholder used for now -->
-                            <img src="images/conscientia.png" alt="CONSCIENTIA thumbnail" onerror="this.style.display='none'">
-                        </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://arxiv.org/abs/2604.09746" target="_blank">
-                                    CONSCIENTIA: Can LLM Agents Learn to Strategize? Emergent Deception and Trust in a Multi-Agent NYC Simulation
-                                </a>
-                            </div>
-                            <div class="pub-authors"><strong>Aarush Sinha</strong>, Arion Das, Soumyadeep Nag, Charan Karnati, Shravani Nag, Chandra Vadhan Raj, Aman Chadha, Vinija Jain, Suranjana Trivedy, Amitava Das</div>
-                            <div class="pub-meta">
-                                <span class="pub-venue">arXiv preprint arXiv:2604.09746</span>
-                                <span class="pub-tags">
-                                    <span class="tag tag--preprint">Preprint</span>
-                                </span>
-                            </div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>As large language models (LLMs) are increasingly deployed as autonomous agents, understanding how strategic behavior emerges in multi-agent environments has become an important alignment challenge. We take a neutral empirical stance and construct a controlled environment in which strategic behavior can be directly observed and measured. We introduce a large-scale multi-agent simulation in a simplified model of New York City, where LLM-driven agents interact under opposing incentives. Blue agents aim to reach their destinations efficiently, while Red agents attempt to divert them toward billboard-heavy routes using persuasive language to maximize advertising revenue. Hidden identities make navigation socially mediated, forcing agents to decide when to trust or deceive. We study policy learning through an iterative simulation pipeline that updates agent policies across repeated interaction rounds using Kahneman-Tversky Optimization (KTO). Blue agents are optimized to reduce billboard exposure while preserving navigation efficiency, whereas Red agents adapt to exploit remaining weaknesses. Across iterations, the best Blue policy improves task success from 46.0% to 57.3%, although susceptibility remains high at 70.7%. Later policies exhibit stronger selective cooperation while preserving trajectory efficiency. However, a persistent safety-helpfulness trade-off remains: policies that better resist adversarial steering do not simultaneously maximize task completion. Overall, our results show that LLM agents can exhibit limited strategic behavior, including selective trust and deception, while remaining highly vulnerable to adversarial persuasion.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="publication">
-                        <div class="pub-media">
-                            <img src="images/eci.png" alt="ECI paper table thumbnail" onerror="this.src='images/llm-ir.png'">
-                        </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://arxiv.org/abs/2603.20990" target="_blank">
-                                    ECI<sub>sem</sub>: Semantic Residual Effective Contrastive Information for Evaluating Hard Negatives
-                                </a>
-                            </div>
-                            <div class="pub-authors"><strong>Aarush Sinha</strong>, Rahul Seetharaman, Aman Bansal</div>
-                            <div class="pub-meta">
-                                <span class="pub-venue">arXiv preprint arXiv:2603.20990</span>
-                                <span class="pub-tags">
-                                    <span class="tag tag--preprint">Preprint</span>
-                                </span>
-                            </div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>Hard-negative source selection for dense retrieval is usually decided only after fine-tuning and downstream evaluation. We propose ECI<sub>sem</sub>, a semantic residual variant of Effective Contrastive Information (ECI) that ranks candidate negative sources using frozen target-encoder embeddings. ECI<sub>sem</sub> is training-free, not label-free: each scored example requires a query, a labeled positive, and an explicit candidate negative. ECI<sub>sem</sub> builds a weighted residual information matrix from target consistency, semantic locality, lexical residuality, and a log-determinant diversity objective. On MS MARCO negative sources, in-family ECI<sub>sem</sub> ranks LLM negatives highest among non-hybrid sources and Dense+LLM highest among hybrid sources, matching the strongest aggregate BEIR transfer results across DistilBERT, E5-base, and Contriever. Controlled ablations show that this alignment depends on using the target encoder family, while additional ablations show stability under sample-size, temperature, tokenizer, and IDFcorpus perturbations. The theory gives a local linearized link to loss reduction, while the empirical study treats downstream evaluation as the final test.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="publication">
-                        <div class="pub-media">
-                            <img src="images/llm-ir.png" alt="Dense Retrieval paper thumbnail">
-                        </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://openreview.net/forum?id=H4Kc3jzYjm&referrer=%5Bthe%20profile%20of%20Aarush%20Sinha%5D(%2Fprofile%3Fid%3D~Aarush_Sinha1)" target="_blank">
-                                    Don't Retrieve, Generate: Prompting LLMs for Synthetic Training Data in Dense Retrieval
-                                </a>
-                            </div>
-                            <div class="pub-authors"><strong>Aarush Sinha</strong></div>
-                            <div class="pub-meta">
-                                <span class="pub-venue">I Can't Believe It's Not Better @ ICLR 2026</span>
-                                <span class="pub-tags">
-                                    <span class="tag tag--published">Published</span>
-                                    <span class="tag tag--award"><i class="fas fa-trophy"></i> Best Poster</span>
-                                </span>
-                            </div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>Training effective dense retrieval models typically relies on hard negative (HN) examples mined from large document corpora using methods such as BM25 or cross-encoders, which require full corpus access and expensive index construction. We propose generating synthetic hard negatives directly from a provided query and positive passage, using Large Language Models(LLMs). We fine-tune DistilBERT using synthetic negatives generated by four state-of-the-art LLMs ranging from 4B to 30B parameters (Qwen3, LLaMA3, Phi4) and evaluate performance across 10 BEIR benchmark datasets. Contrary to the prevailing assumption that stronger generative models yield better synthetic data, find that our generative pipeline consistently underperforms traditional corpus-based mining strategies (BM25 and Cross-Encoder). Furthermore, we observe that scaling the generator model does not monotonically improve retrieval performance and find that the 14B parameter model outperforms the 30B model and in some settings it is the worst performing.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="publication">
-                        <div class="pub-media">
-                            <img src="images/hle.png" alt="Humanity's Last Exam benchmark">
-                        </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://www.nature.com/articles/s41586-025-09962-4" target="_blank">
-                                    A benchmark of expert-level academic questions to assess AI capabilities
-                                </a>
-                            </div>
-                            <div class="pub-authors">Center for AI Safety, Scale AI & HLE Contributors Consortium (<strong>Aarush Sinha</strong>)</div>
-                            <div class="pub-meta">
-                                <span class="pub-venue">Nature</span>
-                                <span class="pub-tags">
-                                    <span class="tag tag--published">Published</span>
-                                </span>
-                            </div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>Benchmarks are important tools for tracking the rapid advancements in large language model (LLM) capabilities. However, benchmarks are not keeping pace in difficulty: LLMs now achieve more than 90% accuracy on popular benchmarks such as Measuring Massive Multitask Language Understanding, limiting informed measurement of state-of-the-art LLM capabilities. Here, in response, we introduce Humanity's Last Exam (HLE), a multi-modal benchmark at the frontier of human knowledge, designed to be an expert-level closed-ended academic benchmark with broad subject coverage. HLE consists of 2,500 questions across dozens of subjects, including mathematics, humanities and the natural sciences. HLE is developed globally by subject-matter experts and consists of multiple-choice and short-answer questions suitable for automated grading. Each question has a known solution that is unambiguous and easily verifiable but cannot be quickly answered by internet retrieval. State-of-the-art LLMs demonstrate low accuracy and calibration on HLE, highlighting a marked gap between current LLM capabilities and the expert human frontier on closed-ended academic questions. To inform research and policymaking upon a clear understanding of model capabilities, we publicly release HLE at https://lastexam.ai.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="publication">
-                        <div class="pub-media">
-                            <img src="images/bica.png" alt="bica">
-                        </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://arxiv.org/abs/2511.08029" target="_blank">
-                                    BiCA: Effective Biomedical Dense Retrieval with Citation-Aware Hard Negatives
-                                </a>
-                            </div>
-                            <div class="pub-authors"><strong>Aarush Sinha </strong>, Pavan Kumar, Roshan MSB, Nirav Bhatt</div>
-                            <div class="pub-meta">
-                                <span class="pub-venue">AAAI 2026 (Oral)</span>
-                                <span class="pub-tags">
-                                    <span class="tag tag--published">Published</span>
-                                </span>
-                            </div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>Hard negatives are essential for training effective retrieval models. Hard-negative mining typically relies on ranking documents using cross-encoders or static embedding models based on similarity metrics such as cosine distance. Hard negative mining becomes challenging for biomedical and scientific domains due to the difficulty in distinguishing between source and hard negative documents. However, referenced documents naturally share contextual relevance with the source document but are not duplicates, making them well-suited as hard negatives. In this work, we propose BiCA: Biomedical Dense Retrieval with Citation-Aware Hard Negatives, an approach for hard-negative mining by utilizing citation links in 20,000 PubMed articles for improving a domain-specific small dense retriever. We fine-tune the GTE_small and GTE_Base models using these citation-informed negatives and observe consistent improvements in zero-shot dense retrieval using nDCG@10 for both in-domain and out-of-domain tasks on BEIR and outperform baselines on long-tailed topics in LoTTE using Success@5. Our findings highlight the potential of leveraging document link structure to generate highly informative negatives, enabling state-of-the-art performance with minimal fine-tuning and demonstrating a path towards highly data-efficient domain adaptation.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="year-divider">2025</div>
-
-                    <div class="publication">
-                        <div class="pub-media">
-                            <video autoplay loop muted playsinline>
-                                <source src="images/vibe.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://aclanthology.org/2025.trustnlp-main.15/" target="_blank">
-                                    ViBe: A Text-to-Video Benchmark for Evaluating Hallucination in Large Multimodal Models
-                                </a>
-                            </div>
-                            <div class="pub-authors">
-                                Vipula Rawte, Sarthak Jain, <strong>Aarush Sinha</strong>, Garv Kaushik, Aman Bansal, Prathiksha Rumale Vishwanath, Samyak Rajesh Jain, Aishwarya Naresh Reganti, Vinija Jain, Aman Chadha, Amit P Sheth, Amitava Das
-                            </div>
-                            <div class="pub-meta">
-                                <span class="pub-venue">The 5th Workshop on Trustworthy NLP @ NAACL 2025</span>
-                                <span class="pub-tags">
-                                    <span class="tag tag--published">Published</span>
-                                </span>
-                            </div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>Recent advances in Large Multimodal Models (LMMs) have expanded their capabilities to video understanding, with Text-to-Video (T2V) models excelling in generating videos from textual prompts. However, they still frequently produce hallucinated content, revealing AI-generated inconsistencies. We introduce ViBe https://huggingface.co/datasets/ViBe-T2V-Bench/ViBe: a large-scale dataset of hallucinated videos from open-source T2V models. We identify five major hallucination types: Vanishing Subject, Omission Error, Numeric Variability, Subject Dysmorphia, and Visual Incongruity. Using ten T2V models, we generated and manually annotated 3,782 videos from 837 diverse MS COCO captions. Our proposed benchmark includes a dataset of hallucinated videos and a classification framework using video embeddings. ViBe serves as a critical resource for evaluating T2V reliability and advancing hallucination detection. We establish classification as a baseline, with the TimeSFormer + CNN ensemble achieving the best performance (0.345 accuracy, 0.342 F1 score). While initial baselines proposed achieve modest accuracy, this highlights the difficulty of automated hallucination detection and the need for improved methods. Our research aims to drive the development of more robust T2V models and evaluate their outputs based on user preferences.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="publication">
-                        <div class="pub-media">
-                            <img src="images/dr-cot.png" alt="dr-cot">
-                        </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://link.springer.com/article/10.1038/s41598-025-18622-6#Abs1" target="_blank">
-                                    DR-CoT: Dynamic Recursive Chain of Thought with Meta Reasoning for Parameter Efficient Models
-                                </a>
-                            </div>
-                            <div class="pub-authors"><strong>Aarush Sinha </strong>, OmKumar Chandra Umakanthan & Sudhakaran Gajendran</div>
-                            <div class="pub-meta">
-                                <span class="pub-venue">Scientific Reports</span>
-                                <span class="pub-tags">
-                                    <span class="tag tag--published">Published</span>
-                                </span>
-                            </div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>Chain-of-Thought (CoT) prompting has revolutionized reasoning in Large Language Models (LLMs), enabling them to tackle complex tasks by mimicking step-by-step human thought processes. However, traditional CoT methods often suffer from high computational costs and context dilution, limiting their effectiveness, particularly in resource-constrained or real-time applications. To address these challenges, we introduce Dynamic Recursive Chain-of-Thought (DR-CoT), a novel reasoning framework for parameter-efficient models. DR-CoT synergistically integrates recursive reasoning, dynamic context truncation, and a voting mechanism. By selectively retaining the most salient context within a fixed token budget and aggregating inferences from multiple independent reasoning chains, DR-CoT significantly enhances reasoning accuracy. Extensive evaluations on challenging reasoning benchmarks, including GPQA Diamond and AIME2024, demonstrate the efficacy of DR-CoT. On GPQA Diamond, DR-CoT sees Pass@1 accuracy gains of 1.5% for Gemini 2.0 Flash Thinking Experimental, 2.7% for Grok 3 Beta, and 4.4% for o3 Mini. Similarly, AIME2024 results reveal consistent improvements of 3-4 percentage points across evaluated models. Furthermore, DR-CoT enhances zero-shot classification performance on GPQA Diamond, enabling compact BERT-sized models to surpass larger language models such as GPT-4 and LLaMA 2. In code generation tasks using HumanEval, DRCoT empowers models to exceed the performance of established frontier LLMs, including LLaMA 70B, Phi-3, and Claude Sonnet. These comprehensive results underscore DR-CoT's effectiveness in bridging the performance gap between parameter-efficient models and state-of-the-art LLMs across multiple domains.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="publication">
-                        <div class="pub-media">
-                            <img src="images/gmlm.png" alt="GMLM paper thumbnail">
-                        </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://arxiv.org/abs/2503.05763" target="_blank">
-                                    GMLM: Bridging Graph Neural Networks and Language Models for Heterophilic Node Classification
-                                </a>
-                            </div>
-                            <div class="pub-authors"><strong>Aarush Sinha</strong></div>
-                            <div class="pub-meta">
-                                <span class="pub-venue">Frontiers in Graph Machine Learning for the Large Model Era @ CIKM2025</span>
-                                <span class="pub-tags">
-                                    <span class="tag tag--published">Published</span>
-                                </span>
-                            </div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>Integrating powerful but computationally expensive Pre-trained Language Models (PLMs) with Graph Neural Networks (GNNs) is a key challenge, especially on text-rich heterophilic graphs. We propose the Graph Masked Language Model (GMLM), a framework designed for the efficient and effective fusion of graph structure and text semantics. GMLM employs a two-stage process: first, a contrastive pre-training stage with a novel soft masking technique builds a robust multi-scale GNN; second, an end-to-end fine-tuning stage uses a dynamic active node selection strategy for scalability and a bi-directional cross-attention module for deep fusion. Experiments on five heterophilic benchmarks show GMLM achieves state-of-the-art results on four, significantly outperforming prior GNN and large LLM-based methods. For instance, it improves accuracy on the Texas dataset by over 8% and on Wisconsin by nearly 5%. Our work demonstrates that a sophisticated, deeply-integrated architecture can be more effective and efficient than larger, general-purpose models for text-rich graph representation learning.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="publication">
-                        <div class="pub-media">
-                            <img src="images/bonds.png" alt="Bond Yields paper thumbnail">
-                        </div>
-                        <div class="pub-details">
-                            <div class="pub-title">
-                                <a href="https://arxiv.org/abs/2502.17011" target="_blank">
-                                    Predicting Liquidity-Aware Bond Yields using Causal GANs and Deep Reinforcement Learning with LLM Evaluation
-                                </a>
-                            </div>
-                            <div class="pub-authors">Jaskaran Singh Walia, <strong>Aarush Sinha</strong>, Srinitish Srinivasan, Srihari Unnikrishnan</div>
-                            <div class="pub-meta">
-                                <span class="pub-venue">arXiv preprint arXiv:2502.17011</span>
-                                <span class="pub-tags">
-                                    <span class="tag tag--preprint">Preprint</span>
-                                </span>
-                            </div>
-                            <div class="pub-abstract-toggle">Abstract</div>
-                            <div class="pub-abstract-content">
-                                <p>Financial bond yield forecasting is challenging due to data scarcity, nonlinear macroeconomic dependencies, and evolving market conditions. In this paper, we propose a novel framework that leverages Causal Generative Adversarial Networks (CausalGANs) and Soft Actor-Critic (SAC) reinforcement learning (RL) to generate high-fidelity synthetic bond yield data for four major bond categories (AAA, BAA, US10Y, Junk). By incorporating 12 key macroeconomic variables, we ensure statistical fidelity by preserving essential market properties. To transform this market dependent synthetic data into actionable insights, we employ a finetuned Large Language Model (LLM) Qwen2.5-7B that generates trading signals (BUY/HOLD/SELL), risk assessments, and volatility projections. We use automated, human and LLM evaluations, all of which demonstrate that our framework improves forecasting performance over existing methods, with statistical validation via predictive accuracy, MAE evaluation(0.103%), profit/loss evaluation (60% profit rate), LLM evaluation (3.37/5) and expert assessments scoring 4.67 out of 5. The reinforcement learning-enhanced synthetic data generation achieves the least Mean Absolute Error of 0.103, demonstrating its effectiveness in replicating real-world bond market dynamics. We not only enhance data-driven trading strategies but also provides a scalable, high-fidelity synthetic financial data pipeline for risk &amp; volatility management and investment decision-making. This work establishes a bridge between synthetic data generation, LLM driven financial forecasting, and language model evaluation, contributing to AI-driven financial decision-making.</p>
-                            </div>
-                        </div>
+                    <div class="empty-state" id="empty-state" hidden>
+                        <span class="empty-code">0 documents retrieved</span>
+                        nDCG@10 = 0.00 — try a broader query or clear the filters
                     </div>
                 </div>
             </section>
         </main>
+
+        <footer class="site-footer"><span class="prompt">$</span> last indexed: 2026-06</footer>
     </div>
 
     <div id="lightbox" class="lightbox">
@@ -740,28 +366,158 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Abstract toggle
+            /* ---------------- Search + category filters ---------------- */
+            const input = document.getElementById('pub-search');
+            const stats = document.getElementById('result-stats');
+            const emptyState = document.getElementById('empty-state');
+            const chips = Array.from(document.querySelectorAll('#filter-chips .chip'));
+            const allChip = chips.find(c => c.dataset.cat === 'all');
+            const pubs = Array.from(document.querySelectorAll('.publication'));
+            const groups = Array.from(document.querySelectorAll('.year-group'));
+            const activeCats = new Set();
+
+            // Pre-compute a lowercase haystack per publication (title, authors,
+            // venue, abstract and category labels) for instant matching.
+            pubs.forEach(p => {
+                const catLabels = Array.from(p.querySelectorAll('.cat-tag')).map(t => t.textContent).join(' ');
+                p.dataset.haystack = (p.textContent + ' ' + catLabels).toLowerCase();
+            });
+
+            const HIGHLIGHT_SCOPES = '.pub-title, .pub-authors, .pub-venue';
+
+            function clearMarks(root) {
+                root.querySelectorAll('mark.hl').forEach(mark => {
+                    const parent = mark.parentNode;
+                    parent.replaceChild(document.createTextNode(mark.textContent), mark);
+                    parent.normalize();
+                });
+            }
+
+            function markMatches(root, query) {
+                const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+                const textNodes = [];
+                while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+                textNodes.forEach(node => {
+                    const text = node.nodeValue;
+                    const lower = text.toLowerCase();
+                    if (lower.indexOf(query) === -1) return;
+
+                    const frag = document.createDocumentFragment();
+                    let pos = 0, idx;
+                    while ((idx = lower.indexOf(query, pos)) > -1) {
+                        frag.appendChild(document.createTextNode(text.slice(pos, idx)));
+                        const mark = document.createElement('mark');
+                        mark.className = 'hl';
+                        mark.textContent = text.slice(idx, idx + query.length);
+                        frag.appendChild(mark);
+                        pos = idx + query.length;
+                    }
+                    frag.appendChild(document.createTextNode(text.slice(pos)));
+                    node.parentNode.replaceChild(frag, node);
+                });
+            }
+
+            function applyFilters() {
+                const t0 = performance.now();
+                const query = input.value.trim().toLowerCase();
+                let visible = 0;
+
+                pubs.forEach(p => {
+                    const cats = p.dataset.cats.split(' ');
+                    const catOk = activeCats.size === 0 || cats.some(c => activeCats.has(c));
+                    const queryOk = !query || p.dataset.haystack.includes(query);
+                    const show = catOk && queryOk;
+                    p.classList.toggle('is-hidden', !show);
+
+                    p.querySelectorAll(HIGHLIGHT_SCOPES).forEach(scope => {
+                        clearMarks(scope);
+                        if (show && query) markMatches(scope, query);
+                    });
+
+                    if (show) visible++;
+                });
+
+                groups.forEach(g => {
+                    g.classList.toggle('is-hidden', !g.querySelector('.publication:not(.is-hidden)'));
+                });
+
+                const ms = Math.max(performance.now() - t0, 0.01).toFixed(2);
+                stats.innerHTML = 'retrieved <strong>' + visible + '</strong> of ' + pubs.length +
+                    ' documents \u00b7 ' + ms + ' ms';
+                emptyState.hidden = visible !== 0;
+            }
+
+            function setChipStates() {
+                chips.forEach(chip => {
+                    if (chip === allChip) {
+                        chip.classList.toggle('active', activeCats.size === 0);
+                    } else {
+                        chip.classList.toggle('active', activeCats.has(chip.dataset.cat));
+                    }
+                });
+            }
+
+            function toggleCat(cat) {
+                if (cat === 'all') {
+                    activeCats.clear();
+                } else if (activeCats.has(cat)) {
+                    activeCats.delete(cat);
+                } else {
+                    activeCats.add(cat);
+                }
+                setChipStates();
+                applyFilters();
+            }
+
+            chips.forEach(chip => chip.addEventListener('click', () => toggleCat(chip.dataset.cat)));
+
+            // Category tags on cards activate the matching filter.
+            document.querySelectorAll('.cat-tag').forEach(tag => {
+                tag.addEventListener('click', () => {
+                    if (!activeCats.has(tag.dataset.cat)) toggleCat(tag.dataset.cat);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+
+            input.addEventListener('input', applyFilters);
+
+            // "/" focuses search, Escape clears it.
+            document.addEventListener('keydown', e => {
+                if (e.key === '/' && document.activeElement !== input) {
+                    e.preventDefault();
+                    input.focus();
+                } else if (e.key === 'Escape' && document.activeElement === input) {
+                    input.value = '';
+                    applyFilters();
+                    input.blur();
+                }
+            });
+
+            applyFilters();
+
+            /* ---------------- Abstract toggles ---------------- */
             document.querySelectorAll('.pub-abstract-toggle').forEach(toggle => {
                 toggle.addEventListener('click', () => {
                     const abstractContent = toggle.nextElementSibling;
                     const isExpanded = abstractContent.classList.toggle('expanded');
+                    toggle.classList.toggle('open', isExpanded);
                     toggle.textContent = isExpanded ? 'Hide Abstract' : 'Abstract';
                 });
             });
 
+            /* ---------------- Author ellipsis reveal ---------------- */
             document.querySelectorAll('.author-ellipsis').forEach(button => {
                 button.addEventListener('click', () => {
                     const target = document.getElementById(`${button.dataset.authorTarget}-authors`);
                     if (!target) return;
-
                     target.classList.add('is-visible');
                     button.setAttribute('aria-expanded', 'true');
                     button.classList.add('is-hidden');
-
                 });
             });
 
-            // Lightbox functionality
+            /* ---------------- Lightbox ---------------- */
             const lightbox = document.getElementById('lightbox');
             const lightboxContent = document.getElementById('lightbox-content');
             const lightboxClose = document.querySelector('.lightbox-close');
@@ -784,7 +540,7 @@
                             newMediaElement.src = mediaElement.src;
                         }
                         newMediaElement.alt = mediaElement.alt;
-                        lightboxContent.innerHTML = ''; // Clear previous content
+                        lightboxContent.innerHTML = '';
                         lightboxContent.appendChild(newMediaElement);
                     }
                 });
@@ -793,17 +549,14 @@
             function closeLightbox() {
                 lightbox.classList.remove('active');
                 document.body.classList.remove('lightbox-active');
-                lightboxContent.innerHTML = ''; // Clear content to stop video playback
+                lightboxContent.innerHTML = '';
             }
 
             lightboxClose.addEventListener('click', closeLightbox);
             lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) { // Close only if clicking on the background
-                    closeLightbox();
-                }
+                if (e.target === lightbox) closeLightbox();
             });
 
-            // Close lightbox with Escape key
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && lightbox.classList.contains('active')) {
                     closeLightbox();
