@@ -261,6 +261,8 @@
                     if (i < 3) {
                         d.el.classList.add('is-top');
                         d.el.dataset.rank = String(i + 1);
+                        const dateEl = d.el.querySelector('.update-date');
+                        if (dateEl) dateEl.dataset.rank = String(i + 1);
                     }
                     spanCount += highlightTerms(d.el, terms);
                 });

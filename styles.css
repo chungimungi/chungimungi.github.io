@@ -92,10 +92,19 @@ body {
     border-left-color: var(--accent);
 }
 
-.update.is-top .update-date::after {
+.update-date[data-rank]::after {
     content: ' · rank #' attr(data-rank);
     color: var(--accent);
     font-weight: 650;
+}
+
+.about-text p.is-top[data-rank]::before {
+    content: 'rank #' attr(data-rank) ' · ';
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    font-weight: 650;
+    margin-right: 2px;
 }
 
 /* ------------------------------------------------------------------
