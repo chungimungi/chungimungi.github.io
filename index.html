@@ -153,6 +153,7 @@
             let spanCount = 0;
             let typewriterPaused = false;
             let typewriterTimer = null;
+            let activeTermsKey = '';
 
             const TYPEWRITER = {
                 msPerCharType: 58,
@@ -243,9 +244,14 @@
             }
 
             function runRetrieval(query, source) {
+                const terms = tokenize(query);
+                const termsKey = terms.join('\0');
+
+                if (termsKey === activeTermsKey) return;
+
                 const tTotal = performance.now();
                 clearRetrieval();
-                const terms = tokenize(query);
+                activeTermsKey = termsKey;
 
                 if (!terms.length) {
                     if (stats) stats.textContent = 'retrieved 0 spans · type a query or click a tag';
@@ -279,6 +285,7 @@
                 tag.addEventListener('click', () => {
                     typewriterPaused = true;
                     clearTimeout(typewriterTimer);
+                    activeTermsKey = '';
                     const q = tag.dataset.query;
                     if (typer) typer.textContent = q;
                     document.querySelectorAll('.interest-tag[data-query]').forEach(t => {
@@ -300,7 +307,12 @@
                     ci += deleting ? -1 : 1;
                     const current = word.slice(0, ci);
                     typer.textContent = current;
-                    runRetrieval(current, 'typewriter');
+
+                    // Only re-index when the query settles — avoids DOM flicker per keystroke.
+                    if ((!deleting && ci === word.length) || (deleting && ci === 0)) {
+                        activeTermsKey = '';
+                        runRetrieval(current, 'typewriter');
+                    }
 
                     let delay = typewriterDelay(word, ci, deleting);
                     if (!deleting && ci === word.length) {
