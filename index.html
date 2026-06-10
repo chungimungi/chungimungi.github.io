@@ -203,7 +203,7 @@
                 spanCount = 0;
                 documents.forEach(d => {
                     d.el.innerHTML = d.html;
-                    d.el.classList.remove('is-retrieved', 'is-top', 'is-muted');
+                    d.el.classList.remove('is-retrieved', 'is-top');
                     d.el.removeAttribute('data-rank');
                 });
                 document.querySelectorAll('.interest-tag[data-query]').forEach(t => {
@@ -264,10 +264,6 @@
                     }
                     spanCount += highlightTerms(d.el, terms);
                 });
-
-                if (query.length > 4) {
-                    ranked.filter(d => d.score === 0).forEach(d => d.el.classList.add('is-muted'));
-                }
 
                 if (stats) {
                     stats.innerHTML = 'retrieved <strong>' + matched.length + '</strong> docs, ' +
