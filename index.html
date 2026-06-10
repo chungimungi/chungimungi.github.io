@@ -16,6 +16,7 @@
         <header class="header">
             <h1>Aarush Sinha</h1>
             <div class="tagline"><span class="prompt">$</span> query := "<span id="query-typer">information retrieval</span>"</div>
+            <div class="retrieve-stats" id="retrieve-stats" aria-live="polite">retrieved 0 spans · type a query or click a tag</div>
 
             <nav class="navigation">
                 <a href="index.html" class="active">about</a>
@@ -61,9 +62,9 @@
                             <div class="research-interests">
                                 <h4>Research Interests</h4>
                                 <div class="interests-list">
-                                    <span class="interest-tag">Information Retrieval</span>
-                                    <span class="interest-tag">Natural Language Processing</span>
-                                    <span class="interest-tag">Reasoning in Language Models</span>
+                                    <button type="button" class="interest-tag" data-query="information retrieval">Information Retrieval</button>
+                                    <button type="button" class="interest-tag" data-query="natural language processing">Natural Language Processing</button>
+                                    <button type="button" class="interest-tag" data-query="reasoning language models">Reasoning in Language Models</button>
                                 </div>
                             </div>
                             <div class="research-interests">
@@ -130,16 +131,11 @@
         <footer class="site-footer"><span class="prompt">$</span> last indexed: 2026-06</footer>
     </div>
 
-    <div class="bg-layer" aria-hidden="true">
-        <canvas id="bg-canvas"></canvas>
-    </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            /* ---------- Typewriter: rotating queries in the tagline ---------- */
             const typer = document.getElementById('query-typer');
+            const stats = document.getElementById('retrieve-stats');
             const queries = [
                 'information retrieval',
                 'dense retrieval && hard negatives',
@@ -148,220 +144,160 @@
                 'natural language processing'
             ];
 
-            if (!reducedMotion && typer) {
+            /* ---------- On-page retrieval over real content ---------- */
+            const documents = [];
+            document.querySelectorAll('.about-text p, .updates-list .update').forEach(el => {
+                documents.push({ el, html: el.innerHTML, text: el.textContent.toLowerCase() });
+            });
+
+            let spanCount = 0;
+            let typewriterPaused = false;
+            let typewriterTimer = null;
+
+            function escapeRegex(s) {
+                return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            }
+
+            function tokenize(query) {
+                return query.toLowerCase()
+                    .replace(/[@&|]/g, ' ')
+                    .split(/[^a-z0-9]+/)
+                    .filter(t => t.length > 2);
+            }
+
+            function scoreDoc(text, terms) {
+                let score = 0;
+                terms.forEach(term => {
+                    const matches = text.match(new RegExp(escapeRegex(term), 'g'));
+                    if (matches) score += matches.length;
+                });
+                return score;
+            }
+
+            function clearRetrieval() {
+                spanCount = 0;
+                documents.forEach(d => {
+                    d.el.innerHTML = d.html;
+                    d.el.classList.remove('is-retrieved', 'is-top', 'is-muted');
+                    d.el.removeAttribute('data-rank');
+                });
+                document.querySelectorAll('.interest-tag[data-query]').forEach(t => {
+                    t.classList.remove('is-active-query');
+                });
+            }
+
+            function highlightTerms(root, terms) {
+                if (!terms.length) return 0;
+                const pattern = terms.map(escapeRegex).join('|');
+                const re = new RegExp('(' + pattern + ')', 'gi');
+                let hits = 0;
+                const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+                const nodes = [];
+                while (walker.nextNode()) nodes.push(walker.currentNode);
+
+                nodes.forEach(node => {
+                    const text = node.nodeValue;
+                    if (!re.test(text)) return;
+                    re.lastIndex = 0;
+                    const frag = document.createDocumentFragment();
+                    let pos = 0;
+                    let match;
+                    while ((match = re.exec(text)) !== null) {
+                        frag.appendChild(document.createTextNode(text.slice(pos, match.index)));
+                        const mark = document.createElement('mark');
+                        mark.className = 'query-hit';
+                        mark.textContent = match[0];
+                        frag.appendChild(mark);
+                        hits++;
+                        pos = match.index + match[0].length;
+                    }
+                    frag.appendChild(document.createTextNode(text.slice(pos)));
+                    node.parentNode.replaceChild(frag, node);
+                });
+                return hits;
+            }
+
+            function runRetrieval(query, source) {
+                clearRetrieval();
+                const terms = tokenize(query);
+                if (!terms.length) {
+                    if (stats) stats.textContent = 'retrieved 0 spans · type a query or click a tag';
+                    return;
+                }
+
+                const t0 = performance.now();
+                const ranked = documents.map(d => ({ ...d, score: scoreDoc(d.text, terms) }))
+                    .sort((a, b) => b.score - a.score);
+
+                const matched = ranked.filter(d => d.score > 0);
+                matched.forEach((d, i) => {
+                    d.el.classList.add('is-retrieved');
+                    if (i < 3) {
+                        d.el.classList.add('is-top');
+                        d.el.dataset.rank = String(i + 1);
+                    }
+                    spanCount += highlightTerms(d.el, terms);
+                });
+
+                if (query.length > 4) {
+                    ranked.filter(d => d.score === 0).forEach(d => d.el.classList.add('is-muted'));
+                }
+
+                const ms = Math.max(performance.now() - t0, 0.01).toFixed(2);
+                if (stats) {
+                    stats.innerHTML = 'retrieved <strong>' + matched.length + '</strong> docs, ' +
+                        '<strong>' + spanCount + '</strong> spans · ' + ms + ' ms' +
+                        (source === 'tag' ? ' · <em>relevance feedback</em>' : '');
+                }
+            }
+
+            document.querySelectorAll('.interest-tag[data-query]').forEach(tag => {
+                tag.addEventListener('click', () => {
+                    typewriterPaused = true;
+                    clearTimeout(typewriterTimer);
+                    const q = tag.dataset.query;
+                    if (typer) typer.textContent = q;
+                    document.querySelectorAll('.interest-tag[data-query]').forEach(t => {
+                        t.classList.toggle('is-active-query', t === tag);
+                    });
+                    runRetrieval(q, 'tag');
+                    tag.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                });
+            });
+
+            /* ---------- Typewriter: drives live retrieval as the query changes ---------- */
+            if (typer) {
                 let qi = 0, ci = queries[0].length, deleting = true;
 
                 function tick() {
+                    if (typewriterPaused) return;
+
                     const word = queries[qi];
                     ci += deleting ? -1 : 1;
-                    typer.textContent = word.slice(0, ci);
+                    const current = word.slice(0, ci);
+                    typer.textContent = current;
+                    runRetrieval(current, 'typewriter');
 
                     let delay = deleting ? 35 : 65;
                     if (!deleting && ci === word.length) {
-                        delay = 2600;            // pause on the full query
+                        delay = 2800;
                         deleting = true;
                     } else if (deleting && ci === 0) {
                         qi = (qi + 1) % queries.length;
                         deleting = false;
-                        delay = 350;
+                        delay = 400;
                     }
-                    setTimeout(tick, delay);
-                }
-                setTimeout(tick, 2200);
-            }
-
-            /* ---------- Background: IR pipeline trace + Rocchio drift ----------
-               Top: query travels tokenize → embed → ANN search → rerank.
-               Main: documents drift in embedding space; the query vector
-               slowly shifts toward retrieved (relevant) docs — Rocchio-style
-               relevance feedback. */
-            const bgLayer = document.querySelector('.bg-layer');
-            const canvas = document.getElementById('bg-canvas');
-            if (reducedMotion || !canvas) { if (bgLayer) bgLayer.remove(); return; }
-
-            const ctx = canvas.getContext('2d');
-            const ACCENT = '37, 99, 235';
-            const RELEVANT = '22, 163, 74';
-            const K = 5;
-            const ROCCHIO_BETA = 0.018;
-            const ROCCHIO_GAMMA = 0.004;
-            const PIPELINE_STAGES = ['tokenize', 'embed', 'ANN search', 'rerank'];
-            const PIPELINE_CYCLE_MS = 5500;
-
-            let w, h, docs = [], rafId = null, startTime = performance.now();
-            const query = { x: 0, y: 0, vx: 0, vy: 0, pulse: 0 };
-
-            function resize() {
-                w = window.innerWidth;
-                h = window.innerHeight;
-                canvas.width = w;
-                canvas.height = h;
-
-                const n = Math.min(70, Math.floor((w * h) / 26000));
-                const areaTop = h * 0.22;
-                docs = Array.from({ length: n }, () => ({
-                    x: Math.random() * w,
-                    y: areaTop + Math.random() * (h - areaTop - 40),
-                    vx: (Math.random() - 0.5) * 0.22,
-                    vy: (Math.random() - 0.5) * 0.22,
-                    r: 1.2 + Math.random() * 1.4
-                }));
-
-                query.x = w * 0.5;
-                query.y = h * 0.55;
-                query.vx = 0;
-                query.vy = 0;
-            }
-
-            function pipelinePoints() {
-                const y = Math.max(52, h * 0.09);
-                const pad = Math.min(Math.max(w * 0.05, 28), 80);
-                return PIPELINE_STAGES.map((label, i) => ({
-                    x: pad + (w - 2 * pad) * (i / (PIPELINE_STAGES.length - 1)),
-                    y,
-                    label
-                }));
-            }
-
-            function drawPipeline(now) {
-                const points = pipelinePoints();
-                const y = points[0].y;
-
-                ctx.strokeStyle = 'rgba(' + ACCENT + ', 0.14)';
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.moveTo(points[0].x, y);
-                for (let i = 1; i < points.length; i++) ctx.lineTo(points[i].x, points[i].y);
-                ctx.stroke();
-
-                points.forEach((p, i) => {
-                    const isLast = i === points.length - 1;
-                    ctx.fillStyle = 'rgba(' + ACCENT + ', ' + (isLast ? 0.22 : 0.14) + ')';
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, isLast ? 3.5 : 2.8, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    ctx.font = (w < 520 ? '9px' : '10px') + ' ui-monospace, monospace';
-                    ctx.fillStyle = 'rgba(' + ACCENT + ', 0.38)';
-                    ctx.textAlign = 'center';
-                    ctx.textBaseline = 'top';
-                    ctx.fillText(p.label, p.x, y + 10);
-                });
-
-                const elapsed = (now - startTime) % PIPELINE_CYCLE_MS;
-                const travel = PIPELINE_CYCLE_MS * 0.82;
-                if (elapsed > travel) return;
-
-                const prog = elapsed / travel;
-                const segCount = points.length - 1;
-                const seg = Math.min(Math.floor(prog * segCount), segCount - 1);
-                const localT = prog * segCount - seg;
-                const a = points[seg];
-                const b = points[seg + 1];
-                const dotX = a.x + (b.x - a.x) * localT;
-                const dotY = a.y + (b.y - a.y) * localT;
-
-                ctx.fillStyle = 'rgba(' + ACCENT + ', 0.50)';
-                ctx.beginPath();
-                ctx.arc(dotX, dotY, 4, 0, Math.PI * 2);
-                ctx.fill();
-
-                ctx.strokeStyle = 'rgba(' + ACCENT + ', 0.20)';
-                ctx.beginPath();
-                ctx.arc(dotX, dotY, 7, 0, Math.PI * 2);
-                ctx.stroke();
-            }
-
-            function step(now) {
-                ctx.clearRect(0, 0, w, h);
-                drawPipeline(now);
-
-                const areaTop = h * 0.20;
-
-                docs.forEach(d => {
-                    d.x += d.vx;
-                    d.y += d.vy;
-                    if (d.x < -10) d.x = w + 10;
-                    else if (d.x > w + 10) d.x = -10;
-                    if (d.y < areaTop) { d.y = areaTop; d.vy *= -1; }
-                    else if (d.y > h - 20) { d.y = h - 20; d.vy *= -1; }
-                    d.dist = Math.hypot(d.x - query.x, d.y - query.y);
-                });
-
-                const ranked = [...docs].sort((a, b) => a.dist - b.dist);
-                const relevant = ranked.slice(0, K);
-                const nonRelevant = ranked.slice(K, K + 8);
-
-                let cx = 0, cy = 0;
-                relevant.forEach(d => { cx += d.x; cy += d.y; });
-                cx /= relevant.length;
-                cy /= relevant.length;
-
-                let nx = 0, ny = 0;
-                if (nonRelevant.length) {
-                    nonRelevant.forEach(d => { nx += d.x; ny += d.y; });
-                    nx /= nonRelevant.length;
-                    ny /= nonRelevant.length;
+                    typewriterTimer = setTimeout(tick, delay);
                 }
 
-                query.vx += ROCCHIO_BETA * (cx - query.x) - ROCCHIO_GAMMA * (nx - query.x);
-                query.vy += ROCCHIO_BETA * (cy - query.y) - ROCCHIO_GAMMA * (ny - query.y);
-                query.vx *= 0.96;
-                query.vy *= 0.96;
-                query.x += query.vx;
-                query.y += query.vy;
-                query.x = Math.max(30, Math.min(w - 30, query.x));
-                query.y = Math.max(areaTop + 20, Math.min(h - 30, query.y));
-
-                if (relevant[0].dist < 28) query.pulse = 1;
-                query.pulse *= 0.94;
-
-                const maxDist = relevant[relevant.length - 1].dist || 1;
-
-                relevant.forEach(d => {
-                    const closeness = 1 - d.dist / (maxDist * 1.3);
-                    ctx.strokeStyle = 'rgba(' + RELEVANT + ',' + (0.12 * closeness + 0.04).toFixed(3) + ')';
-                    ctx.lineWidth = 1;
-                    ctx.beginPath();
-                    ctx.moveTo(query.x, query.y);
-                    ctx.lineTo(d.x, d.y);
-                    ctx.stroke();
-                });
-
-                docs.forEach(d => {
-                    const hit = relevant.includes(d);
-                    ctx.fillStyle = 'rgba(' + (hit ? RELEVANT : ACCENT) + ', ' + (hit ? 0.24 : 0.07) + ')';
-                    ctx.beginPath();
-                    ctx.arc(d.x, d.y, hit ? d.r + 1 : d.r, 0, Math.PI * 2);
-                    ctx.fill();
-                });
-
-                const qRadius = 3.2 + query.pulse * 2;
-                ctx.fillStyle = 'rgba(' + ACCENT + ', 0.32)';
-                ctx.beginPath();
-                ctx.arc(query.x, query.y, qRadius, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.strokeStyle = 'rgba(' + ACCENT + ', ' + (0.14 + query.pulse * 0.12).toFixed(3) + ')';
-                ctx.beginPath();
-                ctx.arc(query.x, query.y, 9 + query.pulse * 4, 0, Math.PI * 2);
-                ctx.stroke();
-
-                rafId = requestAnimationFrame(step);
-            }
-
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    cancelAnimationFrame(rafId);
-                    rafId = null;
-                } else if (!rafId) {
-                    startTime = performance.now();
-                    rafId = requestAnimationFrame(step);
+                if (reducedMotion) {
+                    typer.textContent = queries[0];
+                    runRetrieval(queries[0], 'typewriter');
+                } else {
+                    runRetrieval(typer.textContent || queries[0], 'typewriter');
+                    typewriterTimer = setTimeout(tick, 1800);
                 }
-            });
-
-            window.addEventListener('resize', resize);
-            resize();
-            rafId = requestAnimationFrame(step);
+            }
         });
     </script>
 </body>
