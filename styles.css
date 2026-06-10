@@ -69,12 +69,11 @@ body {
     font-style: normal;
 }
 
-/* Search highlights — override browser default yellow <mark> */
-mark,
-mark.query-hit,
-mark.hl {
-    background-color: var(--mark-bg) !important;
-    color: var(--mark-text) !important;
+/* Search highlights */
+.query-hit,
+.hl {
+    background-color: var(--mark-bg);
+    color: var(--mark-text);
     border-radius: 3px;
     padding: 0 2px;
     box-shadow: inset 0 -2px 0 var(--accent-ring);

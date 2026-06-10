@@ -389,9 +389,9 @@
             const HIGHLIGHT_SCOPES = '.pub-title, .pub-authors, .pub-venue';
 
             function clearMarks(root) {
-                root.querySelectorAll('mark.hl').forEach(mark => {
-                    const parent = mark.parentNode;
-                    parent.replaceChild(document.createTextNode(mark.textContent), mark);
+                root.querySelectorAll('.hl').forEach(hit => {
+                    const parent = hit.parentNode;
+                    parent.replaceChild(document.createTextNode(hit.textContent), hit);
                     parent.normalize();
                 });
             }
@@ -410,10 +410,10 @@
                     let pos = 0, idx;
                     while ((idx = lower.indexOf(query, pos)) > -1) {
                         frag.appendChild(document.createTextNode(text.slice(pos, idx)));
-                        const mark = document.createElement('mark');
-                        mark.className = 'hl';
-                        mark.textContent = text.slice(idx, idx + query.length);
-                        frag.appendChild(mark);
+                        const hit = document.createElement('span');
+                        hit.className = 'hl';
+                        hit.textContent = text.slice(idx, idx + query.length);
+                        frag.appendChild(hit);
                         pos = idx + query.length;
                     }
                     frag.appendChild(document.createTextNode(text.slice(pos)));
@@ -432,41 +432,27 @@
                 const query = input.value.trim().toLowerCase();
                 let visible = 0;
 
-                const tFilter = performance.now();
                 pubs.forEach(p => {
                     const cats = p.dataset.cats.split(' ');
                     const catOk = activeCats.size === 0 || cats.some(c => activeCats.has(c));
                     const queryOk = !query || p.dataset.haystack.includes(query);
                     const show = catOk && queryOk;
                     p.classList.toggle('is-hidden', !show);
+
+                    p.querySelectorAll(HIGHLIGHT_SCOPES).forEach(scope => {
+                        clearMarks(scope);
+                        if (show && query) markMatches(scope, query);
+                    });
+
                     if (show) visible++;
                 });
 
                 groups.forEach(g => {
                     g.classList.toggle('is-hidden', !g.querySelector('.publication:not(.is-hidden)'));
                 });
-                const filterMs = performance.now() - tFilter;
-
-                const tHighlight = performance.now();
-                if (query) {
-                    pubs.forEach(p => {
-                        if (p.classList.contains('is-hidden')) return;
-                        p.querySelectorAll(HIGHLIGHT_SCOPES).forEach(scope => {
-                            clearMarks(scope);
-                            markMatches(scope, query);
-                        });
-                    });
-                } else {
-                    pubs.forEach(p => {
-                        p.querySelectorAll(HIGHLIGHT_SCOPES).forEach(clearMarks);
-                    });
-                }
-                const highlightMs = performance.now() - tHighlight;
-                const totalMs = performance.now() - tTotal;
 
                 stats.innerHTML = 'retrieved <strong>' + visible + '</strong> of ' + pubs.length +
-                    ' documents · filter ' + formatMs(filterMs) + ' · highlight ' + formatMs(highlightMs) +
-                    ' · <strong>' + formatMs(totalMs) + '</strong> total';
+                    ' documents · ' + formatMs(performance.now() - tTotal);
                 emptyState.hidden = visible !== 0;
             }
 

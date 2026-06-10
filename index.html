@@ -229,10 +229,10 @@
                     let match;
                     while ((match = re.exec(text)) !== null) {
                         frag.appendChild(document.createTextNode(text.slice(pos, match.index)));
-                        const mark = document.createElement('mark');
-                        mark.className = 'query-hit';
-                        mark.textContent = match[0];
-                        frag.appendChild(mark);
+                        const hit = document.createElement('span');
+                        hit.className = 'query-hit';
+                        hit.textContent = match[0];
+                        frag.appendChild(hit);
                         hits++;
                         pos = match.index + match[0].length;
                     }
@@ -245,24 +245,17 @@
             function runRetrieval(query, source) {
                 const tTotal = performance.now();
                 clearRetrieval();
-
-                const tTokenize = performance.now();
                 const terms = tokenize(query);
-                const tokenizeMs = performance.now() - tTokenize;
 
                 if (!terms.length) {
                     if (stats) stats.textContent = 'retrieved 0 spans · type a query or click a tag';
                     return;
                 }
 
-                const tScore = performance.now();
                 const ranked = documents.map(d => ({ ...d, score: scoreDoc(d.text, terms) }))
                     .sort((a, b) => b.score - a.score);
-                const scoreMs = performance.now() - tScore;
 
                 const matched = ranked.filter(d => d.score > 0);
-
-                const tHighlight = performance.now();
                 matched.forEach((d, i) => {
                     d.el.classList.add('is-retrieved');
                     if (i < 3) {
@@ -275,16 +268,11 @@
                 if (query.length > 4) {
                     ranked.filter(d => d.score === 0).forEach(d => d.el.classList.add('is-muted'));
                 }
-                const highlightMs = performance.now() - tHighlight;
-                const totalMs = performance.now() - tTotal;
 
                 if (stats) {
                     stats.innerHTML = 'retrieved <strong>' + matched.length + '</strong> docs, ' +
                         '<strong>' + spanCount + '</strong> spans · ' +
-                        'tokenize ' + formatMs(tokenizeMs) + ' · ' +
-                        'rank ' + formatMs(scoreMs) + ' · ' +
-                        'highlight ' + formatMs(highlightMs) + ' · ' +
-                        '<strong>' + formatMs(totalMs) + '</strong> total' +
+                        formatMs(performance.now() - tTotal) +
                         (source === 'tag' ? ' · <em>relevance feedback</em>' : '');
                 }
             }
