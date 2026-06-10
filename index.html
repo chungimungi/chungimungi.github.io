@@ -154,6 +154,31 @@
             let typewriterPaused = false;
             let typewriterTimer = null;
 
+            const TYPEWRITER = {
+                msPerCharType: 58,
+                msPerCharDelete: 34,
+                pauseMsPerChar: 95,
+                minPauseMs: 850,
+                betweenQueryMs: 320,
+                startDelayMs: 700
+            };
+
+            function formatMs(ms) {
+                if (ms < 1) return (ms * 1000).toFixed(0) + '\u00b5s';
+                if (ms < 10) return ms.toFixed(2) + ' ms';
+                return ms.toFixed(1) + ' ms';
+            }
+
+            function typewriterDelay(word, ci, deleting) {
+                if (!deleting && ci === word.length) {
+                    return Math.max(TYPEWRITER.minPauseMs, word.length * TYPEWRITER.pauseMsPerChar);
+                }
+                if (deleting && ci === 0) {
+                    return TYPEWRITER.betweenQueryMs;
+                }
+                return deleting ? TYPEWRITER.msPerCharDelete : TYPEWRITER.msPerCharType;
+            }
+
             function escapeRegex(s) {
                 return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
             }
@@ -218,18 +243,26 @@
             }
 
             function runRetrieval(query, source) {
+                const tTotal = performance.now();
                 clearRetrieval();
+
+                const tTokenize = performance.now();
                 const terms = tokenize(query);
+                const tokenizeMs = performance.now() - tTokenize;
+
                 if (!terms.length) {
                     if (stats) stats.textContent = 'retrieved 0 spans · type a query or click a tag';
                     return;
                 }
 
-                const t0 = performance.now();
+                const tScore = performance.now();
                 const ranked = documents.map(d => ({ ...d, score: scoreDoc(d.text, terms) }))
                     .sort((a, b) => b.score - a.score);
+                const scoreMs = performance.now() - tScore;
 
                 const matched = ranked.filter(d => d.score > 0);
+
+                const tHighlight = performance.now();
                 matched.forEach((d, i) => {
                     d.el.classList.add('is-retrieved');
                     if (i < 3) {
@@ -242,11 +275,16 @@
                 if (query.length > 4) {
                     ranked.filter(d => d.score === 0).forEach(d => d.el.classList.add('is-muted'));
                 }
+                const highlightMs = performance.now() - tHighlight;
+                const totalMs = performance.now() - tTotal;
 
-                const ms = Math.max(performance.now() - t0, 0.01).toFixed(2);
                 if (stats) {
                     stats.innerHTML = 'retrieved <strong>' + matched.length + '</strong> docs, ' +
-                        '<strong>' + spanCount + '</strong> spans · ' + ms + ' ms' +
+                        '<strong>' + spanCount + '</strong> spans · ' +
+                        'tokenize ' + formatMs(tokenizeMs) + ' · ' +
+                        'rank ' + formatMs(scoreMs) + ' · ' +
+                        'highlight ' + formatMs(highlightMs) + ' · ' +
+                        '<strong>' + formatMs(totalMs) + '</strong> total' +
                         (source === 'tag' ? ' · <em>relevance feedback</em>' : '');
                 }
             }
@@ -278,14 +316,12 @@
                     typer.textContent = current;
                     runRetrieval(current, 'typewriter');
 
-                    let delay = deleting ? 35 : 65;
+                    let delay = typewriterDelay(word, ci, deleting);
                     if (!deleting && ci === word.length) {
-                        delay = 2800;
                         deleting = true;
                     } else if (deleting && ci === 0) {
                         qi = (qi + 1) % queries.length;
                         deleting = false;
-                        delay = 400;
                     }
                     typewriterTimer = setTimeout(tick, delay);
                 }
@@ -295,7 +331,7 @@
                     runRetrieval(queries[0], 'typewriter');
                 } else {
                     runRetrieval(typer.textContent || queries[0], 'typewriter');
-                    typewriterTimer = setTimeout(tick, 1800);
+                    typewriterTimer = setTimeout(tick, TYPEWRITER.startDelayMs);
                 }
             }
         });
