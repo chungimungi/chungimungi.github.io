@@ -306,6 +306,11 @@ body {
     font-size: 0.92rem;
 }
 
+.update-text strong {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
 /* ------------------------------------------------------------------
    Publications: search panel
    ------------------------------------------------------------------ */
