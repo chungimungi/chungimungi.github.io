@@ -181,6 +181,59 @@
             font-size: 0.9rem;
         }
 
+        .pub-authors--compact {
+            line-height: 1.55;
+        }
+
+        .author-reveal {
+            display: inline-block;
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+            vertical-align: bottom;
+            transition: max-width 0.55s ease, opacity 0.35s ease;
+            white-space: normal;
+        }
+
+        .author-reveal.is-visible {
+            max-width: 1200px;
+            opacity: 1;
+        }
+
+        .author-ellipsis {
+            appearance: none;
+            background: rgba(37, 99, 235, 0.08);
+            border: 1px solid rgba(37, 99, 235, 0.16);
+            border-radius: 999px;
+            color: var(--accent);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font: inherit;
+            font-weight: 700;
+            line-height: 1;
+            margin: 0 3px;
+            padding: 1px 8px 4px;
+            transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .author-ellipsis:hover {
+            background: rgba(37, 99, 235, 0.14);
+            transform: translateY(-1px);
+        }
+
+        .author-ellipsis.is-hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.92);
+            width: 0;
+            margin: 0;
+            padding-left: 0;
+            padding-right: 0;
+            border-width: 0;
+        }
+
         .pub-venue {
             color: var(--text-light);
             font-size: 0.85rem;
@@ -425,7 +478,13 @@
                                     Evaluation Cards: An Interpretive Layer for AI Evaluation Reporting
                                 </a>
                             </div>
-                            <div class="pub-authors">Avijit Ghosh, Anka Reuel, Jenny Chim, Wm. Matthew Kennedy, Srishti Yadav, Jennifer Mickel, Yanan Long, Andrew Tran, Anastassia Kornilova, Damian Stachura, Kevin Klyman, Felix Friedrich, Jeba Sania, Jan Batzner, Anoop Mishra, Eliya Habba, Yixiong Hao, Nathan Heath, Shalaleh Rismani, Usman Gohar, Andrea Loehr, David Manheim, Ruchira Dhar, Sree Harsha Nelaturu, <strong>Aarush Sinha</strong>, Leshem Choshen, Drishti Sharma, Ishan Khire, Amit Saha, Subramanyam Sahoo, Michael Hardy, Michael Alexander Riegler, Kabir Manghnani, Michelle Lin, Yanan Jiang, Yilin Huang, Asaf Yehudai, Jessica Ji, Aris Hofmann, Mubashara Akhtar, Max Lamparth, Nuno Moniz, Yacine Jernite, Stella Biderman, Zeerak Talat, Sanmi Koyejo, Mykel Kochenderfer, Irene Solaiman</div>
+                            <div class="pub-authors pub-authors--compact">
+                                Avijit Ghosh, Anka Reuel, Jenny Chim, Wm. Matthew Kennedy
+                                <button class="author-ellipsis" type="button" data-author-target="eval-before" aria-expanded="false" aria-controls="eval-before-authors" aria-label="Show authors before Aarush Sinha">...</button>
+                                <span class="author-reveal" id="eval-before-authors">, Srishti Yadav, Jennifer Mickel, Yanan Long, Andrew Tran, Anastassia Kornilova, Damian Stachura, Kevin Klyman, Felix Friedrich, Jeba Sania, Jan Batzner, Anoop Mishra, Eliya Habba, Yixiong Hao, Nathan Heath, Shalaleh Rismani, Usman Gohar, Andrea Loehr, David Manheim, Ruchira Dhar, Sree Harsha Nelaturu, <strong>Aarush Sinha</strong></span>
+                                <button class="author-ellipsis is-hidden" type="button" data-author-target="eval-after" aria-expanded="false" aria-controls="eval-after-authors" aria-label="Show authors after Aarush Sinha">...</button>
+                                <span class="author-reveal" id="eval-after-authors">, Leshem Choshen, Drishti Sharma, Ishan Khire, Amit Saha, Subramanyam Sahoo, Michael Hardy, Michael Alexander Riegler, Kabir Manghnani, Michelle Lin, Yanan Jiang, Yilin Huang, Asaf Yehudai, Jessica Ji, Aris Hofmann, Mubashara Akhtar, Max Lamparth, Nuno Moniz, Yacine Jernite, Stella Biderman, Zeerak Talat, Sanmi Koyejo, Mykel Kochenderfer, Irene Solaiman</span>
+                            </div>
                             <div class="pub-meta">
                                 <span class="pub-venue">arXiv preprint arXiv:2606.09809</span>
                                 <span class="pub-tags">
@@ -680,6 +739,22 @@
                     const abstractContent = toggle.nextElementSibling;
                     const isExpanded = abstractContent.classList.toggle('expanded');
                     toggle.textContent = isExpanded ? 'Hide Abstract' : 'Abstract';
+                });
+            });
+
+            document.querySelectorAll('.author-ellipsis').forEach(button => {
+                button.addEventListener('click', () => {
+                    const target = document.getElementById(`${button.dataset.authorTarget}-authors`);
+                    if (!target) return;
+
+                    target.classList.add('is-visible');
+                    button.setAttribute('aria-expanded', 'true');
+                    button.classList.add('is-hidden');
+
+                    if (button.dataset.authorTarget === 'eval-before') {
+                        const nextButton = document.querySelector('[data-author-target="eval-after"]');
+                        if (nextButton) nextButton.classList.remove('is-hidden');
+                    }
                 });
             });
 
