@@ -12,10 +12,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
     <div class="container">
         <header class="header">
             <h1>Aarush Sinha</h1>
-            <div class="tagline"><span class="prompt">$</span> retrieving: information retrieval &middot; NLP &middot; reasoning</div>
+            <div class="tagline"><span class="prompt">$</span> query := "<span id="query-typer">information retrieval</span>"</div>
 
             <nav class="navigation">
                 <a href="index.html" class="active">about</a>
@@ -53,7 +54,7 @@
                                 I am a Master's student in Computer Science at the <a href="https://www.ku.dk/" target="_blank">University of Copenhagen</a>, specializing in Information Retrieval and Natural Language Processing, where I am advised by Prof. Maria Maistro and Prof. Christina Lioma. I previously completed my undergraduate at VIT Chennai.
                             </p>
                             <p>
-                                My research is centered around the retrieval and generative capabilites of models particularly focusing on its shortcomings and efficiency.
+                                My research is centered around the retrieval and generative capabilites of models particularly focusing on its shortcomings and efficiency. I am currently interning at <a href="https://www.lighton.ai/" target="_blank">LightOn</a>, where I work on code search tools.
                             </p>
                             <p>
                                 Over the years, I have had the opportunity to collaborate with wonderful mentors across several labs. I previously worked on hallucinations in Text2Video models with Prof. Amitava Das at the <a href="https://aiisc.ai/" target="_blank">AI Institute, UofSC</a>, and on efficient dense retrievers with Prof. Nirav Bhatt at <a href="https://wsai.iitm.ac.in/" target="_blank">WSAI-IIT Madras</a>. Most recently, at the <a href="https://stairlab.stanford.edu/" target="_blank">Stanford STAIR Lab</a>, I worked with Rylan Schaeffer and Prof. Sanmi Koyejo on model collapse.
@@ -82,6 +83,10 @@
                 <section id="updates" class="section">
                     <h2 class="section-title">updates</h2>
                     <div class="updates-list">
+                        <div class="update">
+                            <div class="update-date">June 2026</div>
+                            <div class="update-text">Interning at <a href="https://www.lighton.ai/" target="_blank">LightOn</a>, working on code search tools.</div>
+                        </div>
                         <div class="update">
                             <div class="update-date">June 2026</div>
                             <div class="update-text">New pre-print released on arXiv: <strong>Mechanistic Analysis of Alignment Algorithms in Language Models</strong>.</div>
@@ -125,5 +130,134 @@
 
         <footer class="site-footer"><span class="prompt">$</span> last indexed: 2026-06</footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            /* ---------- Typewriter: rotating queries in the tagline ---------- */
+            const typer = document.getElementById('query-typer');
+            const queries = [
+                'information retrieval',
+                'dense retrieval && hard negatives',
+                'reasoning in language models',
+                'code search @ LightOn',
+                'natural language processing'
+            ];
+
+            if (!reducedMotion && typer) {
+                let qi = 0, ci = queries[0].length, deleting = true;
+
+                function tick() {
+                    const word = queries[qi];
+                    ci += deleting ? -1 : 1;
+                    typer.textContent = word.slice(0, ci);
+
+                    let delay = deleting ? 35 : 65;
+                    if (!deleting && ci === word.length) {
+                        delay = 2600;            // pause on the full query
+                        deleting = true;
+                    } else if (deleting && ci === 0) {
+                        qi = (qi + 1) % queries.length;
+                        deleting = false;
+                        delay = 350;
+                    }
+                    setTimeout(tick, delay);
+                }
+                setTimeout(tick, 2200);
+            }
+
+            /* ---------- Background: drifting docs + kNN retrieval ----------
+               Documents drift through "embedding space"; a slow-moving query
+               point links to its nearest neighbors, like vector retrieval. */
+            const canvas = document.getElementById('bg-canvas');
+            if (reducedMotion || !canvas) { if (canvas) canvas.remove(); return; }
+
+            const ctx = canvas.getContext('2d');
+            const ACCENT = '37, 99, 235';
+            const K = 5;
+            let w, h, docs = [], rafId = null;
+
+            function resize() {
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+                const n = Math.min(70, Math.floor((w * h) / 26000));
+                docs = Array.from({ length: n }, () => ({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    vx: (Math.random() - 0.5) * 0.22,
+                    vy: (Math.random() - 0.5) * 0.22,
+                    r: 1.2 + Math.random() * 1.4
+                }));
+            }
+
+            const query = { x: 0, y: 0, t: Math.random() * 1000 };
+
+            function step() {
+                ctx.clearRect(0, 0, w, h);
+
+                // Query wanders smoothly around the viewport.
+                query.t += 0.0016;
+                query.x = w * (0.5 + 0.38 * Math.sin(query.t * 1.7) * Math.cos(query.t * 0.6));
+                query.y = h * (0.5 + 0.34 * Math.sin(query.t * 1.1));
+
+                docs.forEach(d => {
+                    d.x += d.vx; d.y += d.vy;
+                    if (d.x < -10) d.x = w + 10; else if (d.x > w + 10) d.x = -10;
+                    if (d.y < -10) d.y = h + 10; else if (d.y > h + 10) d.y = -10;
+                    d.dist = Math.hypot(d.x - query.x, d.y - query.y);
+                });
+
+                // Retrieve top-K nearest documents and link them to the query.
+                const topK = [...docs].sort((a, b) => a.dist - b.dist).slice(0, K);
+                const maxDist = topK[topK.length - 1].dist || 1;
+
+                topK.forEach(d => {
+                    const closeness = 1 - d.dist / (maxDist * 1.3);
+                    ctx.strokeStyle = 'rgba(' + ACCENT + ',' + (0.10 * closeness + 0.025).toFixed(3) + ')';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(query.x, query.y);
+                    ctx.lineTo(d.x, d.y);
+                    ctx.stroke();
+                });
+
+                // Documents (retrieved ones glow slightly more).
+                docs.forEach(d => {
+                    const hit = topK.includes(d);
+                    ctx.fillStyle = 'rgba(' + ACCENT + ',' + (hit ? 0.22 : 0.08) + ')';
+                    ctx.beginPath();
+                    ctx.arc(d.x, d.y, hit ? d.r + 0.8 : d.r, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                // Query point.
+                ctx.fillStyle = 'rgba(' + ACCENT + ', 0.30)';
+                ctx.beginPath();
+                ctx.arc(query.x, query.y, 3.2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(' + ACCENT + ', 0.12)';
+                ctx.beginPath();
+                ctx.arc(query.x, query.y, 8 + Math.sin(query.t * 60) * 2, 0, Math.PI * 2);
+                ctx.stroke();
+
+                rafId = requestAnimationFrame(step);
+            }
+
+            // Pause when the tab is hidden to save battery.
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    cancelAnimationFrame(rafId);
+                    rafId = null;
+                } else if (!rafId) {
+                    rafId = requestAnimationFrame(step);
+                }
+            });
+
+            window.addEventListener('resize', resize);
+            resize();
+            rafId = requestAnimationFrame(step);
+        });
+    </script>
 </body>
 </html>
