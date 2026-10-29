@@ -165,12 +165,12 @@
 
                         <div class="publication" data-cats="ir eval">
                             <div class="pub-media">
-                                <img src="images/eci.png" alt="ECI paper table thumbnail" loading="lazy" onerror="this.src='images/llm-ir.png'">
+                                <img src="images/eci-v5.svg" alt="Mean lexical residuality matches aggregate transfer ordering in all six source-ordering blocks" loading="lazy">
                             </div>
                             <div class="pub-details">
                                 <div class="pub-title">
                                     <a href="https://arxiv.org/abs/2603.20990" target="_blank">
-                                        ECI<sub>sem</sub>: Semantic Residual Effective Contrastive Information for Evaluating Hard Negatives
+                                        What Tracks Hard-Negative Transfer? A Study of Lexical and Semantic Signals
                                     </a>
                                 </div>
                                 <div class="pub-authors"><strong>Aarush Sinha</strong>, Rahul Seetharaman, Aman Bansal</div>
@@ -184,7 +184,7 @@
                                 </div>
                                 <div class="pub-abstract-toggle">Abstract</div>
                                 <div class="pub-abstract-content">
-                                    <p>Hard-negative source selection for dense retrieval is usually decided only after fine-tuning and downstream evaluation. We propose ECI<sub>sem</sub>, a semantic residual variant of Effective Contrastive Information (ECI) that ranks candidate negative sources using frozen target-encoder embeddings. ECI<sub>sem</sub> is training-free, not label-free: each scored example requires a query, a labeled positive, and an explicit candidate negative. ECI<sub>sem</sub> builds a weighted residual information matrix from target consistency, semantic locality, lexical residuality, and a log-determinant diversity objective. On MS MARCO negative sources, in-family ECI<sub>sem</sub> ranks LLM negatives highest among non-hybrid sources and Dense+LLM highest among hybrid sources, matching the strongest aggregate BEIR transfer results across DistilBERT, E5-base, and Contriever. Controlled ablations show that this alignment depends on using the target encoder family, while additional ablations show stability under sample-size, temperature, tokenizer, and IDFcorpus perturbations. The theory gives a local linearized link to loss reduction, while the empirical study treats downstream evaluation as the final test.</p>
+                                    <p>Which properties of hard-negative supervision track dense-retriever transfer before training? We compare lexical noncoverage, frozen-encoder similarity statistics, hardness proxies, and combinations of these signals across BM25, dense, LLM-generated, and hybrid sources for MS MARCO training. Evaluation uses three retriever backbones and eleven BEIR datasets. Mean lexical residuality, an IDF-weighted measure of query-token noncoverage, reproduces the aggregate transfer ordering in all six backbone and setting blocks. The individual semantic statistics recover none of the complete orderings, and combining them with the lexical signal does not improve the observed rank agreement. After approximately matching BM25, dense, and LLM diagnostic samples for lexical residuality, none of the tested semantic statistics recovers the observed LLM &gt; Dense &gt; BM25 transfer ordering across three backbones, three matching resolutions, and 100 repetitions. Constructed controls further show that unrelated and false-negative-shaped passages can exhibit favorable lexical and semantic statistics. The findings identify a simple lexical association in this setting while distinguishing source-level transfer agreement from the reliability of individual negatives.</p>
                                 </div>
                             </div>
                         </div>
